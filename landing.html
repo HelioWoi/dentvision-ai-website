@@ -1,0 +1,2763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dent-Vision AI: Solução de gerenciamento de oficinas PDR com análise de IA para orçamentos precisos e eficientes.">
+    <meta name="keywords" content="PDR, reparo de amassados, orçamento automático, IA, gerenciamento de oficina, dent vision">
+    <meta name="author" content="Dent-Vision AI">
+    <meta name="theme-color" content="#0E0E0E">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dent-vision.ai" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dent-vision.ai/">
+    <meta property="og:title" content="Dent-Vision AI | Gerenciamento Inteligente para Oficinas PDR">
+    <meta property="og:description" content="Solução completa para gestão de oficinas PDR com análise de IA para orçamentos precisos.">
+    <meta property="og:image" content="https://dent-vision.ai/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://dent-vision.ai/">
+    <meta property="twitter:title" content="Dent-Vision AI | Gerenciamento Inteligente para Oficinas PDR">
+    <meta property="twitter:description" content="Solução completa para gestão de oficinas PDR com análise de IA para orçamentos precisos.">
+    <meta property="twitter:image" content="https://dent-vision.ai/images/og-image.jpg">
+    
+    <!-- Preload de fontes críticas -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"></noscript>
+    <title>Dent Vision AI • Smart Dent Repair Estimation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0E0E0E;
+            --panel: rgba(255, 255, 255, 0.06);
+            --stroke: rgba(255, 255, 255, 0.12);
+            --text: #FFFFFF;
+            --muted: #B9C0CC;
+            --accent: #A3FF00;
+            --accent-weak: rgba(163, 255, 0, 0.14);
+            --danger: #FF5555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text);
+            background: var(--bg) url('bkg2.png') no-repeat center center fixed;
+            background-size: cover;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        :root {
+            --header-bg: rgba(15, 15, 15, 0.55);
+            --header-border: rgba(163, 255, 0, 0.18);
+            --header-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 28px rgba(0, 255, 255, 0.12);
+        }
+        
+        header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 0;
+            z-index: 50;
+            background: var(--header-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--header-border);
+            transition: all 0.3s ease;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom right, 
+                rgba(0, 255, 255, 0.22), 
+                rgba(163, 255, 0, 0.14)
+            );
+            opacity: 0.35;
+            mix-blend-mode: overlay;
+            pointer-events: none;
+            border-radius: 16px;
+            z-index: -1;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(12deg, transparent 45%, rgba(255, 255, 255, 0.08) 50%, transparent 55%),
+                linear-gradient(-18deg, transparent 40%, rgba(255, 255, 255, 0.05) 50%, transparent 60%);
+            opacity: 0.25;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .header-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
+            position: relative;
+        }
+
+        header.scrolled {
+            padding: 15px 0;
+            background: rgba(14, 14, 14, 0.95);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            padding-left: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            margin: 0 auto;
+        }
+        
+        .nav-links a {
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+            text-shadow: 0 0 8px rgba(163, 255, 0, 0.45);
+        }
+        
+        .nav-links a:focus {
+            outline: 2px solid rgba(163, 255, 0, 0.85);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        .header-buttons {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-left: 24px;
+        }
+        
+        .btn-link {
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            padding: 8px 0;
+        }
+        
+        .btn-link:hover {
+            color: var(--accent);
+            text-shadow: 0 0 8px rgba(163, 255, 0, 0.45);
+        }
+        
+        .btn-link:focus {
+            outline: 2px solid rgba(163, 255, 0, 0.85);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--bg);
+            font-weight: 800;
+            border-radius: 12px;
+            padding: 12px 18px;
+            box-shadow: 0 0 0 6px rgba(163, 255, 0, 0.12), 0 0 28px rgba(163, 255, 0, 0.45);
+            transition: all 0.25s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 0 0 8px rgba(163, 255, 0, 0.15), 0 0 35px rgba(163, 255, 0, 0.6);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0) scale(0.98);
+        }
+        
+        .btn-primary:focus {
+            outline: 2px solid rgba(163, 255, 0, 0.85);
+            outline-offset: 2px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 25px rgba(163, 255, 0, 0.4);
+        }
+
+        .btn-secondary {
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-weak);
+        }
+
+        .btn-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0;
+            background: none;
+            border: none;
+        }
+
+        .btn-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+            color: var(--text);
+            background-color: var(--bg);
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center center;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, var(--bg) 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .hero-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-content {
+            flex: 1;
+            text-align: left;
+            max-width: 600px;
+            z-index: 2;
+            padding-right: 40px;
+        }
+        
+        .video-container {
+            flex: 1;
+            position: relative;
+            overflow: visible;
+            transform: scale(1.17);
+            transform-origin: center;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            width: 100%;
+            height: 100%;
+        }
+        
+        
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+                box-shadow: 0 0 15px rgba(163, 255, 0, 0.4);
+            }
+            50% {
+                background-position: 100% 50%;
+                box-shadow: 0 0 25px rgba(163, 255, 0, 0.5);
+            }
+            100% {
+                background-position: 0% 50%;
+                box-shadow: 0 0 15px rgba(163, 255, 0, 0.4);
+            }
+        }
+        
+        .video-container:hover .video-play-icon {
+            opacity: 0.9;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border: none;
+            border-radius: 0;
+        }
+        
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            position: relative;
+            z-index: 0;
+            border: none;
+            border-radius: 0;
+            outline: none;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 32px;
+            color: var(--muted);
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .feature-item svg {
+            flex-shrink: 0;
+            color: var(--accent);
+        }
+
+        .hero-note {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        /* Lightbox Styles */
+        .video-lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .video-lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        
+        .video-lightbox.active .lightbox-content {
+            transform: scale(1);
+        }
+        
+        .lightbox-content video {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .close-lightbox {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+        
+        .close-lightbox:hover {
+            color: var(--accent);
+        }
+
+        /* Glass Panel */
+        .glass-panel {
+            background: var(--panel);
+            border: 1px solid var(--stroke);
+            border-radius: 20px;
+            backdrop-filter: blur(14px);
+            padding: 32px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .glass-panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-header p {
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: var(--panel);
+            border: 1px solid var(--stroke);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(163, 255, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-icon svg {
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            background: rgba(163, 255, 0, 0.15);
+        }
+        
+        .feature-card:hover .feature-icon svg {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        .feature-card h3 {
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 12px;
+            font-size: 1.25rem;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        /* Widget Section */
+        .widget-section {
+            background: var(--panel);
+            border-top: 1px solid var(--stroke);
+            border-bottom: 1px solid var(--stroke);
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--stroke);
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin: 20px 0;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--muted);
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 32px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: white;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 4rem;
+            font-family: serif;
+            color: var(--accent);
+            opacity: 0.2;
+            line-height: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+
+        .testimonial-author p {
+            margin: 5px 0 0;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .testimonial-author h4 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: white;
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .pricing-card {
+            background: var(--panel);
+            border: 1px solid var(--stroke);
+            border-radius: 16px;
+            padding: 40px 32px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .pricing-card.featured {
+            border: 1px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Removed MOST POPULAR tag from pricing card */
+        .pricing-card.featured:after {
+            display: none;
+        }
+
+        /* Dashboard Image Styles */
+        .dashboard-image-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .dashboard-image {
+            max-width: 800px;
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .pricing-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 20px 0;
+            color: var(--accent);
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--muted);
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            margin-bottom: 12px;
+            padding-left: 28px;
+            position: relative;
+            list-style: none;
+        }
+
+        .pricing-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* ROI Calculator */
+        .calculator {
+            background: var(--panel);
+            border: 1px solid var(--stroke);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 30px 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--stroke);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent-weak);
+        }
+
+        .result-box {
+            background: var(--accent-weak);
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .result-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 10px 0;
+        }
+
+        /* FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 16px;
+            border: 1px solid var(--stroke);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: var(--panel);
+            border: none;
+            padding: 20px 24px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .faq-answer {
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .faq-answer.active {
+            padding: 20px 24px;
+            max-height: 500px;
+        }
+
+        .faq-toggle {
+            transition: transform 0.3s;
+        }
+
+        .faq-toggle.active {
+            transform: rotate(180deg);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(163, 255, 0, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
+            border-top: 1px solid var(--stroke);
+            border-bottom: 1px solid var(--stroke);
+        }
+
+        .cta-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-section p {
+            color: var(--muted);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--stroke);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(163, 255, 0, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(163, 255, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(163, 255, 0, 0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Menu Mobile */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1279px) {
+            .header-container {
+                gap: 24px;
+                padding: 0 20px;
+            }
+            
+            .nav-links {
+                gap: 20px;
+            }
+            
+            .header-buttons {
+                gap: 16px;
+                margin-left: 16px;
+            }
+        }
+
+        @media (max-width: 920px) {
+            .header-container {
+                height: 72px;
+                padding: 0 16px;
+            }
+            
+            .menu-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 48px;
+                height: 48px;
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid var(--header-border);
+                border-radius: 12px;
+                cursor: pointer;
+                z-index: 100;
+                transition: all 0.25s ease;
+            }
+            
+            .menu-toggle:hover {
+                background: rgba(255, 255, 255, 0.15);
+            }
+            
+            .menu-toggle:focus {
+                outline: 2px solid rgba(163, 255, 0, 0.85);
+                outline-offset: 2px;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(15, 15, 15, 0.95);
+                backdrop-filter: blur(24px);
+                -webkit-backdrop-filter: blur(24px);
+                flex-direction: column;
+                padding: 100px 24px 40px;
+                gap: 0;
+                transform: translateY(-100%);
+                transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                z-index: 90;
+                overflow-y: auto;
+                border: 1px solid var(--header-border);
+                border-top: none;
+            }
+
+            nav.active {
+                transform: translateY(0);
+                box-shadow: var(--header-shadow);
+            }
+
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                gap: 0;
+                margin: 0 0 24px;
+                padding: 0;
+            }
+
+            .nav-links a {
+                padding: 16px 0;
+                width: 100%;
+                display: block;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                font-size: 1.1rem;
+                text-align: center;
+            }
+            
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+
+            .header-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
+                gap: 16px;
+            }
+            
+            .btn-link {
+                display: block;
+                text-align: center;
+                padding: 16px 0;
+                border-radius: 12px;
+                background: rgba(255, 255, 255, 0.05);
+                transition: all 0.25s ease;
+            }
+            
+            .btn-link:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+            
+            .btn-primary {
+                width: 100%;
+                margin: 8px 0 0;
+                padding: 16px;
+                font-size: 1rem;
+            }
+
+            /* Scrollbar styling */
+            nav::-webkit-scrollbar {
+                width: 6px;
+            }
+            
+            nav::-webkit-scrollbar-track {
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 3px;
+            }
+            
+            nav::-webkit-scrollbar-thumb {
+                background: rgba(163, 255, 0, 0.3);
+                border-radius: 3px;
+            }
+            
+            nav::-webkit-scrollbar-thumb:hover {
+                background: rgba(163, 255, 0, 0.5);
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+                text-align: center;
+            }
+            
+            .hero-content {
+                margin: 0 auto;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .hero-features {
+                align-items: center;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .header-container {
+                height: 68px;
+                padding: 0 16px;
+            }
+            
+            .logo img {
+                height: 48px !important;
+            }
+            
+            .menu-toggle {
+                width: 44px;
+                height: 44px;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .calculator {
+                padding: 24px;
+            }
+            
+            .pricing-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="images/logo.png" alt="Dent Vision AI" style="height: 60.4px;">
+            </a>
+            <button class="menu-toggle" id="menuToggle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <nav id="mainNav">
+                <div class="nav-links">
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#widget">Widget</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#roi">ROI</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+                <div class="header-buttons">
+                    <a href="https://partner.dent-vision.ai/" target="_blank" rel="noopener noreferrer" class="btn btn-link">Access Portal</a>
+                    <button class="btn btn-primary pulsing-btn" id="liveEstimateBtn">
+                        Try It Free
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Grow Leads with <span style="color: var(--accent);">Smart AI</span> <span style="color: white;">Quotes</span>.</h1>
+                <p>Dent estimates in under 60 seconds, customized by your own pricing matrix.</p>
+                <div class="hero-buttons">
+                    <a href="#demo" class="btn btn-primary">Try It Free</a>
+                    <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
+                </div>
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <span>90% faster than manual processes</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        <span>Professional AI reports that build trust</span>
+                    </div>
+                </div>
+                <p class="hero-note">White-label: The experience keeps your brand.</p>
+            </div>
+            <div class="video-container" id="videoContainer">
+                <div class="video-wrapper">
+                    <video id="mainVideo" autoplay muted loop playsinline>
+                        <source src="videos/video 1.mp4" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                </div>
+            </div>
+            
+            <!-- Lightbox -->
+            <div class="video-lightbox" id="videoLightbox">
+                <div class="lightbox-content">
+                    <button class="close-lightbox" id="closeLightbox">&times;</button>
+                    <video id="lightboxVideo" controls>
+                        <source src="videos/video 1.mp4" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section" style="position: relative; padding: 150px 0; text-align: center; overflow: hidden;">
+        <!-- Video Background -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
+            <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+                <source src="videos/video 2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        
+        <!-- Content Overlay -->
+        <div style="position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <h2 style="font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.7);">
+                You fix dents. We fix the <span style="color: var(--accent);">process</span>.
+            </h2>
+            <p style="font-size: 1.5rem; margin-top: 0; color: white; text-shadow: 0 2px 5px rgba(0,0,0,0.7);">
+                Get started with a 14-day free trial.
+            </p>
+        </div>
+    </section>
+
+    <section id="why-it-matters" class="fade-in">
+        <div class="container">
+            <div class="section-header">
+                <h2>Stop Guessing. <span style="color: #A3FF00">Start Quoting</span></h2>
+                <p>Between deadlines, customer service, and management, the quote shouldn't slow you down. Dent Vision AI analyzes, standardizes, and generates reports automatically, respecting your 6 dent categories and pricing matrix.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Real Speed</h3>
+                    <p>Quotes in under 60 seconds</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                    </div>
+                    <h3>Consistency</h3>
+                    <p>Same prices across your entire team</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </div>
+                    <h3>Professionalism</h3>
+                    <p>iPad + AI report for a premium feel</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                        </svg>
+                    </div>
+                    <h3>More Business</h3>
+                    <p>24/7 widget captures leads</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="fade-in" style="background: var(--panel);">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Get accurate dent estimates in just three simple steps</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                        <div style="font-size: 1.8rem; font-weight: 700; color: #A3FF00; min-width: 30px;">1</div>
+                        <div class="feature-icon" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: rgba(163, 255, 0, 0.1); border-radius: 50%;">
+                            <svg style="width: 24px; height: 24px; color: #A3FF00;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+                                <circle cx="12" cy="13" r="3"></circle>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>Scan or Upload</h3>
+                    <p>Use your phone/tablet (short video) or customer photos to capture the damage.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                        <div style="font-size: 1.8rem; font-weight: 700; color: #A3FF00; min-width: 30px;">2</div>
+                        <div class="feature-icon" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: rgba(163, 255, 0, 0.1); border-radius: 50%;">
+                            <svg style="width: 24px; height: 24px; color: #A3FF00;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 20h9"></path>
+                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>AI Analysis</h3>
+                    <p>Our AI detects, measures, and prices according to your matrix.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                        <div style="font-size: 1.8rem; font-weight: 700; color: #A3FF00; min-width: 30px;">3</div>
+                        <div class="feature-icon" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: rgba(163, 255, 0, 0.1); border-radius: 50%;">
+                            <svg style="width: 24px; height: 24px; color: #A3FF00;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <path d="m9 11 3 3L22 4"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>Review & Send</h3>
+                    <p>Adjust with one click, generate the AI Report, and send via email.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="fade-in">
+        <div class="container">
+            <div class="dashboard-image-container" style="position: relative; max-width: 800px; margin: 0 auto;">
+                <video autoplay muted loop playsinline style="width: 100%; border-radius: 16px; display: block;">
+                    <source src="videos/video 3.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="section-header">
+                <h2>Your Dashboard, <span style="color: var(--accent);">Your Control</span></h2>
+                <p>One place to manage leads, quotes, AI reports, emails, team, and performance.</p>
+            </div>
+            
+            <div class="glass-panel">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+                    <div>
+                        <h3 style="font-size: 1.8rem; margin-bottom: 20px;">Everything in One Place</h3>
+                        <ul style="list-style: none; padding: 0; margin: 0 0 30px 0;">
+                            <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">✓</span>
+                                <strong>1-Click Workflow</strong> - Approved? Convert to Service Order instantly.
+                            </li>
+                            <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">✓</span>
+                                <strong>Team Management</strong> - Add technicians, assign jobs, add internal notes.
+                            </li>
+                            <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">✓</span>
+                                <strong>Metrics</strong> - Track approval rates and average response time.
+                            </li>
+                        </ul>
+                        <a href="#demo" class="btn btn-primary" style="display: inline-block; margin-top: 10px;">Start Free Trial</a>
+                    </div>
+                    <div style="background: rgba(0, 0, 0, 0.3); border-radius: 12px; padding: 20px; text-align: center;">
+                        <div style="background: var(--bg); border-radius: 8px; padding: 20px; margin-bottom: 20px; text-align: left;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 0.9rem; color: var(--muted);">
+                                <span>Recent Quotes</span>
+                                <span>View All</span>
+                            </div>
+                            <div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--stroke);">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                    <span>#QT-00123</span>
+                                    <span>$245.00</span>
+                                </div>
+                                <div style="font-size: 0.8rem; color: var(--muted);">Hood - Medium Dent</div>
+                            </div>
+                            <div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--stroke);">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                    <span>#QT-00122</span>
+                                    <span>$320.00</span>
+                                </div>
+                                <div style="font-size: 0.8rem; color: var(--muted);">Passenger Door - Large Dent</div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                    <span>#QT-00121</span>
+                                    <span>$180.00</span>
+                                </div>
+                                <div style="font-size: 0.8rem; color: var(--muted);">Quarter Panel - Small Dent</div>
+                            </div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+                        ">
+                            <div style="background: var(--accent-weak); border-radius: 8px; padding: 15px; text-align: center;">
+                                <div style="font-size: 1.8rem; font-weight: 700; color: var(--accent);">24h</div>
+                                <div style="font-size: 0.8rem;">Avg. Response</div>
+                            </div>
+                            <div style="background: var(--accent-weak); border-radius: 8px; padding: 15px; text-align: center;">
+                                <div style="font-size: 1.8rem; font-weight: 700; color: var(--accent);">78%</div>
+                                <div style="font-size: 0.8rem;">Approval Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Comparison Section -->
+    <section id="roi-comparison" class="fade-in" style="padding: 80px 0; background: var(--bg);">
+        <div class="container">
+            <div class="section-header">
+                <h2>See the <span style="color: var(--accent);">Difference</span> for Your Business</h2>
+                <p>Calculate your potential time and cost savings with Dent Vision AI</p>
+            </div>
+
+            <div style="background: #0b0f0c; border: 1px solid #2a3a1f; border-radius: 16px; padding: 28px; box-shadow: 0 0 24px rgba(186, 255, 96, 0.12); max-width: 1000px; margin: 0 auto;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px;">
+                    <div>
+                        <label for="quotesPerDay" style="display: block; margin-bottom: 8px; font-weight: 500;">Quotes per day</label>
+                        <input type="number" id="quotesPerDay" min="0" placeholder="0" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--stroke); background: rgba(255, 255, 255, 0.05); color: var(--text); font-size: 1rem;" value="0">
+                        <div style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.6); margin-top: 4px;">Enter the average number of quotes your workshop does each day.</div>
+                    </div>
+                    <div>
+                        <label for="manualMinutes" style="display: block; margin-bottom: 8px; font-weight: 500;">Average manual time per quote (minutes)</label>
+                        <input type="number" id="manualMinutes" min="0" placeholder="0" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--stroke); background: rgba(255, 255, 255, 0.05); color: var(--text); font-size: 1rem;" value="0">
+                        <div style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.6); margin-top: 4px;">Estimate how long it usually takes to prepare one quote manually.</div>
+                    </div>
+                    <div>
+                        <label for="aiMinutes" style="display: block; margin-bottom: 8px; font-weight: 500;">Time with AI (minutes)</label>
+                        <input type="number" id="aiMinutes" value="1" disabled style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #2a3a1f; background: rgba(186, 255, 96, 0.1); color: #baff60; font-size: 1rem; cursor: not-allowed;" title="Fixed to 1 minute.">
+                        <div style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.6); margin-top: 4px;">Our process takes around 1 minute.</div>
+                    </div>
+                    <div>
+                        <label for="businessDays" style="display: block; margin-bottom: 8px; font-weight: 500;">Business days per month</label>
+                        <input type="number" id="businessDays" min="0" max="31" placeholder="0" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--stroke); background: rgba(255, 255, 255, 0.05); color: var(--text); font-size: 1rem;" value="0">
+                        <div style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.6); margin-top: 4px;">Typically between 20-22 days per month.</div>
+                    </div>
+                    <div>
+                        <label for="totalHours" style="display: block; margin-bottom: 8px; font-weight: 500;">Total hours</label>
+                        <input type="text" id="totalHours" disabled style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #2a3a1f; background: rgba(186, 255, 96, 0.1); color: #baff60; font-size: 1rem; cursor: not-allowed;" value="—" title="Auto-calculated based on your inputs.">
+                        <div style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.6); margin-top: 4px;">Auto-calculated based on your inputs.</div>
+                    </div>
+                    <div>
+                        <label for="hourlyRate" style="display: block; margin-bottom: 8px; font-weight: 500;">Your hourly rate ($/hour)</label>
+                        <input type="number" id="hourlyRate" min="0" placeholder="0" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--stroke); background: rgba(255, 255, 255, 0.05); color: var(--text); font-size: 1rem;" value="0">
+                        <div style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.6); margin-top: 4px;">Enter your labor value or hourly workshop rate.</div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px;">
+                    <!-- Traditional Column -->
+                    <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--stroke); border-radius: 12px; padding: 24px; text-align: center;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--text);">TRADITIONAL</h3>
+                        <div style="font-size: 2rem; font-weight: 700; margin-bottom: 8px; color: var(--text);">$<span id="manualCost">—</span> <span style="font-size: 1rem; color: var(--muted);">/month</span></div>
+                        <div style="margin: 20px 0; color: var(--text);">
+                            <div style="font-size: 1.1rem; margin-bottom: 4px;">Monthly Time: <span id="manualHours">—</span> hours</div>
+                            <div style="font-size: 0.9rem; color: var(--muted);">Manual quotes</div>
+                        </div>
+                    </div>
+
+                    <!-- Dent Vision AI Column -->
+                    <div style="background: rgba(186, 255, 96, 0.05); border: 1px solid #2a3a1f; border-radius: 12px; padding: 24px; text-align: center; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; right: 20px; background: #baff60; color: #0b0f0c; padding: 4px 12px; font-size: 0.8rem; font-weight: 600; border-radius: 0 0 8px 8px;">RECOMMENDED</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: #baff60;">DENT VISION AI</h3>
+                        <div style="font-size: 2rem; font-weight: 700; margin-bottom: 4px; color: #baff60;">$89 <span style="font-size: 1rem; color: var(--muted);">/month</span></div>
+                        <div style="font-size: 0.9rem; color: #999; margin-bottom: 20px;">Equivalent to $0.12/hour</div>
+                        <div style="margin: 20px 0; color: var(--text);">
+                            <div style="font-size: 1.1rem; margin-bottom: 4px;">Monthly Time: <span id="aiHours">—</span> hours</div>
+                            <div style="font-size: 0.9rem; color: var(--muted);">AI-powered automatic quotes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 32px;">
+                    <div style="font-size: 1.5rem; font-weight: 600; margin-bottom: 24px; color: #baff60;">
+                        💰 Estimated Monthly Savings: $<span id="monthlySavings">—</span>+
+                    </div>
+                    <a href="#demo" class="btn btn-primary" style="font-size: 1.1rem; padding: 12px 32px; background: linear-gradient(90deg, #baff60, #8ceb0c); color: #0b0f0c; font-weight: 600; border: none; transition: all 0.3s ease;">
+                        Start Saving Time Today
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Widget Section -->
+    <section id="widget" class="widget-section fade-in">
+        <div class="container">
+            <div class="section-header">
+                <h2>Turn Your Website Into a 24/7 Lead Machine</h2>
+                <p>Add a single line of code. Customers get a preliminary estimate and the lead goes straight to your Partner Dashboard.</p>
+            </div>
+            
+            <div class="glass-panel">
+                <h3 style="margin-top: 0; margin-bottom: 20px;">Copy & Paste This Code</h3>
+                <div class="code-block" id="widget-code">
+                    <button class="copy-btn" onclick="copyToClipboard('widget-code')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                    <pre><code>&lt;!-- Dent Vision AI • Widget --&gt;
+&lt;script defer src="https://partner.dent-vision.ai/widget.js"
+  data-workshop-email="YOUR_EMAIL@YOURWORKSHOP.COM"
+  data-brand-color="#A3FF00"
+  data-mode="dark"&gt;
+&lt;/script&gt;</code></pre>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--muted); margin-top: 10px;">Fully white-label. Maintains your workshop's colors and logo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="fade-in" style="position: relative; background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/tecnico AI.png') center/cover no-repeat; padding: 100px 0; color: white;">
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="section-header">
+                <h2 style="color: white;">Trusted by PDR Professionals</h2>
+                <p style="color: rgba(255, 255, 255, 0.9);">Hear from shops that transformed their business with Dent Vision AI</p>
+            </div>
+            
+            <div class="testimonials">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "We're quoting twice as fast now. It's been a game-changer for our workflow."
+                    </div>
+                    <div class="testimonial-author">Jake R., Sunshine Coast PDR</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "My customers trust the AI report more than my old estimates. Our close rate has gone up significantly."
+                    </div>
+                    <div class="testimonial-author">Mike L., Brisbane Auto Works</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "The widget on our website brings in 10-15 new leads every week without us lifting a finger."
+                    </div>
+                    <div class="testimonial-author">Sarah T., Metro Dent Repair</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="fade-in" style="background: var(--panel);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Choose the plan that fits your business needs</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">$39<span>/month</span></div>
+                    <p>Perfect for small shops getting started</p>
+                    <ul class="pricing-features">
+                        <li>3 AI Reports per day</li>
+                        <li>Partner Dashboard</li>
+                        <li>Email Support</li>
+                        <li>Basic Analytics</li>
+                    </ul>
+                    <a href="#signup" class="btn btn-secondary" style="width: 100%;">Start Free Trial</a>
+                </div>
+                
+                <div class="pricing-card featured" style="position: relative; overflow: visible;">
+                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #0E0E0E; padding: 4px 16px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; z-index: 2;">Most Popular</div>
+                    <h3>Pro</h3>
+                    <div class="price">$89<span>/month</span></div>
+                    <p>Best for growing PDR businesses</p>
+                    <ul class="pricing-features">
+                        <li>Unlimited AI Reports</li>
+                        <li>Website Widget</li>
+                        <li>Priority Support</li>
+                        <li>Advanced Analytics</li>
+                        <li>Team Accounts (3 included)</li>
+                    </ul>
+                    <a href="#signup" class="btn btn-primary" style="width: 100%;">Start Free Trial</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom</div>
+                    <p>For multi-location operations</p>
+                    <ul class="pricing-features">
+                        <li>Everything in Pro, plus:</li>
+                        <li>Multi-location Management</li>
+                        <li>API Access</li>
+                        <li>Custom Integrations</li>
+                        <li>Dedicated Account Manager</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary" style="width: 100%;">Contact Sales</a>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 30px; color: var(--muted);">All plans include a 14-day free trial, no credit card required.</p>
+        </div>
+    </section>
+
+
+    <!-- FAQ -->
+    <section id="faq" class="fade-in" style="background: var(--panel);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about Dent Vision AI</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Does this replace my estimator?
+                        <span class="faq-toggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No. They gain superpowers: the AI does the heavy lifting while you keep control. Your team can focus on high-value interactions while the AI handles the repetitive parts of the estimation process.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Does it work with any workshop?
+                        <span class="faq-toggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. It's fully customizable by your dent matrix and categories. Whether you're a small independent shop or a multi-location operation, our system adapts to your workflow and pricing structure.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What if the customer sends bad photos?
+                        <span class="faq-toggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The system automatically detects low confidence and requests better images. Our AI provides clear guidance on what kind of photos work best, improving the quality of submissions over time.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Can I use it on iPad?
+                        <span class="faq-toggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, the experience is optimized for both tablet and mobile. The interface is touch-friendly and works perfectly on any modern device with a web browser.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is it white-label?
+                        <span class="faq-toggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Completely. The widget and all customer communications carry your workshop's branding, colors, and logo. Your customers will have no idea you're using Dent Vision AI unless you tell them.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section fade-in">
+        <div class="container">
+            <h2>Stop Wasting Time on Manual Estimates</h2>
+            <p>Let AI handle the heavy lifting while you focus on delivering perfect repairs. Get started with a 14-day free trial.</p>
+            <div class="cta-buttons">
+                <a href="#pricing" class="btn btn-secondary">Try it Free</a>
+            </div>
+            
+            <div id="demoFormContainer" style="margin-top: 40px; background: rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <h3 style="margin-top: 0; margin-bottom: 20px;">Request a Demo</h3>
+                <form id="demoForm" style="display: grid; gap: 16px;">
+                    <div style="display: grid; gap: 8px;">
+                        <label for="fullName" style="font-weight: 500;">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required 
+                               style="padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); 
+                                      background: rgba(255, 255, 255, 0.05); color: white; font-size: 16px;">
+                    </div>
+                    
+                    <div style="display: grid; gap: 8px;">
+                        <label for="email" style="font-weight: 500;">Business Email</label>
+                        <input type="email" id="email" name="email" required
+                               style="padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); 
+                                      background: rgba(255, 255, 255, 0.05); color: white; font-size: 16px;">
+                    </div>
+                    
+                    <div style="display: grid; gap: 8px;">
+                        <label for="phone" style="font-weight: 500;">Phone Number</label>
+                        <input type="tel" id="phone" name="phone"
+                               style="padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); 
+                                      background: rgba(255, 255, 255, 0.05); color: white; font-size: 16px;">
+                    </div>
+                    
+                    <div style="display: grid; gap: 8px;">
+                        <label for="businessName" style="font-weight: 500;">Business Name</label>
+                        <input type="text" id="businessName" name="businessName" required
+                               style="padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); 
+                                      background: rgba(255, 255, 255, 0.05); color: white; font-size: 16px;">
+                    </div>
+                    
+                    <div style="display: grid; gap: 8px;">
+                        <label for="message" style="font-weight: 500;">How can we help you?</label>
+                        <textarea id="message" name="message" rows="4" 
+                                 style="padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); 
+                                        background: rgba(255, 255, 255, 0.05); color: white; font-size: 16px; resize: vertical;"></textarea>
+                    </div>
+                    
+                    <div style="margin-top: 16px;">
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Request</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="fade-in">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">Dent Vision AI</div>
+                    <p style="color: var(--muted); max-width: 300px; margin-bottom: 20px;">AI-POWERED WORKSHOP MANAGEMENT SYSTEM</p>
+                </div>
+                
+                <div>
+                    <h4 style="margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Product</h4>
+                    <div class="footer-links">
+                        <a href="#how-it-works">How It Works</a>
+                        <a href="#widget">Widget</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="#roi">ROI Calculator</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 style="margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Company</h4>
+                    <div class="footer-links">
+                        <a href="#about">About Us</a>
+                        <a href="#contact">Contact</a>
+                        <a href="#partners">Partners</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 style="margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Legal</h4>
+                    <div class="footer-links">
+                        <a href="#privacy">Privacy Policy</a>
+                        <a href="#terms">Terms of Service</a>
+                        <a href="#cookies">Cookie Policy</a>
+                        <a href="#disclaimer">Disclaimer</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom" style="text-align: left; width: 100%; max-width: 100%; opacity: 0.5;">
+                <p style="font-size: 0.85rem; line-height: 1.5; margin-bottom: 20px;">
+                    Dent-Vision AI is currently in beta testing. The platform assists PDR workshops and specialists through automated AI analysis and estimates based on your defined pricing and submitted photos. It includes tools for quotes, proposals, workflow tracking, technician management, and performance insights. As AI estimates are automated, variations may occur. Final repair costs must be confirmed after a physical inspection. By signing in, you acknowledge and accept these terms.
+                </p>
+                <p style="font-size: 0.85rem;">
+                    2025 Dent-Vision AI • An Auto Care Quotes innovation | <a href="mailto:contact@dent-vision.ai" style="color: var(--muted);">contact@dent-vision.ai</a> | ABN 33 234 268 637 Australia
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerOffset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const toggle = question.querySelector('.faq-toggle');
+                
+                // Close all other open FAQs
+                faqQuestions.forEach(item => {
+                    if (item !== question) {
+                        item.nextElementSibling.classList.remove('active');
+                        item.querySelector('.faq-toggle').classList.remove('active');
+                    }
+                });
+                
+                // Toggle current FAQ
+                answer.classList.toggle('active');
+                toggle.classList.toggle('active');
+            });
+        });
+
+
+        // Copy to clipboard function
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const textToCopy = element.querySelector('code').textContent;
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const button = element.querySelector('.copy-btn');
+                const originalHtml = button.innerHTML;
+                button.innerHTML = 'Copied!';
+                button.style.backgroundColor = 'var(--accent)';
+                button.style.color = 'var(--bg)';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalHtml;
+                    button.style.backgroundColor = '';
+                    button.style.color = '';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+
+        // Intersection Observer for fade-in animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Initialize with header scrolled if page is not at top
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        }
+    </script>
+    <script>
+        // Lightbox functionality
+        const videoContainer = document.getElementById('videoContainer');
+        const videoLightbox = document.getElementById('videoLightbox');
+        const closeLightbox = document.getElementById('closeLightbox');
+        const mainVideo = document.getElementById('mainVideo');
+        const lightboxVideo = document.getElementById('lightboxVideo');
+        
+        // Open lightbox
+        videoContainer.addEventListener('click', () => {
+            videoLightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+            // Copy current time from main video to lightbox video
+            lightboxVideo.currentTime = mainVideo.currentTime;
+            lightboxVideo.play();
+        });
+        
+        // Close lightbox
+        function closeVideoLightbox() {
+            videoLightbox.classList.remove('active');
+            document.body.style.overflow = ''; // Re-enable scrolling
+            lightboxVideo.pause();
+        }
+        
+        closeLightbox.addEventListener('click', closeVideoLightbox);
+        
+        // Close when clicking outside the video
+        videoLightbox.addEventListener('click', (e) => {
+            if (e.target === videoLightbox) {
+                closeVideoLightbox();
+            }
+        });
+        
+        // Close with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && videoLightbox.classList.contains('active')) {
+                closeVideoLightbox();
+            }
+        });
+    </script>
+    <script>
+        // Menu Mobile Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    </script>
+    
+    <!-- Live Estimate Modal -->
+    <div id="estimateModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-body">
+                <div class="step" id="step1">
+                    <h3>Upload Car Image</h3>
+                    <div class="upload-area" id="dropZone">
+                        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                        <img src="images/upload-icon.svg" alt="Upload" class="upload-icon">
+                        <p>Drag & drop an image here or <span class="browse-link">browse</span></p>
+                        <small>Supports JPG, PNG up to 5MB</small>
+                    </div>
+                </div>
+                
+                <div class="step" id="step2" style="display: none;">
+                    <div class="pricing-card" style="position: relative;">
+                        <h3>Analyzing Damage...</h3>
+                        <p>Our AI is examining the image to provide an accurate estimate</p>
+                    </div>
+                </div>
+                
+                <div class="step" id="step3" style="display: none;">
+                    <div class="estimate-result">
+                        <div class="success-icon">✓</div>
+                        <h3>Estimate Ready</h3>
+                        <div class="damage-details">
+                            <div class="damage-item">
+                                <span>Hood Dent</span>
+                                <span>$150 - $200</span>
+                            </div>
+                            <div class="damage-item">
+                                <span>Paint Scratch</span>
+                                <span>$75 - $125</span>
+                            </div>
+                        </div>
+                        <div class="total-estimate">
+                            <span>Total Estimate</span>
+                            <span class="amount">$225 - $325</span>
+                        </div>
+                        <p class="disclaimer">This is an AI-powered estimate. For an exact quote, please visit our shop.</p>
+                        <button class="btn btn-primary btn-block" id="becomePartnerBtn">Become a Partner</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Video Hero Section */
+        .video-hero {
+            position: relative;
+            height: 80vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            margin-bottom: 80px;
+        }
+        
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2;
+        }
+        
+        .video-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .video-content h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .video-content p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .play-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            background: var(--accent);
+            color: #000;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .play-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(163, 255, 0, 0.4);
+        }
+        
+        .play-button svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .video-hero {
+                height: 70vh;
+                min-height: 500px;
+            }
+            
+            .video-content h2 {
+                font-size: 2.5rem;
+            }
+            
+            .video-content p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .video-content h2 {
+                font-size: 2rem;
+            }
+            
+            .play-button {
+                padding: 10px 24px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: rgba(30, 30, 30, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-modal:hover {
+            color: var(--text);
+        }
+
+        .modal h3 {
+            color: var(--text);
+            margin-bottom: 20px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--stroke);
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .upload-area:hover {
+            border-color: var(--accent);
+            background: rgba(163, 255, 0, 0.05);
+        }
+
+        .upload-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .browse-link {
+            color: var(--accent);
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .loading-animation {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--accent);
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .estimate-result {
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            color: var(--bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: 0 auto 20px;
+            font-weight: bold;
+        }
+
+        .damage-details {
+            width: 100%;
+            margin: 25px 0;
+            border-top: 1px solid var(--stroke);
+            border-bottom: 1px solid var(--stroke);
+            padding: 15px 0;
+        }
+
+        .damage-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            color: var(--muted);
+        }
+
+        .total-estimate {
+            display: flex;
+            justify-content: space-between;
+            margin: 25px 0;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .amount {
+            color: var(--accent);
+        }
+
+        .disclaimer {
+            font-size: 0.85em;
+            color: var(--muted);
+            margin: 20px 0;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* Pulsing button animation */
+        @keyframes subtlePulse {
+            0% { box-shadow: 0 0 0 0 rgba(163, 255, 0, 0.3); }
+            70% { box-shadow: 0 0 0 10px rgba(163, 255, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(163, 255, 0, 0); }
+        }
+        
+        .pulsing-btn {
+            animation: subtlePulse 2s infinite;
+            transition: all 0.3s ease;
+        }
+        
+        .pulsing-btn:hover {
+            animation: none;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 90%;
+                padding: 20px;
+                margin: 20px;
+            }
+        }
+    </style>
+
+    <!-- ROI Calculator Script -->
+    <script>
+        // ROI Calculator
+        const PLAN_MONTHLY = 89;
+        const AI_EQUIV_HOURLY = 0.12;
+        
+        // Input elements
+        const quotesPerDayInput = document.getElementById('quotesPerDay');
+        const manualMinutesInput = document.getElementById('manualMinutes');
+        const aiMinutesInput = document.getElementById('aiMinutes');
+        const businessDaysInput = document.getElementById('businessDays');
+        const hourlyRateInput = document.getElementById('hourlyRate');
+        const totalHoursInput = document.getElementById('totalHours');
+        
+        // Result elements
+        const manualCostEl = document.getElementById('manualCost');
+        const manualHoursEl = document.getElementById('manualHours');
+        const aiHoursEl = document.getElementById('aiHours');
+        const monthlySavingsEl = document.getElementById('monthlySavings');
+        
+        // Debounce function
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+        
+        // Format number to currency
+        function formatCurrency(amount) {
+            if (isNaN(amount)) return '—';
+            return Math.round(amount).toLocaleString('en-US');
+        }
+        
+        // Format number to 1 decimal place
+        function formatHours(hours) {
+            if (isNaN(hours)) return '—';
+            return hours.toFixed(1);
+        }
+        
+        // Calculate ROI
+        function calculateROI() {
+            const quotesPerDay = parseFloat(quotesPerDayInput.value) || 0;
+            const manualMinutes = parseFloat(manualMinutesInput.value) || 0;
+            const businessDays = parseFloat(businessDaysInput.value) || 0;
+            const hourlyRate = parseFloat(hourlyRateInput.value) || 0;
+            
+            // Check if any required input is 0 or empty
+            if (quotesPerDay === 0 || manualMinutes === 0 || businessDays === 0 || hourlyRate === 0) {
+                manualCostEl.textContent = '—';
+                manualHoursEl.textContent = '—';
+                aiHoursEl.textContent = '—';
+                monthlySavingsEl.textContent = '—';
+                totalHoursInput.value = '—';
+                return;
+            }
+            
+            // Calculate hours
+            const manualHours = (quotesPerDay * manualMinutes * businessDays) / 60;
+            const aiHours = (quotesPerDay * 1 * businessDays) / 60; // Fixed 1 minute per quote
+            
+            // Calculate costs
+            const manualCost = manualHours * hourlyRate;
+            const monthlySavings = manualCost - PLAN_MONTHLY;
+            
+            // Update UI
+            manualCostEl.textContent = formatCurrency(manualCost);
+            manualHoursEl.textContent = formatHours(manualHours);
+            aiHoursEl.textContent = formatHours(aiHours);
+            monthlySavingsEl.textContent = formatCurrency(monthlySavings);
+            totalHoursInput.value = formatHours(manualHours);
+        }
+        
+        // Add event listeners with debounce
+        const debouncedCalculateROI = debounce(calculateROI, 200);
+        
+        quotesPerDayInput.addEventListener('input', debouncedCalculateROI);
+        manualMinutesInput.addEventListener('input', debouncedCalculateROI);
+        businessDaysInput.addEventListener('input', debouncedCalculateROI);
+        hourlyRateInput.addEventListener('input', debouncedCalculateROI);
+        
+        // Initial calculation
+        calculateROI();
+    </script>
+    
+    <script>
+        // Live Estimate Modal
+        const modal = document.getElementById('estimateModal');
+        const btn = document.getElementById('liveEstimateBtn');
+        const closeBtn = document.querySelector('.close-modal');
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('imageUpload');
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const step3 = document.getElementById('step3');
+        const becomePartnerBtn = document.getElementById('becomePartnerBtn');
+
+        // Open modal
+        btn.addEventListener('click', () => {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close modal
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            // Reset form
+            setTimeout(() => {
+                step1.style.display = 'block';
+                step2.style.display = 'none';
+                step3.style.display = 'none';
+            }, 300);
+        }
+
+        closeBtn.addEventListener('click', closeModal);
+        
+        // Close when clicking outside modal
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Handle drag and drop
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight() {
+            dropZone.style.borderColor = 'var(--accent)';
+            dropZone.style.background = 'rgba(163, 255, 0, 0.1)';
+        }
+
+        function unhighlight() {
+            dropZone.style.borderColor = 'var(--stroke)';
+            dropZone.style.background = 'rgba(255, 255, 255, 0.03)';
+        }
+
+        // Handle dropped files
+        dropZone.addEventListener('drop', handleDrop, false);
+        dropZone.addEventListener('click', () => fileInput.click());
+        
+        // Handle file selection
+        fileInput.addEventListener('change', handleFiles);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles({ target: { files } });
+        }
+
+        function handleFiles(e) {
+            const files = e.target.files;
+            if (files.length) {
+                processFile(files[0]);
+            }
+        }
+
+        function processFile(file) {
+            // Check file type
+            if (!file.type.match('image.*')) {
+                alert('Please upload an image file');
+                return;
+            }
+
+            // Check file size (5MB max)
+            if (file.size > 5 * 1024 * 1024) {
+                alert('File is too large. Max size is 5MB');
+                return;
+            }
+
+            // Show loading state
+            step1.style.display = 'none';
+            step2.style.display = 'block';
+
+            // Simulate AI processing
+            setTimeout(() => {
+                step2.style.display = 'none';
+                step3.style.display = 'block';
+            }, 3000);
+        }
+
+        const demoFormContainer = document.getElementById('demoFormContainer');
+        
+        // Video Play Button
+        const playButton = document.getElementById('playVideoBtn');
+        const videoModal = document.createElement('div');
+        videoModal.className = 'video-modal';
+        videoModal.innerHTML = `
+            <div class="video-modal-content">
+                <span class="close-video">&times;</span>
+                <video id="modalVideo" controls autoplay>
+                    <source src="/DV_Video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        `;
+        
+        playButton.addEventListener('click', () => {
+            document.body.appendChild(videoModal);
+            videoModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            // Play video when modal opens
+            const video = document.getElementById('modalVideo');
+            video.play();
+        });
+        
+        // Close modal when clicking the close button
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('close-video') || e.target === videoModal) {
+                const video = document.getElementById('modalVideo');
+                video.pause();
+                video.currentTime = 0;
+                videoModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && videoModal.style.display === 'flex') {
+                const video = document.getElementById('modalVideo');
+                video.pause();
+                video.currentTime = 0;
+                videoModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Video Modal Styles
+        const videoModalStyle = document.createElement('style');
+        videoModalStyle.textContent = `
+            .video-modal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                z-index: 1000;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .video-modal-content {
+                position: relative;
+                width: 90%;
+                max-width: 1000px;
+                padding: 20px;
+                border-radius: 12px;
+                background: #0E0E0E;
+            }
+            
+            .video-modal video {
+                width: 100%;
+                border-radius: 8px;
+                outline: none;
+            }
+            
+            .close-video {
+                position: absolute;
+                top: -40px;
+                right: 0;
+                color: white;
+                font-size: 30px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: color 0.3s;
+            }
+            
+            .close-video:hover {
+                color: var(--accent);
+            }
+            
+            @media (max-width: 768px) {
+                .video-modal-content {
+                    width: 95%;
+                    padding: 10px;
+                }
+            }
+        `;
+        document.head.appendChild(videoModalStyle);
+
+        // Handle form submission
+        document.getElementById('demoForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Here you would typically send the form data to your server
+            alert('Thank you for your demo request! We will contact you shortly.');
+            demoFormContainer.style.display = 'none';
+            document.getElementById('demoForm').reset();
+        });
+        
+        // Become a Partner button
+        becomePartnerBtn.addEventListener('click', () => {
+            window.location.href = '#contact';
+            closeModal();
+        });
+    </script>
+</body>
+</html>

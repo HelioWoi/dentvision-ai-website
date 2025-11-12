@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dent-Vision AI: Solução de gerenciamento de oficinas PDR com análise de IA para orçamentos precisos e eficientes.">
+    <meta name="keywords" content="PDR, reparo de amassados, orçamento automático, IA, gerenciamento de oficina, dent vision">
+    <meta name="author" content="Dent-Vision AI">
+    <meta name="theme-color" content="#0E0E0E">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dent-vision.ai/about" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dent-vision.ai/about">
+    <meta property="og:title" content="About Dent-Vision AI | Smart Dent Repair Estimation">
+    <meta property="og:description" content="Learn about Dent-Vision AI - The future of PDR estimation powered by artificial intelligence and computer vision.">
+    <meta property="og:image" content="https://dent-vision.ai/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://dent-vision.ai/about">
+    <meta property="twitter:title" content="About Dent-Vision AI | Smart Dent Repair Estimation">
+    <meta property="twitter:description" content="Learn about Dent-Vision AI - The future of PDR estimation powered by artificial intelligence and computer vision.">
+    <meta property="twitter:image" content="https://dent-vision.ai/images/og-image.jpg">
+    
+    <!-- Preload de fontes críticas -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"></noscript>
+    <title>About Dent-Vision AI | Smart Dent Repair Estimation</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #0E0E0E;
+            --panel: rgba(255, 255, 255, 0.06);
+            --stroke: rgba(255, 255, 255, 0.12);
+            --text: #FFFFFF;
+            --muted: #B9C0CC;
+            --accent: #A3FF00;
+            --accent-weak: rgba(163, 255, 0, 0.14);
+            --danger: #FF5555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        :root {
+            --header-bg: rgba(15, 15, 15, 0.55);
+            --header-border: rgba(163, 255, 0, 0.18);
+            --header-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 28px rgba(0, 255, 255, 0.12);
+        }
+        
+        header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 0;
+            z-index: 50;
+            background: var(--header-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--header-border);
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 80px;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            z-index: 100;
+            padding: 8px;
+        }
+        
+        .menu-toggle svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .menu-toggle[aria-expanded="true"] svg {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a.active {
+            color: var(--accent);
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .header-buttons {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        
+        .btn-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .btn-link:hover {
+            color: var(--accent);
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg);
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(163, 255, 0, 0.3);
+        }
+        
+        .pulsing-btn {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(163, 255, 0, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(163, 255, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(163, 255, 0, 0);
+            }
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 80px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #0E0E0E;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(163, 255, 0, 0.3);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+            background: var(--bg);
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('../images/bkg_about.png') no-repeat center center;
+            background-size: cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            position: relative;
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.2;
+            color: white;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            color: var(--muted);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .accent-text {
+            color: var(--accent);
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(163, 255, 0, 0.3), transparent);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .content-block {
+            background: var(--panel);
+            border: 1px solid var(--stroke);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+        }
+
+        .content-block h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .content-block p {
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .content-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Founder Section */
+        .founder-note {
+            background: rgba(10, 15, 10, 0.6);
+            border: 1px solid rgba(163, 255, 0, 0.2);
+            border-radius: 12px;
+            padding: 40px;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .founder-note::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            font-family: serif;
+            color: rgba(163, 255, 0, 0.1);
+            line-height: 1;
+            z-index: 0;
+        }
+
+        .founder-note-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .founder-name {
+            display: block;
+            margin-top: 20px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg);
+            padding: 80px 0 0;
+            color: var(--text);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .footer-links h4 {
+            color: var(--text);
+            margin-bottom: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .footer-links a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid var(--stroke);
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .footer-about p {
+            color: var(--muted);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            max-width: 300px;
+        }
+
+        .footer-links {
+            min-width: 150px;
+        }
+
+        .footer-links h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--stroke);
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section p {
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .content-block {
+                padding: 30px 20px;
+            }
+
+            .content-block h3 {
+                font-size: 1.5rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .footer-links {
+                width: 100%;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="landing.html" class="logo">
+                <img src="images/logo.png" alt="Dent Vision AI" style="height: 60.4px;">
+            </a>
+            <button class="menu-toggle" id="menuToggle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <nav id="mainNav">
+                <div class="nav-links">
+                    <a href="landing.html#how-it-works">How It Works</a>
+                    <a href="landing.html#widget">Widget</a>
+                    <a href="landing.html#pricing">Pricing</a>
+                    <a href="landing.html#roi-comparison">ROI</a>
+                    <a href="landing.html#faq">FAQ</a>
+                </div>
+                <!-- Header buttons removed as per request -->
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" style="position: relative; padding: 140px 0 100px; overflow: hidden;">
+        <!-- Background Image -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('images/bkg_about.png') center/cover no-repeat; z-index: 1;"></div>
+        <!-- Dark Overlay -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 2;"></div>
+        <div class="container" style="position: relative; z-index: 3;">
+            <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+                <div class="tag" style="background: rgba(163, 255, 0, 0.1); color: var(--accent); display: inline-block; padding: 6px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-bottom: 20px; border: 1px solid rgba(163, 255, 0, 0.3);">
+                    Beta Phase
+                </div>
+                <h1 style="font-size: 3.5rem; margin-bottom: 20px; line-height: 1.2;">
+                    About <span style="color: var(--accent);">Dent-Vision AI</span>
+                </h1>
+                <p class="lead" style="font-size: 1.25rem; color: var(--muted); max-width: 700px; margin: 0 auto 40px; line-height: 1.6;">
+                    Redefining automotive repair with AI-powered efficiency and precision
+                </p>
+                <div class="hero-buttons" style="margin-top: 40px;">
+                    <a href="landing.html#demo" class="btn btn-primary" style="background: var(--accent); color: var(--bg); padding: 14px 40px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(163, 255, 0, 0.3);">
+                        Try It Free
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="section" style="padding: 100px 0; background: var(--bg);">
+        <div class="container">
+            <div class="content-block" style="max-width: 900px; margin: 0 auto; text-align: center;">
+                <div class="section-header" style="margin-bottom: 60px;">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px; position: relative; display: inline-block;">
+                        Our Story
+                        <span style="position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: var(--accent);"></span>
+                    </h2>
+                </div>
+                <div class="story-content" style="text-align: left;">
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 25px; color: var(--text-secondary);">
+                        Dent-Vision AI is still evolving — we're proudly in our <strong>Beta phase</strong>.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 25px; color: var(--text-secondary);">
+                        This idea was born to fill a real gap inside automotive workshops. In many repair shops, technicians often need to stop what they're doing to serve walk-in clients, explain the repair process, take photos, and prepare quotes. That alone can take at least 15 minutes — and when you multiply that by several customers a day, it turns into hours of lost productivity or the need to hire another specialist just for estimates.
+                    </p>
+                    <div class="highlight-box" style="background: rgba(163, 255, 0, 0.05); border-left: 4px solid var(--accent); padding: 25px; margin: 40px 0; border-radius: 0 8px 8px 0;">
+                        <h3 style="color: var(--accent); margin-top: 0; font-size: 1.4rem;">Dent-Vision AI doesn't replace the estimate — it redefines it.</h3>
+                        <p style="margin-bottom: 0; color: var(--text-secondary);">
+                            Our system makes it possible for anyone in the workshop to handle the first customer contact using a tablet or smartphone, generating a full estimate in under five minutes. This saves time, reduces costs, and ensures that every lead is qualified and ready for conversion.
+                        </p>
+                    </div>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 25px; color: var(--text-secondary);">
+                        Designed from the ground up to enhance the entire repair workflow, Dent-Vision AI connects every stage — from customer intake to car delivery. The dashboard allows workshops to manage estimates, customer records, bookings, invoicing, marketing emails, and growth reports — all in one smart, visual, and automated system.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 25px; color: var(--text-secondary);">
+                        We're continuously improving and learning, driven by a single goal: to simplify the repair process and empower workshops to work smarter, not harder.
+                    </p>
+                    <p style="font-size: 1.4rem; font-weight: 600; color: var(--text); text-align: center; margin: 50px 0 30px; position: relative;">
+                        <span style="background: var(--bg); padding: 0 20px; position: relative; z-index: 1;">This is Dent-Vision AI.</span>
+                        <span style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--border); z-index: 0;"></span>
+                    </p>
+                    <p style="font-size: 1.8rem; font-weight: 700; text-align: center; margin: 0 0 50px; color: var(--accent);">
+                        Built for technicians. Designed for efficiency.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Values -->
+    <section class="section" style="padding: 100px 0; background: #0f1212;">
+        <div class="container">
+            <!-- Vision -->
+            <div class="mission-block" style="display: flex; flex-wrap: wrap; gap: 60px; margin-bottom: 80px; align-items: center;">
+                <div style="flex: 1; min-width: 300px;">
+                    <div class="icon-box" style="width: 60px; height: 60px; background: rgba(163, 255, 0, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px;">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--text);">Vision</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        To revolutionize the automotive repair industry by integrating smart automation and human craftsmanship — creating a seamless, efficient, and scalable workflow for every workshop.
+                    </p>
+                </div>
+                <div style="flex: 1; min-width: 300px;">
+                    <div class="icon-box" style="width: 60px; height: 60px; background: rgba(163, 255, 0, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px;">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                    </div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--text);">Mission</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        To empower repair professionals with AI-driven tools that reduce manual workload, cut costs, and deliver faster, more accurate estimates — transforming how workshops manage time, clients, and growth.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CTA Section -->
+    <section class="cta-section fade-in delay-2">
+        <div class="container">
+            <h2>Join the Journey</h2>
+            <p>Be part of the next generation of smart repair technology. Explore the beta version and see how Dent-Vision AI can transform your workflow.</p>
+            <a href="landing.html#contact" class="btn">Start AI Estimate</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="fade-in">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">Dent-Vision AI</div>
+                    <p style="color: var(--muted); max-width: 300px; margin-bottom: 20px;">AI-POWERED WORKSHOP MANAGEMENT SYSTEM</p>
+                </div>
+                
+                <div>
+                    <h4 style="margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Links</h4>
+                    <div class="footer-links">
+                        <a href="landing.html#how-it-works">How It Works</a>
+                        <a href="landing.html#widget">Widget</a>
+                        <a href="landing.html#pricing">Pricing</a>
+                        <a href="landing.html#roi-comparison">ROI Calculator</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 style="margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Company</h4>
+                    <div class="footer-links">
+                        <a href="about.html">About Us</a>
+                        <a href="landing.html#contact">Contact</a>
+                        <a href="landing.html#contact">Become a Partner</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 style="margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Legal</h4>
+                    <div class="footer-links">
+                        <a href="#privacy">Privacy Policy</a>
+                        <a href="#terms">Terms of Service</a>
+                        <a href="#cookies">Cookie Policy</a>
+                        <a href="#disclaimer">Disclaimer</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom" style="text-align: left; width: 100%; max-width: 100%; opacity: 0.5;">
+                <p style="font-size: 0.85rem; line-height: 1.5; margin-bottom: 20px;">
+                    Dent-Vision AI is currently in beta testing, and minor deviations may occur. The platform supports PDR workshops and specialists through automated AI analysis and instant estimates based on your pricing settings and the photos submitted. It provides integrated tools for quotes, proposals, workflow tracking, technician management, and performance insights. Because AI estimates are automated, some variation is expected. Final repair costs must be confirmed after a physical inspection. By signing in, you acknowledge and agree to these terms.
+                </p>
+                <p style="font-size: 0.85rem; text-align: center;">
+                    2025 Dent-Vision AI • An Auto Care Quotes innovation | <a href="mailto:contact@dent-vision.ai" style="color: var(--muted);">contact@dent-vision.ai</a> | ABN 33 234 268 637 Australia
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            const header = document.getElementById('header');
+            
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', function() {
+                    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                    menuToggle.setAttribute('aria-expanded', !isExpanded);
+                    mainNav.style.display = isExpanded ? 'none' : 'flex';
+                    
+                    if (!isExpanded) {
+                        document.body.style.overflow = 'hidden';
+                        header.style.borderBottom = '1px solid var(--header-border)';
+                    } else {
+                        document.body.style.overflow = '';
+                    }
+                });
+                
+                // Close menu when clicking on a nav link
+                const navLinks = mainNav.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (window.innerWidth <= 768) {
+                            menuToggle.click();
+                        }
+                    });
+                });
+                
+                // Handle window resize
+                function handleResize() {
+                    if (window.innerWidth > 768) {
+                        mainNav.style.display = '';
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                        document.body.style.overflow = '';
+                    } else {
+                        mainNav.style.display = 'none';
+                    }
+                }
+                
+                window.addEventListener('resize', handleResize);
+                handleResize(); // Initial check
+            }
+            
+            // Header scroll effect
+            if (header) {
+                let lastScroll = 0;
+                window.addEventListener('scroll', () => {
+                    const currentScroll = window.pageYOffset;
+                    
+                    if (currentScroll <= 0) {
+                        header.style.transform = 'translateY(0)';
+                        return;
+                    }
+                    
+                    if (currentScroll > lastScroll && currentScroll > 100) {
+                        // Scrolling down
+                        header.style.transform = 'translateY(-100%)';
+                    } else {
+                        // Scrolling up
+                        header.style.transform = 'translateY(0)';
+                    }
+                    
+                    lastScroll = currentScroll;
+                });
+            }
+            
+            // Set active nav link
+            document.addEventListener('DOMContentLoaded', function() {
+                const currentPage = window.location.pathname.split('/').pop() || 'landing.html';
+                const navLinks = document.querySelectorAll('.nav-links a');
+                
+                // Add 'active' class to the current page link
+                navLinks.forEach(link => {
+                    if (currentPage === 'about.html' && link.textContent === 'About Us') {
+                        link.classList.add('active');
+                    } else if (currentPage === 'landing.html' && link.getAttribute('href').startsWith('#')) {
+                        // For landing page, handle section highlighting based on scroll position
+                        link.addEventListener('click', function(e) {
+                            navLinks.forEach(l => l.classList.remove('active'));
+                            this.classList.add('active');
+                        });
+                    }
+                });
+                
+                // Highlight the About link on the about page
+                if (currentPage === 'about.html') {
+                    const aboutLink = Array.from(navLinks).find(link => 
+                        link.textContent.trim() === 'About Us' || 
+                        link.getAttribute('href').includes('about')
+                    );
+                    if (aboutLink) aboutLink.classList.add('active');
+                }
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerOffset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        fadeElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>

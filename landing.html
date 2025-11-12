@@ -1028,11 +1028,38 @@
         /* Responsive */
         @media (max-width: 1024px) {
             .hero h1 {
-                font-size: 3rem;
+                font-size: 2.8rem;
             }
             
             .calculator-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            /* Adjust container padding */
+            .container {
+                padding: 0 32px;
+            }
+            
+            /* Adjust section padding */
+            section {
+                padding: 80px 0;
+            }
+            
+            /* Adjust grid layouts */
+            .grid-cols-2 {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            
+            /* Adjust video section */
+            .video-section {
+                padding: 100px 0 !important;
+            }
+            
+            /* Adjust widget section */
+            .widget-section .container > div {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
             }
         }
 
@@ -1064,7 +1091,68 @@
             }
         }
 
-        @media (max-width: 920px) {
+        /* Tablet Adjustments */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .container {
+                padding: 0 24px;
+            }
+            
+            /* Header */
+            .header-container {
+                padding: 0 20px;
+            }
+            
+            /* Hero Section */
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            /* Features Grid */
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+            
+            /* Dashboard Section */
+            .glass-panel > div {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 30px !important;
+            }
+            
+            /* ROI Calculator */
+            #roi-comparison .container > div {
+                padding: 24px;
+            }
+            
+            /* Pricing */
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+            
+            /* FAQ */
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Small Mobile Adjustments */
+        @media (max-width: 479px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+            
+            .btn {
+                padding: 12px 20px;
+                font-size: 0.95rem;
+            }
+        }
+        
+        @media (min-width: 768px) {
             .header-container {
                 height: 72px;
                 padding: 0 16px;
@@ -1222,38 +1310,147 @@
             }
         }
 
-        @media (max-width: 640px) {
+        /* Mobile First Adjustments */
+        @media (max-width: 767px) {
+            /* Header */
             .header-container {
-                height: 68px;
+                height: 64px;
                 padding: 0 16px;
             }
             
             .logo img {
-                height: 48px !important;
+                height: 44px !important;
             }
             
             .menu-toggle {
-                width: 44px;
-                height: 44px;
+                width: 40px;
+                height: 40px;
+                padding: 8px;
             }
+            
+            /* Hero Section */
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
+                line-height: 1.2;
+                margin-bottom: 16px;
             }
             
             .hero p {
                 font-size: 1.1rem;
+                margin-bottom: 24px;
             }
             
+            .hero-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+            
+            /* Sections */
             .section-header h2 {
                 font-size: 1.8rem;
+                margin-bottom: 12px;
             }
             
-            .calculator {
-                padding: 24px;
+            .section-header p {
+                font-size: 1rem;
+            }
+            
+            /* Features Grid */
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            /* Dashboard Section */
+            .dashboard-image-container {
+                margin-bottom: 40px;
+            }
+            
+            .glass-panel > div {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+            }
+            
+            /* ROI Calculator */
+            #roi-comparison .container > div {
+                padding: 20px;
+            }
+            
+            #roi-comparison .grid-cols-2 {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            /* Pricing */
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
             }
             
             .pricing-card {
-                padding: 30px 20px;
+                padding: 24px 16px;
+            }
+            
+            /* FAQ */
+            .faq-item {
+                padding: 16px 0;
+            }
+            
+            .faq-question {
+                font-size: 1rem;
+            }
+            
+            /* Footer */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                text-align: center;
+            }
+            
+            .footer-logo {
+                margin-bottom: 16px;
+            }
+            
+            /* Video Section */
+            .video-section {
+                padding: 80px 0 !important;
+            }
+            
+            .video-section h2 {
+                font-size: 1.8rem !important;
+            }
+            
+            /* Widget Section */
+            .widget-section .container > div {
+                grid-template-columns: 1fr !important;
+                gap: 24px;
+            }
+            
+            /* CTA Section */
+            .cta-section h2 {
+                font-size: 1.8rem !important;
+                margin-bottom: 16px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
             }
         }
     </style>

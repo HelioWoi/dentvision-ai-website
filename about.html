@@ -67,23 +67,28 @@
 
         /* Header */
         :root {
-            --header-bg: rgba(15, 15, 15, 0.55);
-            --header-border: rgba(163, 255, 0, 0.18);
-            --header-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 28px rgba(0, 255, 255, 0.12);
+            --header-bg: rgba(15, 15, 15, 0.7);
+            --header-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
         
         header {
-            position: sticky;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             padding: 0;
             z-index: 50;
             background: var(--header-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--header-border);
-            transition: all 0.3s ease;
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            box-shadow: var(--header-shadow);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
+            transform: translateY(0);
+            border: none;
+        }
+        
+        header.hide-header {
+            transform: translateY(-100%);
         }
         
         .header-container {
@@ -644,26 +649,25 @@
                 </div>
                 <div class="story-content" style="text-align: left;">
                     <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 25px; color: var(--text-secondary);">
-                        Dent-Vision AI is still evolving — we're proudly in our <strong>Beta phase</strong>.
+                        Dent-Vision AI is still evolving, we're proudly in our <strong>Beta phase</strong>.
                     </p>
                     <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 25px; color: var(--text-secondary);">
-                        This idea was born to fill a real gap inside automotive workshops. In many repair shops, technicians often need to stop what they're doing to serve walk-in clients, explain the repair process, take photos, and prepare quotes. That alone can take at least 15 minutes — and when you multiply that by several customers a day, it turns into hours of lost productivity or the need to hire another specialist just for estimates.
+                        This idea was born to fill a real gap inside automotive workshops. In many repair shops, technicians often need to stop what they're doing to serve walk-in clients, explain the repair process, take photos, and prepare quotes. That alone can take at least 15 minutes, and when you multiply that by several customers a day, it turns into hours of lost productivity or the need to hire another specialist just for estimates.
                     </p>
                     <div class="highlight-box" style="background: rgba(163, 255, 0, 0.05); border-left: 4px solid var(--accent); padding: 25px; margin: 40px 0; border-radius: 0 8px 8px 0;">
-                        <h3 style="color: var(--accent); margin-top: 0; font-size: 1.4rem;">Dent-Vision AI doesn't replace the estimate — it redefines it.</h3>
+                        <h3 style="color: var(--accent); margin-top: 0; font-size: 1.4rem;">Dent-Vision AI doesn't replace the estimate, it redefines it.</h3>
                         <p style="margin-bottom: 0; color: var(--text-secondary);">
                             Our system makes it possible for anyone in the workshop to handle the first customer contact using a tablet or smartphone, generating a full estimate in under five minutes. This saves time, reduces costs, and ensures that every lead is qualified and ready for conversion.
                         </p>
                     </div>
                     <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 25px; color: var(--text-secondary);">
-                        Designed from the ground up to enhance the entire repair workflow, Dent-Vision AI connects every stage — from customer intake to car delivery. The dashboard allows workshops to manage estimates, customer records, bookings, invoicing, marketing emails, and growth reports — all in one smart, visual, and automated system.
+                        Designed from the ground up to enhance the entire repair workflow, Dent-Vision AI connects every stage from customer intake to car delivery. The dashboard allows workshops to manage estimates, customer records, bookings, invoicing, marketing emails, and growth reports, all in one smart, visual, and automated system.
                     </p>
                     <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 25px; color: var(--text-secondary);">
                         We're continuously improving and learning, driven by a single goal: to simplify the repair process and empower workshops to work smarter, not harder.
                     </p>
-                    <p style="font-size: 1.4rem; font-weight: 600; color: var(--text); text-align: center; margin: 50px 0 30px; position: relative;">
-                        <span style="background: var(--bg); padding: 0 20px; position: relative; z-index: 1;">This is Dent-Vision AI.</span>
-                        <span style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--border); z-index: 0;"></span>
+                    <p style="font-size: 1.4rem; font-weight: 600; color: var(--text); text-align: center; margin: 50px 0 30px;">
+                        This is Dent-Vision AI.
                     </p>
                     <p style="font-size: 1.8rem; font-weight: 700; text-align: center; margin: 0 0 50px; color: var(--accent);">
                         Built for technicians. Designed for efficiency.
@@ -687,7 +691,7 @@
                     </div>
                     <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--text);">Vision</h3>
                     <p style="color: var(--text-secondary); line-height: 1.7;">
-                        To revolutionize the automotive repair industry by integrating smart automation and human craftsmanship — creating a seamless, efficient, and scalable workflow for every workshop.
+                        To revolutionize the automotive repair industry by integrating smart automation and human craftsmanship, creating a seamless, efficient, and scalable workflow for every workshop.
                     </p>
                 </div>
                 <div style="flex: 1; min-width: 300px;">
@@ -700,7 +704,7 @@
                     </div>
                     <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--text);">Mission</h3>
                     <p style="color: var(--text-secondary); line-height: 1.7;">
-                        To empower repair professionals with AI-driven tools that reduce manual workload, cut costs, and deliver faster, more accurate estimates — transforming how workshops manage time, clients, and growth.
+                        To empower repair professionals with AI-driven tools that reduce manual workload, cut costs, and deliver faster, more accurate estimates, transforming how workshops manage time, clients, and growth.
                     </p>
                 </div>
             </div>
@@ -769,12 +773,48 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
+        // Mobile menu toggle and header scroll behavior
         document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.getElementById('menuToggle');
             const mainNav = document.getElementById('mainNav');
             const header = document.getElementById('header');
+            let lastScroll = 0;
+            let ticking = false;
+            const headerHeight = header.offsetHeight;
             
+            function updateHeaderVisibility() {
+                const currentScroll = window.scrollY || document.documentElement.scrollTop;
+                
+                if (currentScroll <= 0) {
+                    header.classList.remove('hide-header');
+                    return;
+                }
+                
+                // Only trigger the hide/show if we've scrolled more than the header height
+                if (Math.abs(currentScroll - lastScroll) > 10) {
+                    if (currentScroll > lastScroll && currentScroll > headerHeight) {
+                        // Scrolling down
+                        header.classList.add('hide-header');
+                    } else if (currentScroll < lastScroll) {
+                        // Scrolling up
+                        header.classList.remove('hide-header');
+                    }
+                    
+                    lastScroll = currentScroll;
+                }
+                
+                ticking = false;
+            }
+            
+            // Handle scroll events for header hide/show
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(updateHeaderVisibility);
+                    ticking = true;
+                }
+            }, { passive: true });
+            
+            // Mobile menu toggle functionality
             if (menuToggle && mainNav) {
                 menuToggle.addEventListener('click', function() {
                     const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
@@ -783,7 +823,6 @@
                     
                     if (!isExpanded) {
                         document.body.style.overflow = 'hidden';
-                        header.style.borderBottom = '1px solid var(--header-border)';
                     } else {
                         document.body.style.overflow = '';
                     }
@@ -814,28 +853,8 @@
                 handleResize(); // Initial check
             }
             
-            // Header scroll effect
-            if (header) {
-                let lastScroll = 0;
-                window.addEventListener('scroll', () => {
-                    const currentScroll = window.pageYOffset;
-                    
-                    if (currentScroll <= 0) {
-                        header.style.transform = 'translateY(0)';
-                        return;
-                    }
-                    
-                    if (currentScroll > lastScroll && currentScroll > 100) {
-                        // Scrolling down
-                        header.style.transform = 'translateY(-100%)';
-                    } else {
-                        // Scrolling up
-                        header.style.transform = 'translateY(0)';
-                    }
-                    
-                    lastScroll = currentScroll;
-                });
-            }
+            // Initialize header position
+            header.style.transform = 'translateY(0)';
             
             // Set active nav link
             document.addEventListener('DOMContentLoaded', function() {

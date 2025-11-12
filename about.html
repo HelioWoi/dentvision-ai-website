@@ -629,8 +629,8 @@
                     Redefining automotive repair with AI-powered efficiency and precision
                 </p>
                 <div class="hero-buttons" style="margin-top: 40px;">
-                    <a href="landing.html#demo" class="btn btn-primary" style="background: var(--accent); color: var(--bg); padding: 14px 40px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(163, 255, 0, 0.3);">
-                        Try It Free
+                    <a href="landing.html#" class="btn btn-primary" style="background: var(--accent); color: var(--bg); padding: 14px 40px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(163, 255, 0, 0.3);" onclick="event.preventDefault(); window.location.href='landing.html?openModal=trial';">
+                        Start Free Trial
                     </a>
                 </div>
             </div>
@@ -718,7 +718,7 @@
         <div class="container">
             <h2>Join the Journey</h2>
             <p>Be part of the next generation of smart repair technology. Explore the beta version and see how Dent-Vision AI can transform your workflow.</p>
-            <a href="landing.html#contact" class="btn">Start AI Estimate</a>
+            <a href="landing.html#" class="btn" onclick="event.preventDefault(); window.location.href='landing.html?openModal=trial';">Start Free Trial</a>
         </div>
     </section>
 
@@ -939,6 +939,20 @@
             element.style.transform = 'translateY(20px)';
             element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
             observer.observe(element);
+        });
+    </script>
+
+    <script>
+        // Verifica se deve abrir o modal ao voltar da página principal
+        window.addEventListener('pageshow', function(event) {
+            // Se a página foi carregada do cache (back/forward navigation)
+            if (event.persisted) {
+                // Verifica se veio da página principal
+                if (document.referrer.includes('landing.html')) {
+                    // Rola para o topo para garantir que o usuário veja o conteúdo
+                    window.scrollTo(0, 0);
+                }
+            }
         });
     </script>
 </body>

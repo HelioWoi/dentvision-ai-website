@@ -588,7 +588,7 @@
     <!-- Header -->
     <header id="header">
         <div class="container header-container">
-            <a href="landing.html" class="logo">
+            <a href="index.html" class="logo">
                 <img src="images/logo.png" alt="Dent Vision AI" style="height: 60.4px;">
             </a>
             <button class="menu-toggle" id="menuToggle">
@@ -600,11 +600,11 @@
             </button>
             <nav id="mainNav">
                 <div class="nav-links">
-                    <a href="landing.html#how-it-works">How It Works</a>
-                    <a href="landing.html#widget">Widget</a>
-                    <a href="landing.html#pricing">Pricing</a>
-                    <a href="landing.html#roi-comparison">ROI</a>
-                    <a href="landing.html#faq">FAQ</a>
+                    <a href="index.html#how-it-works">How It Works</a>
+                    <a href="index.html#widget">Widget</a>
+                    <a href="index.html#pricing">Pricing</a>
+                    <a href="index.html#roi-comparison">ROI</a>
+                    <a href="index.html#faq">FAQ</a>
                 </div>
                 <!-- Header buttons removed as per request -->
             </nav>
@@ -629,7 +629,7 @@
                     Redefining automotive repair with AI-powered efficiency and precision
                 </p>
                 <div class="hero-buttons" style="margin-top: 40px;">
-                    <a href="landing.html#" class="btn btn-primary" style="background: var(--accent); color: var(--bg); padding: 14px 40px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(163, 255, 0, 0.3);" onclick="event.preventDefault(); window.location.href='landing.html?openModal=trial';">
+                    <a href="index.html#" class="btn btn-primary" style="background: var(--accent); color: var(--bg); padding: 14px 40px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(163, 255, 0, 0.3);" onclick="event.preventDefault(); window.location.href='index.html?openModal=trial';">
                         Start Free Trial
                     </a>
                 </div>
@@ -718,7 +718,7 @@
         <div class="container">
             <h2>Join the Journey</h2>
             <p>Be part of the next generation of smart repair technology. Explore the beta version and see how Dent-Vision AI can transform your workflow.</p>
-            <a href="landing.html#" class="btn" onclick="event.preventDefault(); window.location.href='landing.html?openModal=trial';">Start Free Trial</a>
+            <a href="index.html#" class="btn" onclick="event.preventDefault(); window.location.href='index.html?openModal=trial';">Start Free Trial</a>
         </div>
     </section>
 
@@ -727,7 +727,7 @@
         <div class="container">
             <div class="footer-content">
                 <div>
-                    <a href="landing.html" style="text-decoration: none;">
+                    <a href="index.html" style="text-decoration: none;">
                         <div class="footer-logo" style="color: var(--text);">Dent-Vision AI</div>
                     </a>
                     <p style="color: var(--muted); max-width: 300px; margin-bottom: 20px;">AI-POWERED WORKSHOP MANAGEMENT SYSTEM</p>
@@ -736,10 +736,10 @@
                 <div>
                     <h4 style="margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Links</h4>
                     <div class="footer-links">
-                        <a href="landing.html#how-it-works">How It Works</a>
-                        <a href="landing.html#widget">Widget</a>
-                        <a href="landing.html#pricing">Pricing</a>
-                        <a href="landing.html#roi-comparison">ROI Calculator</a>
+                        <a href="index.html#how-it-works">How It Works</a>
+                        <a href="index.html#widget">Widget</a>
+                        <a href="index.html#pricing">Pricing</a>
+                        <a href="index.html#roi-comparison">ROI Calculator</a>
                     </div>
                 </div>
                 
@@ -747,8 +747,8 @@
                     <h4 style="margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Company</h4>
                     <div class="footer-links">
                         <a href="about.html">About Us</a>
-                        <a href="landing.html#demoFormContainer">Contact</a>
-                        <a href="landing.html#demoFormContainer">Become a Partner</a>
+                        <a href="index.html#demoFormContainer">Contact</a>
+                        <a href="index.html#demoFormContainer">Become a Partner</a>
                     </div>
                 </div>
                 
@@ -868,14 +868,14 @@
             
             // Set active nav link
             document.addEventListener('DOMContentLoaded', function() {
-                const currentPage = window.location.pathname.split('/').pop() || 'landing.html';
+                const currentPage = window.location.pathname.split('/').pop() || 'index.html';
                 const navLinks = document.querySelectorAll('.nav-links a');
                 
                 // Add 'active' class to the current page link
                 navLinks.forEach(link => {
                     if (currentPage === 'about.html' && link.textContent === 'About Us') {
                         link.classList.add('active');
-                    } else if (currentPage === 'landing.html' && link.getAttribute('href').startsWith('#')) {
+                    } else if (currentPage === 'index.html' && link.getAttribute('href').startsWith('#')) {
                         // For landing page, handle section highlighting based on scroll position
                         link.addEventListener('click', function(e) {
                             navLinks.forEach(l => l.classList.remove('active'));
@@ -948,7 +948,7 @@
             // Se a página foi carregada do cache (back/forward navigation)
             if (event.persisted) {
                 // Verifica se veio da página principal
-                if (document.referrer.includes('landing.html')) {
+                if (document.referrer.includes('index.html')) {
                     // Rola para o topo para garantir que o usuário veja o conteúdo
                     window.scrollTo(0, 0);
                 }

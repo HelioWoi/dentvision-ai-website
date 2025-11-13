@@ -147,93 +147,153 @@
 @media (max-width: 768px) {
     .footer-content {
         grid-template-columns: 1fr;
-        gap: 30px;
-        padding: 0 20px;
-        margin-bottom: 30px;
+        gap: 0;
+        padding: 0;
+        margin-bottom: 20px;
     }
     
     .footer-brand {
         max-width: 100%;
         text-align: center;
-        margin-bottom: 20px;
+        margin: 0 0 10px;
+        padding: 24px 24px 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
     
     .footer-logo {
         font-size: 1.8rem;
-        margin-bottom: 10px;
+        margin: 0 0 8px;
         text-align: center;
         display: block;
     }
     
     .footer-tagline {
         text-align: center;
-        margin: 0 auto 20px;
+        margin: 0 auto;
         max-width: 300px;
+        font-size: 0.85rem;
+        line-height: 1.5;
     }
     
     .footer-section {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 0 24px;
+        margin: 0;
     }
     
     .footer-section:last-child {
-        border-bottom: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
     
     .footer-section h4 {
-        margin-bottom: 15px;
+        margin: 0;
+        padding: 20px 0;
         cursor: pointer;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--accent);
+        transition: color 0.2s ease;
     }
     
     .footer-section h4::after {
         content: '+';
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         font-weight: 300;
-        transition: transform 0.3s ease;
-        position: static;
-        background: none;
-        width: auto;
-        height: auto;
+        transition: transform 0.3s ease, color 0.2s ease;
+        color: var(--accent);
+        opacity: 0.8;
+        margin-left: 10px;
+    }
+    
+    .footer-section.active h4 {
+        color: var(--accent);
     }
     
     .footer-section.active h4::after {
         transform: rotate(45deg);
+        color: var(--accent);
     }
     
     .footer-links {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 0 0 0 8px;
+        margin: 0;
     }
     
     .footer-section.active .footer-links {
         max-height: 500px;
-        margin-bottom: 15px;
+        padding-bottom: 20px;
+        margin: 0 0 8px;
+    }
+    
+    .footer-links a {
+        display: block;
+        padding: 12px 0;
+        margin: 0;
+        font-size: 0.95rem;
+        color: var(--muted);
+        transition: color 0.2s ease, padding-left 0.2s ease;
+    }
+    
+    .footer-links a:hover {
+        color: var(--accent);
+        padding-left: 8px;
     }
     
     .footer-bottom {
-        padding: 20px 20px 0;
-        text-align: center;
+        padding: 24px;
+        text-align: left;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        margin-top: 0;
+    }
+    
+    .footer-disclaimer {
+        margin-bottom: 20px;
     }
     
     .footer-disclaimer p {
         font-size: 0.75rem;
-        line-height: 1.6;
+        line-height: 1.7;
+        text-align: left;
+        color: var(--muted);
+        opacity: 0.8;
+    }
+    
+    .footer-copyright {
         text-align: left;
     }
     
     .footer-copyright p {
-        font-size: 0.8rem;
-        line-height: 1.5;
+        font-size: 0.75rem;
+        line-height: 1.6;
+        color: var(--muted);
+        opacity: 0.7;
+        margin-bottom: 16px;
     }
     
     .footer-legal-links {
         flex-direction: column;
-        gap: 5px;
-        margin-top: 15px;
+        gap: 12px;
+        margin: 20px 0 0;
+    }
+    
+    .footer-legal-links a {
+        display: block;
+        padding: 8px 0;
+        color: var(--muted);
+        font-size: 0.8rem;
+        opacity: 0.8;
+        transition: color 0.2s ease, opacity 0.2s ease;
+    }
+    
+    .footer-legal-links a:hover {
+        color: var(--accent);
+        opacity: 1;
     }
     
     .footer-legal-links span {

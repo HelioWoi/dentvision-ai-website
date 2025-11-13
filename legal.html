@@ -360,18 +360,168 @@
     </main>
 
     <!-- Footer -->
+    <style>
+        /* Base Footer Styles */
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding: 30px 0;
+        }
+        
+        .footer-section {
+            width: 100%;
+            margin-bottom: 0;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+            border-bottom: 1px solid var(--stroke);
+            padding-bottom: 10px;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            transition: all 0.2s ease;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        
+        .footer-bottom {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--stroke);
+        }
+        
+        .footer-brand {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .footer-tagline {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+                padding: 20px 0;
+            }
+            
+            .footer-section {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            
+            .footer-section h4 {
+                font-size: 1.1rem;
+                margin-bottom: 12px;
+                color: var(--accent);
+                border-bottom: 1px solid var(--stroke);
+                padding-bottom: 8px;
+            }
+            
+            .footer-links {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .footer-links a {
+                font-size: 0.95rem;
+                color: var(--text);
+                text-decoration: none;
+                transition: color 0.2s ease;
+            }
+            
+            .footer-links a:hover {
+                color: var(--accent);
+                padding-left: 5px;
+            }
+            
+            .footer-bottom {
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: 1px solid var(--stroke);
+                text-align: center;
+            }
+            
+            .footer-legal-links {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 10px;
+            }
+            
+            .footer-legal-links a {
+                font-size: 0.8rem;
+                color: var(--muted);
+                text-decoration: none;
+            }
+            
+            .footer-legal-links a:hover {
+                color: var(--accent);
+            }
+            
+            .footer-legal-links span {
+                color: var(--muted);
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* Desktop Styles */
+        @media (min-width: 769px) {
+            .footer-content {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            
+            .footer-section {
+                width: 30%;
+                min-width: 200px;
+                margin-bottom: 20px;
+            }
+            
+            .footer-brand {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+    
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div>
+                <div class="footer-brand">
                     <a href="index.html" style="text-decoration: none;">
-                        <div class="footer-logo" style="color: var(--text);">Dent-Vision AI</div>
+                        <div class="footer-logo">Dent-Vision AI</div>
                     </a>
-                    <p style="color: var(--muted); max-width: 300px; margin-bottom: 20px;">AI-POWERED WORKSHOP MANAGEMENT SYSTEM</p>
+                    <p class="footer-tagline">AI-POWERED WORKSHOP MANAGEMENT SYSTEM</p>
                 </div>
                 
-                <div>
-                    <h4 style="margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Links</h4>
+                <div class="footer-section">
+                    <h4>Links</h4>
                     <div class="footer-links">
                         <a href="index.html#how-it-works">How It Works</a>
                         <a href="index.html#widget">Widget</a>
@@ -380,8 +530,8 @@
                     </div>
                 </div>
                 
-                <div>
-                    <h4 style="margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Company</h4>
+                <div class="footer-section">
+                    <h4>Company</h4>
                     <div class="footer-links">
                         <a href="about.html">About Us</a>
                         <a href="index.html#demoFormContainer">Contact</a>
@@ -389,8 +539,8 @@
                     </div>
                 </div>
                 
-                <div>
-                    <h4 style="margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Legal</h4>
+                <div class="footer-section">
+                    <h4>Legal</h4>
                     <div class="footer-links">
                         <a href="legal.html#privacy">Privacy Policy</a>
                         <a href="legal.html#terms">Terms of Service</a>
@@ -400,19 +550,19 @@
                 </div>
             </div>
             
-            <div class="footer-bottom" style="width: 100%; opacity: 0.8; padding: 20px 0; border-top: 1px solid var(--stroke);">
-                <div style="max-width: 100%; margin: 0; padding: 0 40px;">
-                    <p style="font-size: 0.8rem; line-height: 1.6; margin-bottom: 15px; opacity: 0.6; text-align: left; max-width: 100%;">
-                        Dent-Vision AI is currently in beta testing, and minor deviations may occur. The platform supports PDR workshops and specialists through automated AI analysis and instant estimates based on your pricing settings and the photos submitted. It provides integrated tools for quotes, proposals, workflow tracking, technician management, and performance insights. Because AI estimates are automated, some variation is expected. Final repair costs must be confirmed after a physical inspection. By signing in, you acknowledge and agree to these terms.
+            <div class="footer-bottom">
+                <p style="font-size: 0.8rem; line-height: 1.6; margin-bottom: 15px; opacity: 0.6; text-align: center;">
+                    Dent-Vision AI is currently in beta testing. Final repair costs must be confirmed after a physical inspection.
+                </p>
+                <div style="text-align: center;">
+                    <p style="font-size: 0.8rem; line-height: 1.6; margin: 10px 0; opacity: 0.6;">
+                        © 2025 Dent-Vision AI — A prototype under development by Auto Care Quotes ABN 33 234 268 637 Australia
                     </p>
-                    <div style="text-align: center; margin-top: 20px;">
-                        <p style="font-size: 0.9rem; line-height: 1.6; margin: 0; opacity: 0.6;">
-                            © 2025 Dent-Vision AI — A prototype under development by Auto Care Quotes ABN 33 234 268 637 Australia<br>
-                            All rights reserved. | <a href="mailto:contact@dent-vision.ai" style="color: var(--muted); text-decoration: none; opacity: 0.6; transition: color 0.2s ease;" onmouseover="this.style.color='#A3FF00'; this.style.opacity='1';" onmouseout="this.style.color='var(--muted)'; this.style.opacity='0.6';">contact@dent-vision.ai</a> | 
-                            <a href="#privacy" style="color: var(--muted); text-decoration: none; opacity: 0.6; transition: color 0.2s ease;" onmouseover="this.style.color='#A3FF00'; this.style.opacity='1';" onmouseout="this.style.color='var(--muted)'; this.style.opacity='0.6';">Privacy Policy</a> | 
-                            <a href="#terms" style="color: var(--muted); text-decoration: none; opacity: 0.6; transition: color 0.2s ease;" onmouseover="this.style.color='#A3FF00'; this.style.opacity='1';" onmouseout="this.style.color='var(--muted)'; this.style.opacity='0.6';">Terms of Service</a> | 
-                            <a href="#disclaimer" style="color: var(--muted); text-decoration: none; opacity: 0.6; transition: color 0.2s ease;" onmouseover="this.style.color='#A3FF00'; this.style.opacity='1';" onmouseout="this.style.color='var(--muted)'; this.style.opacity='0.6';">Disclaimer</a>
-                        </p>
+                    <div style="display: flex; justify-content: center; gap: 15px; margin-top: 15px; flex-wrap: wrap;">
+                        <a href="mailto:contact@dent-vision.ai" style="color: var(--muted); text-decoration: none; font-size: 0.8rem;">Contact</a>
+                        <a href="legal.html#privacy" style="color: var(--muted); text-decoration: none; font-size: 0.8rem;">Privacy Policy</a>
+                        <a href="legal.html#terms" style="color: var(--muted); text-decoration: none; font-size: 0.8rem;">Terms of Service</a>
+                        <a href="legal.html#disclaimer" style="color: var(--muted); text-decoration: none; font-size: 0.8rem;">Disclaimer</a>
                     </div>
                 </div>
             </div>

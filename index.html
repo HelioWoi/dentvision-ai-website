@@ -1180,8 +1180,25 @@
                 height: 72px;
                 padding: 0 20px;
                 display: flex;
-                justify-content: space-between;
+                justify-content: center; /* Centraliza o conteúdo */
                 align-items: center;
+                position: relative; /* Para posicionar o menu toggle */
+            }
+            
+            /* Estilo para o logo na versão mobile */
+            .header-container .logo {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                margin: 0;
+            }
+            
+            /* Estilo para o botão do menu */
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                left: 20px;
+                z-index: 1001;
             }
             
             /* Melhorias para navegação mobile */
@@ -1195,6 +1212,21 @@
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                 display: none;
                 z-index: 1000;
+                box-sizing: border-box;
+                max-height: calc(100vh - 72px);
+                overflow-y: auto;
+            }
+            
+            #mainNav .nav-links {
+                flex-direction: column;
+                gap: 15px;
+                margin-bottom: 20px;
+            }
+            
+            #mainNav .header-buttons {
+                flex-direction: column;
+                gap: 15px;
+                margin-left: 0;
             }
             
             #mainNav.active {
@@ -2642,7 +2674,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="fade-in">
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
@@ -2651,17 +2683,17 @@
                     </a>
                     <p class="footer-tagline">AI-POWERED WORKSHOP MANAGEMENT SYSTEM</p>
                     <div class="footer-social" style="margin-top: 15px;">
-                        <!-- Adicione ícones de redes sociais aqui se necessário -->
+                        <!-- Social media icons can be added here if needed -->
                     </div>
                 </div>
                 
                 <div class="footer-section">
                     <h4>Links</h4>
                     <div class="footer-links">
-                        <a href="#how-it-works">How It Works</a>
-                        <a href="#widget">Widget</a>
-                        <a href="#pricing">Pricing</a>
-                        <a href="#roi-comparison">ROI Calculator</a>
+                        <a href="index.html#how-it-works">How It Works</a>
+                        <a href="index.html#widget">Widget</a>
+                        <a href="index.html#pricing">Pricing</a>
+                        <a href="index.html#roi-comparison">ROI Calculator</a>
                     </div>
                 </div>
                 
@@ -2669,8 +2701,8 @@
                     <h4>Company</h4>
                     <div class="footer-links">
                         <a href="about.html">About Us</a>
-                        <a href="#demoFormContainer">Contact</a>
-                        <a href="#demoFormContainer">Become a Partner</a>
+                        <a href="index.html#demoFormContainer">Contact</a>
+                        <a href="index.html#demoFormContainer">Become a Partner</a>
                     </div>
                 </div>
                 
@@ -2686,19 +2718,18 @@
             </div>
             
             <div class="footer-bottom">
-                <div class="footer-disclaimer">
-                    <p>Dent-Vision AI is currently in beta testing, and minor deviations may occur. The platform supports PDR workshops and specialists through automated AI analysis and instant estimates based on your pricing settings and the photos submitted. It provides integrated tools for quotes, proposals, workflow tracking, technician management, and performance insights. Because AI estimates are automated, some variation is expected. Final repair costs must be confirmed after a physical inspection. By signing in, you acknowledge and agree to these terms.</p>
-                </div>
-                <div class="footer-copyright">
-                    <p>© 2025 Dent-Vision AI — A prototype under development by Auto Care Quotes ABN 33 234 268 637 Australia</p>
-                    <div class="footer-legal-links">
-                        <a href="mailto:contact@dent-vision.ai">contact@dent-vision.ai</a>
-                        <span>•</span>
-                        <a href="legal.html#privacy">Privacy Policy</a>
-                        <span>•</span>
-                        <a href="legal.html#terms">Terms of Service</a>
-                        <span>•</span>
-                        <a href="legal.html#disclaimer">Disclaimer</a>
+                <p style="font-size: 0.8rem; line-height: 1.6; margin-bottom: 15px; opacity: 0.6; text-align: center;">
+                    Dent-Vision AI is currently in beta testing. Final repair costs must be confirmed after a physical inspection.
+                </p>
+                <div style="text-align: center;">
+                    <p style="font-size: 0.8rem; line-height: 1.6; margin: 10px 0; opacity: 0.6;">
+                        © 2025 Dent-Vision AI — A prototype under development by Auto Care Quotes ABN 33 234 268 637 Australia
+                    </p>
+                    <div style="display: flex; justify-content: center; gap: 15px; margin-top: 15px; flex-wrap: wrap;">
+                        <a href="mailto:contact@dent-vision.ai" style="color: var(--muted); text-decoration: none; font-size: 0.8rem;">Contact</a>
+                        <a href="legal.html#privacy" style="color: var(--muted); text-decoration: none; font-size: 0.8rem;">Privacy Policy</a>
+                        <a href="legal.html#terms" style="color: var(--muted); text-decoration: none; font-size: 0.8rem;">Terms of Service</a>
+                        <a href="legal.html#disclaimer" style="color: var(--muted); text-decoration: none; font-size: 0.8rem;">Disclaimer</a>
                     </div>
                 </div>
             </div>

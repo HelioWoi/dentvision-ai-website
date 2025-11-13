@@ -7,8 +7,41 @@ document.addEventListener('DOMContentLoaded', function() {
         return window.innerWidth <= 768;
     }
     
+    // Aplica estilos ao footer
+    function applyFooterStyles() {
+        const footer = document.querySelector('footer');
+        const footerBottom = document.querySelector('.footer-bottom');
+        const footerDisclaimer = document.querySelector('.footer-disclaimer');
+        const disclaimerText = document.querySelector('.footer-disclaimer p');
+        
+        if (footerBottom) {
+            footerBottom.style.padding = '0 20px';
+            footerBottom.style.textAlign = 'left';
+            footerBottom.style.maxWidth = '1200px';
+            footerBottom.style.margin = '0 auto';
+            footerBottom.style.width = '100%';
+        }
+        
+        if (footerDisclaimer) {
+            footerDisclaimer.style.marginBottom = '15px';
+            footerDisclaimer.style.textAlign = 'left';
+        }
+        
+        if (disclaimerText) {
+            disclaimerText.style.fontSize = '0.75rem';
+            disclaimerText.style.lineHeight = '1.6';
+            disclaimerText.style.color = 'var(--muted)';
+            disclaimerText.style.opacity = '0.8';
+            disclaimerText.style.margin = '0 0 15px 0';
+            disclaimerText.style.textAlign = 'left';
+            disclaimerText.style.padding = '0';
+        }
+    }
+    
     // Função para inicializar o menu mobile
     function initMobileMenu() {
+        applyFooterStyles(); // Aplica os estilos do footer
+        
         if (isMobile()) {
             // Adiciona a classe 'mobile' ao footer para estilização específica
             document.querySelector('footer').classList.add('mobile');

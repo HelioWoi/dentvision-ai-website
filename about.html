@@ -726,7 +726,6 @@
     </section>
 
     <!-- Footer -->
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -735,9 +734,6 @@
                         <div class="footer-logo">Dent-Vision AI</div>
                     </a>
                     <p class="footer-tagline">AI-POWERED WORKSHOP MANAGEMENT SYSTEM</p>
-                    <div class="footer-social" style="margin-top: 15px;">
-                        <!-- Social media icons can be added here if needed -->
-                    </div>
                 </div>
                 
                 <div class="footer-section">
@@ -794,13 +790,21 @@
     
     <style>
         /* Footer Styles */
+        footer {
+            background: var(--bg);
+            padding: 80px 0 0;
+            color: var(--text);
+            position: relative;
+            overflow: hidden;
+        }
+
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px;
-            padding: 60px 20px;
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 0 auto 40px;
+            padding: 0 20px;
         }
 
         .footer-brand {
@@ -812,8 +816,9 @@
             font-weight: 700;
             font-size: 1.8rem;
             color: white;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             line-height: 1.2;
+            text-align: left;
         }
 
         .footer-tagline {
@@ -877,25 +882,26 @@
 
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 30px 20px;
-            margin-top: 20px;
+            padding: 20px 20px 0;
             text-align: center;
             max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto;
+            width: 100%;
         }
 
         .footer-disclaimer {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            text-align: left;
+            padding: 0;
         }
-
+            
         .footer-disclaimer p {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             line-height: 1.6;
+            text-align: left;
+            margin: 0 0 15px 0;
             color: var(--muted);
             opacity: 0.8;
-            max-width: 800px;
-            margin: 0 auto;
         }
 
         .footer-copyright {
@@ -905,7 +911,7 @@
         }
 
         .footer-copyright p {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             margin: 0;
             color: var(--muted);
             opacity: 0.8;
@@ -938,10 +944,15 @@
 
         /* Responsive Styles */
         @media (max-width: 768px) {
+            footer {
+                padding: 40px 0 20px;
+            }
+            
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
-                padding: 40px 20px;
+                padding: 0 20px;
+                margin-bottom: 30px;
             }
 
             .footer-brand {
@@ -983,10 +994,6 @@
                 font-size: 1.2rem;
                 font-weight: 300;
                 transition: transform 0.3s ease;
-                position: static;
-                width: auto;
-                height: auto;
-                background: none;
             }
 
             .footer-section.active h4::after {
@@ -1005,16 +1012,16 @@
             }
 
             .footer-bottom {
-                padding: 20px;
+                padding: 20px 20px 0;
                 text-align: center;
             }
-
+            
             .footer-disclaimer p {
                 font-size: 0.75rem;
                 line-height: 1.6;
-                text-align: center;
+                text-align: left;
             }
-
+            
             .footer-copyright p {
                 font-size: 0.8rem;
                 line-height: 1.5;

@@ -3846,6 +3846,12 @@
             }
         });
 
+    </script>
+    
+    <!-- Script de Autenticação -->
+    <script src="js/auth.js"></script>
+    
+    <script>
         // Toggle mobile footer menu
         document.addEventListener('DOMContentLoaded', function() {
             const footerSections = document.querySelectorAll('.footer-section');
@@ -3859,13 +3865,20 @@
             function initMobileMenu() {
                 if (isMobile()) {
                     // Adiciona a classe 'mobile' ao footer para estilização específica
-                    document.querySelector('footer').classList.add('mobile');
+                    const footer = document.querySelector('footer');
+                    if (footer) {
+                        footer.classList.add('mobile');
+                    }
                     
                     // Adiciona evento de clique nos títulos das seções
                     footerSections.forEach(section => {
                         const title = section.querySelector('h4');
                         if (title) {
-                            title.addEventListener('click', function() {
+                            // Remove event listeners antigos para evitar duplicação
+                            const newTitle = title.cloneNode(true);
+                            title.parentNode.replaceChild(newTitle, title);
+                            
+                            newTitle.addEventListener('click', function(e) {
                                 if (isMobile()) {
                                     // Fecha outras seções abertas
                                     footerSections.forEach(s => {
@@ -3882,7 +3895,10 @@
                     });
                 } else {
                     // Remove a classe 'mobile' e 'active' em telas maiores
-                    document.querySelector('footer').classList.remove('mobile');
+                    const footer = document.querySelector('footer');
+                    if (footer) {
+                        footer.classList.remove('mobile');
+                    }
                     footerSections.forEach(section => {
                         section.classList.remove('active');
                     });
@@ -3893,8 +3909,12 @@
             initMobileMenu();
             
             // Reexecuta quando a janela for redimensionada
+            let resizeTimer;
             window.addEventListener('resize', function() {
-                initMobileMenu();
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    initMobileMenu();
+                }, 250);
             });
         });
     </script>

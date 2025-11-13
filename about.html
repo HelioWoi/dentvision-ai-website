@@ -34,6 +34,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     
+    <!-- Footer CSS -->
+    <link rel="stylesheet" href="css/footer.css">
+    
     <style>
         :root {
             --bg: #0E0E0E;
@@ -726,15 +729,15 @@
     <footer class="fade-in">
         <div class="container">
             <div class="footer-content">
-                <div>
+                <div class="footer-brand">
                     <a href="index.html" style="text-decoration: none;">
-                        <div class="footer-logo" style="color: var(--text);">Dent-Vision AI</div>
+                        <div class="footer-logo">Dent-Vision AI</div>
                     </a>
-                    <p style="color: var(--muted); max-width: 300px; margin-bottom: 20px;">AI-POWERED WORKSHOP MANAGEMENT SYSTEM</p>
+                    <p class="footer-tagline">AI-POWERED WORKSHOP MANAGEMENT SYSTEM</p>
                 </div>
                 
-                <div>
-                    <h4 style="margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Links</h4>
+                <div class="footer-section">
+                    <h4>Links</h4>
                     <div class="footer-links">
                         <a href="index.html#how-it-works">How It Works</a>
                         <a href="index.html#widget">Widget</a>
@@ -743,8 +746,8 @@
                     </div>
                 </div>
                 
-                <div>
-                    <h4 style="margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Company</h4>
+                <div class="footer-section">
+                    <h4>Company</h4>
                     <div class="footer-links">
                         <a href="about.html">About Us</a>
                         <a href="index.html#demoFormContainer">Contact</a>
@@ -752,8 +755,8 @@
                     </div>
                 </div>
                 
-                <div>
-                    <h4 style="margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Legal</h4>
+                <div class="footer-section">
+                    <h4>Legal</h4>
                     <div class="footer-links">
                         <a href="legal.html#privacy">Privacy Policy</a>
                         <a href="legal.html#terms">Terms of Service</a>
@@ -763,24 +766,31 @@
                 </div>
             </div>
             
-            <div class="footer-bottom" style="width: 100%; opacity: 0.8; padding: 20px 0; border-top: 1px solid var(--stroke);">
-                <div style="max-width: 100%; margin: 0; padding: 0 40px;">
-                    <p style="font-size: 0.8rem; line-height: 1.6; margin-bottom: 15px; opacity: 0.6; text-align: left; max-width: 100%;">
-                        Dent-Vision AI is currently in beta testing, and minor deviations may occur. The platform supports PDR workshops and specialists through automated AI analysis and instant estimates based on your pricing settings and the photos submitted. It provides integrated tools for quotes, proposals, workflow tracking, technician management, and performance insights. Because AI estimates are automated, some variation is expected. Final repair costs must be confirmed after a physical inspection. By signing in, you acknowledge and agree to these terms.
-                    </p>
-                    <div style="text-align: center; margin-top: 20px;">
-                        <p style="font-size: 0.9rem; line-height: 1.6; margin: 0; opacity: 0.6;">
-                            © 2025 Dent-Vision AI — A prototype under development by Auto Care Quotes ABN 33 234 268 637 Australia<br>
-                            All rights reserved. | <a href="mailto:contact@dent-vision.ai" style="color: var(--muted); text-decoration: none; opacity: 0.6; transition: color 0.2s ease;" onmouseover="this.style.color='#A3FF00'; this.style.opacity='1';" onmouseout="this.style.color='var(--muted)'; this.style.opacity='0.6';">contact@dent-vision.ai</a> | 
-                            <a href="legal.html#privacy" style="color: var(--muted); text-decoration: none; opacity: 0.6; transition: color 0.2s ease;" onmouseover="this.style.color='#A3FF00'; this.style.opacity='1';" onmouseout="this.style.color='var(--muted)'; this.style.opacity='0.6';">Privacy Policy</a> | 
-                            <a href="legal.html#terms" style="color: var(--muted); text-decoration: none; opacity: 0.6; transition: color 0.2s ease;" onmouseover="this.style.color='#A3FF00'; this.style.opacity='1';" onmouseout="this.style.color='var(--muted)'; this.style.opacity='0.6';">Terms of Service</a> | 
-                            <a href="legal.html#disclaimer" style="color: var(--muted); text-decoration: none; opacity: 0.6; transition: color 0.2s ease;" onmouseover="this.style.color='#A3FF00'; this.style.opacity='1';" onmouseout="this.style.color='var(--muted)'; this.style.opacity='0.6';">Disclaimer</a>
-                        </p>
+            <div class="footer-bottom">
+                <div class="footer-disclaimer">
+                    <p>Dent-Vision AI is currently in beta testing, and minor deviations may occur. The platform supports PDR workshops and specialists through automated AI analysis and instant estimates based on your pricing settings and the photos submitted. It provides integrated tools for quotes, proposals, workflow tracking, technician management, and performance insights. Because AI estimates are automated, some variation is expected. Final repair costs must be confirmed after a physical inspection. By signing in, you acknowledge and agree to these terms.</p>
+                </div>
+                <div class="footer-copyright">
+                    <p>© 2025 Dent-Vision AI — A prototype under development by Auto Care Quotes ABN 33 234 268 637 Australia</p>
+                    <div class="footer-legal-links">
+                        <a href="mailto:contact@dent-vision.ai">contact@dent-vision.ai</a>
+                        <span>•</span>
+                        <a href="legal.html#privacy">Privacy Policy</a>
+                        <span>•</span>
+                        <a href="legal.html#terms">Terms of Service</a>
+                        <span>•</span>
+                        <a href="legal.html#disclaimer">Disclaimer</a>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+    
+    <!-- Footer Script -->
+    <script src="js/footer.js"></script>
+    
+    <!-- Script de Autenticação -->
+    <script src="js/auth.js"></script>
 
     <script>
         // Mobile menu toggle and header scroll behavior

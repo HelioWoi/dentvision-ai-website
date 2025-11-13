@@ -1,0 +1,242 @@
+/* Footer Styles */
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+    padding: 0 20px;
+}
+
+.footer-brand {
+    max-width: 300px;
+}
+
+.footer-logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.footer-tagline {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.footer-section h4 {
+    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-section h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.footer-links a::before {
+    content: '→';
+    color: var(--accent);
+    margin-right: 8px;
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: all 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+    padding-left: 5px;
+}
+
+.footer-links a:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.footer-disclaimer {
+    margin-bottom: 20px;
+}
+
+.footer-disclaimer p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--muted);
+    opacity: 0.8;
+}
+
+.footer-copyright {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+}
+
+.footer-copyright p {
+    font-size: 0.9rem;
+    margin: 0;
+    color: var(--muted);
+    opacity: 0.8;
+}
+
+.footer-legal-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.footer-legal-links a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.footer-legal-links a:hover {
+    color: var(--accent);
+}
+
+.footer-legal-links span {
+    opacity: 0.3;
+    font-size: 0.7rem;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0 20px;
+        margin-bottom: 30px;
+    }
+    
+    .footer-brand {
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .footer-logo {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        text-align: center;
+        display: block;
+    }
+    
+    .footer-tagline {
+        text-align: center;
+        margin: 0 auto 20px;
+        max-width: 300px;
+    }
+    
+    .footer-section {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding-bottom: 20px;
+    }
+    
+    .footer-section:last-child {
+        border-bottom: none;
+    }
+    
+    .footer-section h4 {
+        margin-bottom: 15px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .footer-section h4::after {
+        content: '+';
+        font-size: 1.2rem;
+        font-weight: 300;
+        transition: transform 0.3s ease;
+        position: static;
+        background: none;
+        width: auto;
+        height: auto;
+    }
+    
+    .footer-section.active h4::after {
+        transform: rotate(45deg);
+    }
+    
+    .footer-links {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+    
+    .footer-section.active .footer-links {
+        max-height: 500px;
+        margin-bottom: 15px;
+    }
+    
+    .footer-bottom {
+        padding: 20px 20px 0;
+        text-align: center;
+    }
+    
+    .footer-disclaimer p {
+        font-size: 0.75rem;
+        line-height: 1.6;
+        text-align: left;
+    }
+    
+    .footer-copyright p {
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+    
+    .footer-legal-links {
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 15px;
+    }
+    
+    .footer-legal-links span {
+        display: none;
+    }
+}

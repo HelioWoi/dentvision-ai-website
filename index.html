@@ -957,48 +957,159 @@
         /* Footer */
         footer {
             background: rgba(0, 0, 0, 0.3);
-            padding: 60px 0 30px;
+            padding: 60px 0 20px;
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px;
             margin-bottom: 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+        }
+
+        .footer-brand {
+            max-width: 300px;
         }
 
         .footer-logo {
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--text) !important;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .footer-tagline {
+            color: var(--muted);
+            font-size: 0.9rem;
             margin-bottom: 20px;
-            display: inline-block;
+            opacity: 0.8;
+        }
+
+        .footer-section h4 {
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
         }
 
         .footer-links {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 12px;
         }
 
         .footer-links a {
             color: var(--muted);
             text-decoration: none;
-            transition: color 0.2s;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a::before {
+            content: '→';
+            color: var(--accent);
+            margin-right: 8px;
+            opacity: 0;
+            transform: translateX(-5px);
+            transition: all 0.2s ease;
         }
 
         .footer-links a:hover {
             color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-links a:hover::before {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         .footer-bottom {
-            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 30px;
-            border-top: 1px solid var(--stroke);
+            margin-top: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        
+        .footer-disclaimer {
+            margin-bottom: 20px;
+        }
+        
+        .footer-disclaimer p {
+            font-size: 0.85rem;
+            line-height: 1.6;
             color: var(--muted);
+            opacity: 0.8;
+        }
+        
+        .footer-copyright {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: center;
+        }
+        
+        .footer-copyright p {
             font-size: 0.9rem;
+            margin: 0;
+            color: var(--muted);
+            opacity: 0.8;
+        }
+        
+        .footer-legal-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .footer-legal-links a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        
+        .footer-legal-links a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-legal-links span {
+            opacity: 0.3;
+            font-size: 0.7rem;
         }
 
         /* Animations */
@@ -1067,7 +1178,47 @@
         @media (max-width: 920px) {
             .header-container {
                 height: 72px;
-                padding: 0 16px;
+                padding: 0 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            /* Melhorias para navegação mobile */
+            #mainNav {
+                position: fixed;
+                top: 72px;
+                left: 0;
+                width: 100%;
+                background: var(--bg);
+                padding: 20px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                display: none;
+                z-index: 1000;
+            }
+            
+            #mainNav.active {
+                display: block;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            /* Ajustes de espaçamento para mobile */
+            .container {
+                padding: 0 20px;
+            }
+            
+            /* Melhorias de legibilidade */
+            h1, h2, h3 {
+                line-height: 1.3;
+            }
+            
+            p, li {
+                font-size: 1rem;
+                line-height: 1.6;
             }
             
             .menu-toggle {
@@ -1222,10 +1373,207 @@
             }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
+            /* Ajustes para telas menores que 768px */
+            
+            /* Ajustes para o vídeo hero */
+            .video-section {
+                padding: 60px 0 !important;
+                min-height: 60vh;
+                display: flex;
+                align-items: center;
+            }
+            
+            .video-section h2 {
+                font-size: 2rem !important;
+                line-height: 1.2;
+                margin-bottom: 20px;
+                padding: 0 15px;
+            }
+            
+            /* Ajustes para a seção de dashboard */
+            .dashboard-content {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+                padding: 0 15px;
+            }
+            
+            .dashboard-features {
+                order: 2;
+                padding: 0 10px;
+            }
+            
+            .dashboard-image-container {
+                order: 1;
+                margin: 0 -15px 30px;
+                width: calc(100% + 30px);
+            }
+            
+            .dashboard-image-container video {
+                border-radius: 0;
+                width: 100%;
+            }
+            
+            /* Ajustes para a seção ROI */
+            #roi-comparison .container > div {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+                padding: 0 15px;
+            }
+            
+            .roi-column {
+                padding: 20px !important;
+                margin-bottom: 20px;
+            }
+            
+            /* Melhorias gerais de espaçamento */
+            section {
+                padding: 50px 0 !important;
+            }
             .header-container {
                 height: 68px;
-                padding: 0 16px;
+                padding: 0 20px;
+            }
+            
+            /* Melhorias para vídeos */
+            video, iframe {
+                max-width: 100%;
+                height: auto;
+            }
+            
+            /* Ajustes de seção */
+            section {
+                padding: 40px 0;
+            }
+            
+            /* Melhorias para botões */
+            .btn {
+                padding: 12px 24px;
+                font-size: 1rem;
+                min-width: 140px;
+            }
+            
+            /* Ajustes de tipografia */
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            /* Melhorias para o menu mobile */
+            .menu-toggle {
+                display: flex;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                padding: 8px;
+            }
+            
+            /* Ajustes para o rodapé em dispositivos móveis */
+            footer {
+                padding: 40px 0 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 0 20px;
+                margin-bottom: 30px;
+            }
+            
+            .footer-brand {
+                max-width: 100%;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            .footer-logo {
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+                text-align: center;
+                display: block;
+            }
+            
+            .footer-tagline {
+                text-align: center;
+                margin: 0 auto 20px;
+                max-width: 300px;
+            }
+            
+            .footer-section {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                padding-bottom: 20px;
+            }
+            
+            .footer-section:last-child {
+                border-bottom: none;
+            }
+            
+            .footer-section h4 {
+                margin-bottom: 15px;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .footer-section h4::after {
+                content: '+';
+                font-size: 1.2rem;
+                font-weight: 300;
+                transition: transform 0.3s ease;
+            }
+            
+            .footer-section.active h4::after {
+                transform: rotate(45deg);
+            }
+            
+            .footer-links {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            .footer-section.active .footer-links {
+                max-height: 500px; /* Ajuste conforme necessário */
+                margin-bottom: 15px;
+            }
+            
+            .footer-bottom {
+                padding: 20px 20px 0;
+                text-align: center;
+            }
+            
+            .footer-disclaimer p {
+                font-size: 0.75rem;
+                line-height: 1.6;
+                text-align: left;
+            }
+            
+            .footer-copyright p {
+                font-size: 0.8rem;
+                line-height: 1.5;
+            }
+            
+            .footer-legal-links {
+                flex-direction: column;
+                gap: 5px;
+                margin-top: 15px;
+            }
+            
+            .footer-legal-links span {
+                display: none;
+            }
+            
+            /* Ajustes para formulários */
+            input, textarea, select {
+                font-size: 16px !important; /* Evita zoom em iOS */
             }
             
             .logo img {
@@ -1291,10 +1639,220 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" style="position: relative;">
+        <style>
+            @media (max-width: 768px) {
+                .hero {
+                    padding: 40px 0 0 !important;
+                    text-align: left;
+                    min-height: calc(100vh - 72px);
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                    overflow: hidden;
+                }
+                
+                .hero::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: linear-gradient(
+                        to bottom right, 
+                        rgba(0, 150, 255, 0.1), 
+                        rgba(0, 0, 0, 0) 70%
+                    );
+                    pointer-events: none;
+                    z-index: 1;
+                }
+                
+                .hero .container {
+                    padding: 0 24px !important;
+                    max-width: 100% !important;
+                    width: 100%;
+                    position: relative;
+                    z-index: 2;
+                    margin-top: -144px; /* Ajustado para subir mais 20% (120 + 20%) */
+                }
+                
+                /* Ajuste adicional para o conteúdo do hero */
+                .hero-content {
+                    padding-top: 20px; /* Adiciona um pequeno espaço no topo */
+                }
+                
+                .hero h1 {
+                    font-size: 2.2rem !important;
+                    line-height: 1.2 !important;
+                    margin: 0 0 16px 0 !important;
+                    padding: 0 !important;
+                    text-align: left;
+                }
+                
+                .hero h1 br {
+                    display: block;
+                    content: "";
+                    margin: 8px 0;
+                }
+                
+                .hero p {
+                    font-size: 1.1rem !important;
+                    line-height: 1.6 !important;
+                    max-width: 100% !important;
+                    padding: 0 !important;
+                    margin: 0 0 32px 0 !important;
+                    text-align: left;
+                }
+                
+                .hero-buttons {
+                    display: flex !important;
+                    flex-direction: row !important;
+                    gap: 12px !important;
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    margin: 0 0 32px 0 !important;
+                    justify-content: center; /* Centraliza os botões */
+                    align-items: center; /* Alinha verticalmente */
+                }
+                
+                .hero-buttons .btn {
+                    flex: 0 1 auto; /* Permite que os botões tenham largura baseada no conteúdo */
+                    min-width: 140px; /* Largura mínima para manter consistência */
+                    padding: 12px 16px !important; /* Aumentei o padding horizontal para melhorar a aparência */
+                    text-align: center;
+                    white-space: nowrap;
+                    font-size: 0.95rem !important;
+                    font-weight: 500;
+                    border-radius: 6px;
+                    display: flex !important;
+                    align-items: center;
+                    justify-content: center;
+                    height: 44px; /* Altura fixa para ambos os botões */
+                    line-height: 1.2;
+                    box-sizing: border-box;
+                    margin: 0 auto; /* Centraliza os botões individualmente */
+                }
+                
+                .hero-buttons .btn-primary {
+                    background: var(--accent) !important;
+                    color: var(--bg) !important;
+                    border: 1px solid var(--accent) !important;
+                }
+                
+                .hero-buttons .btn-secondary {
+                    background: transparent !important;
+                    border: 1px solid var(--accent) !important;
+                    color: var(--accent) !important;
+                }
+                
+                /* Garante que os botões tenham a mesma largura */
+                .hero-buttons .btn {
+                    flex: 0 1 auto; /* Mantém o tamanho baseado no conteúdo */
+                    min-width: 140px; /* Largura mínima consistente */
+                    max-width: 200px; /* Largura máxima para evitar que fiquem muito largos */
+                }
+                
+                .hero-features {
+                    flex-direction: column;
+                    gap: 12px !important;
+                    align-items: flex-start;
+                    margin: 0 0 16px 0 !important;
+                    padding: 0 !important;
+                }
+                
+                .feature-item {
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    justify-content: flex-start;
+                    padding: 0 !important;
+                    margin: 0 !important;
+                    background: none !important;
+                    border: none !important;
+                }
+                
+                .feature-item svg {
+                    color: var(--accent) !important;
+                    margin-right: 12px !important;
+                    flex-shrink: 0;
+                }
+                
+                .hero-note {
+                    font-size: 0.9rem !important;
+                    color: var(--muted) !important;
+                    margin: 8px 0 40px 0 !important;
+                    padding: 0 !important;
+                }
+                
+                .video-container {
+                    margin: 0 -24px !important;
+                    width: calc(100% + 48px) !important;
+                    max-width: none !important;
+                }
+                
+                .video-wrapper {
+                    padding-top: 56.25% !important; /* 16:9 Aspect Ratio */
+                }
+                
+                /* Esconde o vídeo do hero no mobile */
+                .hero .video-container {
+                    display: none !important;
+                }
+                
+                /* Estilos para a nova seção de vídeo mobile */
+                .mobile-video-section {
+                    display: block !important;
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    background: var(--bg);
+                }
+                
+                .mobile-video-container {
+                    width: 100%;
+                    margin: 0 auto;
+                    padding: 0;
+                }
+                
+                .mobile-video-container video {
+                    width: 100%;
+                    height: auto;
+                    display: block;
+                }
+                
+                /* Estilos para o vídeo acima de How It Works no mobile */
+                .mobile-video-before-howitworks {
+                    display: block !important;
+                    width: 100%;
+                    margin: 0;
+                    padding: 20px 0;
+                    background: var(--bg);
+                    position: relative;
+                    margin-top: -45%; /* Ajustado para 45% (55% - 10%) */
+                    z-index: 10; /* Garante que o vídeo fique acima de outros elementos */
+                }
+                
+                .mobile-video-before-howitworks video {
+                    width: 90%;
+                    max-width: 100%;
+                    height: auto;
+                    display: block;
+                    margin: 0 auto;
+                    border-radius: 12px;
+                    border: 1px solid #444;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                }
+            }
+            
+            @media (min-width: 769px) {
+                .mobile-video-before-howitworks {
+                    display: none !important;
+                }
+            }
+        </style>
         <div class="container hero-container">
             <div class="hero-content">
-                <h1>Grow Leads with <span style="color: var(--accent);">Smart AI</span> <span style="color: white;">Quotes</span>.</h1>
+                <h1>Grow Leads with<br><span style="color: var(--accent);">Smart AI</span> <span style="color: white;">Quotes</span>.</h1>
                 <p>Dent estimates in under 60 seconds for workshops and customers. Customised by your pricing.</p>
                 <div class="hero-buttons">
                     <a href="#" class="btn btn-primary" onclick="event.preventDefault(); openModal('liveDemoModal');">Try It Live</a>
@@ -1339,6 +1897,14 @@
         </div>
     </section>
 
+    <!-- Vídeo Mobile (acima de How It Works) -->
+    <div class="mobile-video-before-howitworks">
+        <video autoplay muted loop playsinline>
+            <source src="videos/optimized/video 1.mp4" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+        </video>
+    </div>
+    
     <!-- How It Works -->
     <section id="how-it-works" class="fade-in" style="background: var(--panel);">
         <div class="container">
@@ -1394,24 +1960,110 @@
     </section>
 
     <!-- Video Section -->
-    <section class="video-section" style="position: relative; padding: 150px 0; text-align: center; overflow: hidden;">
+    <section class="video-section" style="position: relative; padding: 100px 0; text-align: center; overflow: hidden;">
         <!-- Video Background -->
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
-            <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; overflow: hidden;">
+            <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7; min-height: 100%; min-width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
                 <source src="videos/optimized/video 2.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
         
         <!-- Content Overlay -->
-        <div style="position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-            <h2 style="font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.7);">
+        <div class="video-content" style="position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <h2 class="video-heading" style="font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.7);">
                 You fix dents. We fix the <span style="color: var(--accent);">process</span>.
             </h2>
-            <p style="font-size: 1.5rem; margin-top: 0; color: white; text-shadow: 0 2px 5px rgba(0,0,0,0.7);">
+            <p class="video-subheading" style="font-size: 1.5rem; margin-top: 0; color: white; text-shadow: 0 2px 5px rgba(0,0,0,0.7);">
                 Get started with a 14-day free trial.
             </p>
         </div>
+        
+        <style>
+            @media (max-width: 768px) {
+                .video-section {
+                    padding: 80px 0 !important;
+                    min-height: 60vh;
+                    display: flex;
+                    align-items: center;
+                }
+                
+                .video-heading {
+                    font-size: 2.2rem !important;
+                    line-height: 1.2;
+                    margin-bottom: 15px !important;
+                    padding: 0 15px;
+                }
+                
+                .video-subheading {
+                    font-size: 1.2rem !important;
+                    padding: 0 15px;
+                }
+                
+                .video-content {
+                    padding-top: 20px !important;
+                    padding-bottom: 20px !important;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                .video-heading {
+                    font-size: 1.8rem !important;
+                }
+                
+                .video-subheading {
+                    font-size: 1.1rem !important;
+                }
+            }
+        </style>
+    </section>
+    
+    <!-- Side by Side Videos Section -->
+    <section class="side-videos" style="padding: 60px 0; background: var(--bg);">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 40px;">
+                <h2>Our Solutions</h2>
+                <p>Smart dent analysis, your way. Live Scan or Photo Upload, with all dent sizes and pricing fully customisable by you.</p>
+            </div>
+            
+            <div style="display: flex; gap: 30px; justify-content: center;">
+                <div style="flex: 1; min-width: 0;">
+                    <div style="position: relative; padding-top: 56.25%; border-radius: 12px; overflow: hidden; border: 1px solid #444; transition: all 0.3s ease;">
+                        <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                            <source src="videos/optimized/video live scan.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <h3 style="text-align: center; margin: 20px 0 8px 0; color: var(--text); font-size: 1.5rem; font-family: 'Inter', sans-serif; font-weight: 600;">Live AI Scan</h3>
+                    <p style="text-align: center; color: var(--muted); font-size: 1rem; margin: 0 0 16px 0;">Real-time dent analysis using your smartphone camera.</p>
+                </div>
+                
+                <div style="flex: 1; min-width: 0;">
+                    <div style="position: relative; padding-top: 56.25%; border-radius: 12px; overflow: hidden; border: 1px solid #444; transition: all 0.3s ease;">
+                        <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                            <source src="videos/optimized/video manual.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+<h3 style="text-align: center; margin: 20px 0 8px 0; color: var(--text); font-size: 1.5rem; font-family: 'Inter', sans-serif; font-weight: 600;">Photo Upload Analysis</h3>
+                    <p style="text-align: center; color: var(--muted); font-size: 1rem; margin: 0 0 16px 0;">Upload photos and mark dent areas manually for precise, controlled estimates.</p>
+                </div>
+            </div>
+        </div>
+        
+        <style>
+            @media (max-width: 768px) {
+                .side-videos .container > div:first-child {
+                    flex-direction: column;
+                    gap: 30px !important;
+                    padding: 0 15px;
+                }
+                
+                .side-videos .container > div:first-child > div {
+                    width: 100% !important;
+                }
+            }
+        </style>
     </section>
 
     <section id="why-it-matters" class="fade-in">
@@ -1470,7 +2122,114 @@
     </section>
 
     <!-- Dashboard Section -->
-    <section id="dashboard" class="fade-in">
+    <section id="dashboard" class="fade-in" style="position: relative;">
+        <style>
+            @media (max-width: 768px) {
+                #dashboard .container {
+                    padding: 0;
+                }
+                
+                #dashboard .section-header {
+                    padding: 0 20px;
+                    text-align: center;
+                }
+                
+                #dashboard .section-header h2 {
+                    font-size: 1.8rem !important;
+                    line-height: 1.3;
+                }
+                
+                #dashboard .section-header p {
+                    font-size: 1rem;
+                    max-width: 100%;
+                }
+                
+                .dashboard-image-container {
+                    margin: 0 0 30px 0 !important;
+                    max-width: 100% !important;
+                    border-radius: 0 !important;
+                }
+                
+                .dashboard-image-container video {
+                    border-radius: 0 !important;
+                }
+                
+                .glass-panel {
+                    border-radius: 0 !important;
+                    margin: 0 !important;
+                    padding: 20px !important;
+                }
+                
+                .dashboard-content {
+                    grid-template-columns: 1fr !important;
+                    gap: 30px !important;
+                    padding: 0 !important;
+                }
+                
+                /* Centraliza o botão Start Free Trial */
+                .dashboard-features {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                }
+                
+                .dashboard-features ul {
+                    text-align: left;
+                    width: 100%;
+                }
+                
+                .dashboard-title {
+                    font-size: 1.5rem !important;
+                    text-align: center;
+                    margin-bottom: 20px !important;
+                }
+                
+                .dashboard-features ul {
+                    padding: 0 10px;
+                }
+                
+                .dashboard-features li {
+                    margin-bottom: 15px !important;
+                    padding-left: 30px !important;
+                    font-size: 0.95rem !important;
+                    line-height: 1.5 !important;
+                }
+                
+                .btn-primary {
+                    width: 100%;
+                    text-align: center;
+                    margin-top: 20px !important;
+                }
+                
+                /* Ajustes para o card de preços */
+                #dashboard > .container > div:last-child {
+                    border-radius: 0 !important;
+                    margin: 20px 0 0 0 !important;
+                    padding: 20px 15px !important;
+                }
+                
+                #dashboard > .container > div:last-child > div {
+                    grid-template-columns: 1fr !important;
+                    gap: 15px !important;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                .dashboard-title {
+                    font-size: 1.4rem !important;
+                }
+                
+                #dashboard .section-header h2 {
+                    font-size: 1.6rem !important;
+                }
+                
+                .dashboard-features li {
+                    font-size: 0.9rem !important;
+                    padding-left: 25px !important;
+                }
+            }
+        </style>
         <div class="container">
             <div class="dashboard-image-container" style="position: relative; max-width: 800px; margin: 0 auto;">
                 <video autoplay muted loop playsinline style="width: 100%; border-radius: 16px; display: block;">
@@ -1484,9 +2243,9 @@
             </div>
             
             <div class="glass-panel">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
-                    <div>
-                        <h3 style="font-size: 1.8rem; margin-bottom: 20px;">Everything in One Place</h3>
+                <div class="dashboard-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+                    <div class="dashboard-features">
+                        <h3 class="dashboard-title" style="font-size: 1.8rem; margin-bottom: 20px;">Everything in One Place</h3>
                         <ul style="list-style: none; padding: 0; margin: 0 0 30px 0;">
                             <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
                                 <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">✓</span>
@@ -1630,7 +2389,7 @@
     <section id="widget" class="widget-section fade-in">
         <div class="container">
             <div class="section-header">
-                <h2>Turn Your Website Into a 24/7 Lead Machine</h2>
+                <h2>Turn Your Website Into a <span style="color: var(--accent);">24/7 Lead</span> Machine</h2>
                 <p>Add a single line of code. Customers get a preliminary estimate and the lead goes straight to your Partner Dashboard.</p>
             </div>
             
@@ -1660,29 +2419,29 @@
         <div class="container" style="position: relative; z-index: 1;">
             <div class="section-header">
                 <h2 style="color: white;">Trusted by PDR Professionals</h2>
-                <p style="color: rgba(255, 255, 255, 0.9);">Hear from shops that transformed their business with Dent Vision AI</p>
+                <p style="color: rgba(255, 255, 255, 0.9);">Built with real workshop needs in mind, designed to improve speed, accuracy, and lead conversion.</p>
             </div>
             
-            <div class="testimonials">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        "We're quoting twice as fast now. It's been a game-changer for our workflow."
-                    </div>
-                    <div class="testimonial-author">Jake R., Sunshine Coast PDR</div>
+            <div class="testimonials" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
+                <!-- Card 1 -->
+                <div class="benefit-card" style="background: rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 30px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <h3 style="color: var(--accent); margin-top: 0; font-size: 1.5rem; margin-bottom: 15px;">Faster Workflow</h3>
+                    <p style="font-style: italic; margin-bottom: 20px; font-size: 1.1rem;">"Quote dents in under 60 seconds with Live Scan or Photo Upload."</p>
+                    <p style="color: rgba(255, 255, 255, 0.9); margin: 0;">The AI handles the heavy lifting so workshops can focus on repairs, not admin.</p>
                 </div>
                 
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        "My customers trust the AI report more than my old estimates. Our close rate has gone up significantly."
-                    </div>
-                    <div class="testimonial-author">Mike L., Brisbane Auto Works</div>
+                <!-- Card 2 -->
+                <div class="benefit-card" style="background: rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 30px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <h3 style="color: var(--accent); margin-top: 0; font-size: 1.5rem; margin-bottom: 15px;">Conversion Boost</h3>
+                    <p style="font-style: italic; margin-bottom: 20px; font-size: 1.1rem;">"AI-powered estimates guide customers straight to your workshop."</p>
+                    <p style="color: rgba(255, 255, 255, 0.9); margin: 0;">A smooth, automated flow increases the likelihood that leads convert into real repair jobs.</p>
                 </div>
                 
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        "The widget on our website brings in 10-15 new leads every week without us lifting a finger."
-                    </div>
-                    <div class="testimonial-author">Sarah T., Metro Dent Repair</div>
+                <!-- Card 3 -->
+                <div class="benefit-card" style="background: rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 30px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <h3 style="color: var(--accent); margin-top: 0; font-size: 1.5rem; margin-bottom: 15px;">More Leads, Less Effort</h3>
+                    <p style="font-style: italic; margin-bottom: 20px; font-size: 1.1rem;">"Embed the widget on your website and receive customer requests automatically."</p>
+                    <p style="color: rgba(255, 255, 255, 0.9); margin: 0;">Turn your site into a lead engine without lifting a finger.</p>
                 </div>
             </div>
         </div>
@@ -1886,15 +2645,18 @@
     <footer class="fade-in">
         <div class="container">
             <div class="footer-content">
-                <div>
-                    <a href="landing.html" style="text-decoration: none;">
-                        <div class="footer-logo" style="color: var(--text);">Dent-Vision AI</div>
+                <div class="footer-brand">
+                    <a href="index.html" style="text-decoration: none;">
+                        <div class="footer-logo">Dent-Vision AI</div>
                     </a>
-                    <p style="color: var(--muted); max-width: 300px; margin-bottom: 20px;">AI-POWERED WORKSHOP MANAGEMENT SYSTEM</p>
+                    <p class="footer-tagline">AI-POWERED WORKSHOP MANAGEMENT SYSTEM</p>
+                    <div class="footer-social" style="margin-top: 15px;">
+                        <!-- Adicione ícones de redes sociais aqui se necessário -->
+                    </div>
                 </div>
                 
-                <div>
-                    <h4 style="margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Links</h4>
+                <div class="footer-section">
+                    <h4>Links</h4>
                     <div class="footer-links">
                         <a href="#how-it-works">How It Works</a>
                         <a href="#widget">Widget</a>
@@ -1903,8 +2665,8 @@
                     </div>
                 </div>
                 
-                <div>
-                    <h4 style="margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Company</h4>
+                <div class="footer-section">
+                    <h4>Company</h4>
                     <div class="footer-links">
                         <a href="about.html">About Us</a>
                         <a href="#demoFormContainer">Contact</a>
@@ -1912,8 +2674,8 @@
                     </div>
                 </div>
                 
-                <div>
-                    <h4 style="margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Legal</h4>
+                <div class="footer-section">
+                    <h4>Legal</h4>
                     <div class="footer-links">
                         <a href="legal.html#privacy">Privacy Policy</a>
                         <a href="legal.html#terms">Terms of Service</a>
@@ -1923,19 +2685,20 @@
                 </div>
             </div>
             
-            <div class="footer-bottom" style="width: 100%; opacity: 0.8; padding: 20px 0; border-top: 1px solid var(--stroke);">
-                <div style="max-width: 100%; margin: 0; padding: 0 40px;">
-                    <p style="font-size: 0.8rem; line-height: 1.6; margin-bottom: 15px; opacity: 0.6; text-align: left; max-width: 100%;">
-                        Dent-Vision AI is currently in beta testing, and minor deviations may occur. The platform supports PDR workshops and specialists through automated AI analysis and instant estimates based on your pricing settings and the photos submitted. It provides integrated tools for quotes, proposals, workflow tracking, technician management, and performance insights. Because AI estimates are automated, some variation is expected. Final repair costs must be confirmed after a physical inspection. By signing in, you acknowledge and agree to these terms.
-                    </p>
-                    <div style="text-align: center; margin-top: 20px;">
-                        <p style="font-size: 0.9rem; line-height: 1.6; margin: 0; opacity: 0.6;">
-                            © 2025 Dent-Vision AI — A prototype under development by Auto Care Quotes ABN 33 234 268 637 Australia<br>
-                            All rights reserved. | <a href="mailto:contact@dent-vision.ai" style="color: var(--muted); text-decoration: none; opacity: 0.6; transition: color 0.2s ease;" onmouseover="this.style.color='#A3FF00'; this.style.opacity='1';" onmouseout="this.style.color='var(--muted)'; this.style.opacity='0.6';">contact@dent-vision.ai</a> | 
-                            <a href="legal.html#privacy" style="color: var(--muted); text-decoration: none; opacity: 0.6; transition: color 0.2s ease;" onmouseover="this.style.color='#A3FF00'; this.style.opacity='1';" onmouseout="this.style.color='var(--muted)'; this.style.opacity='0.6';">Privacy Policy</a> | 
-                            <a href="legal.html#terms" style="color: var(--muted); text-decoration: none; opacity: 0.6; transition: color 0.2s ease;" onmouseover="this.style.color='#A3FF00'; this.style.opacity='1';" onmouseout="this.style.color='var(--muted)'; this.style.opacity='0.6';">Terms of Service</a> | 
-                            <a href="legal.html#disclaimer" style="color: var(--muted); text-decoration: none; opacity: 0.6; transition: color 0.2s ease;" onmouseover="this.style.color='#A3FF00'; this.style.opacity='1';" onmouseout="this.style.color='var(--muted)'; this.style.opacity='0.6';">Disclaimer</a>
-                        </p>
+            <div class="footer-bottom">
+                <div class="footer-disclaimer">
+                    <p>Dent-Vision AI is currently in beta testing, and minor deviations may occur. The platform supports PDR workshops and specialists through automated AI analysis and instant estimates based on your pricing settings and the photos submitted. It provides integrated tools for quotes, proposals, workflow tracking, technician management, and performance insights. Because AI estimates are automated, some variation is expected. Final repair costs must be confirmed after a physical inspection. By signing in, you acknowledge and agree to these terms.</p>
+                </div>
+                <div class="footer-copyright">
+                    <p>© 2025 Dent-Vision AI — A prototype under development by Auto Care Quotes ABN 33 234 268 637 Australia</p>
+                    <div class="footer-legal-links">
+                        <a href="mailto:contact@dent-vision.ai">contact@dent-vision.ai</a>
+                        <span>•</span>
+                        <a href="legal.html#privacy">Privacy Policy</a>
+                        <span>•</span>
+                        <a href="legal.html#terms">Terms of Service</a>
+                        <span>•</span>
+                        <a href="legal.html#disclaimer">Disclaimer</a>
                     </div>
                 </div>
             </div>
@@ -2951,8 +3714,30 @@
     </style>
 
     <script>
-        // Verificar parâmetro na URL ao carregar a página
+        // Menu Mobile
         document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                    menuToggle.setAttribute('aria-expanded', 
+                        menuToggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
+                    );
+                });
+                
+                // Fechar o menu ao clicar em um link
+                const navLinks = mainNav.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mainNav.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+
+            // Verificar parâmetro na URL ao carregar a página
             const urlParams = new URLSearchParams(window.location.search);
             const openModalParam = urlParams.get('openModal');
             
@@ -3059,6 +3844,58 @@
                     }
                 });
             }
+        });
+
+        // Toggle mobile footer menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const footerSections = document.querySelectorAll('.footer-section');
+            
+            // Função para verificar se é mobile
+            function isMobile() {
+                return window.innerWidth <= 768;
+            }
+            
+            // Função para inicializar o menu mobile
+            function initMobileMenu() {
+                if (isMobile()) {
+                    // Adiciona a classe 'mobile' ao footer para estilização específica
+                    document.querySelector('footer').classList.add('mobile');
+                    
+                    // Adiciona evento de clique nos títulos das seções
+                    footerSections.forEach(section => {
+                        const title = section.querySelector('h4');
+                        if (title) {
+                            title.addEventListener('click', function() {
+                                if (isMobile()) {
+                                    // Fecha outras seções abertas
+                                    footerSections.forEach(s => {
+                                        if (s !== section) {
+                                            s.classList.remove('active');
+                                        }
+                                    });
+                                    
+                                    // Alterna a seção clicada
+                                    section.classList.toggle('active');
+                                }
+                            });
+                        }
+                    });
+                } else {
+                    // Remove a classe 'mobile' e 'active' em telas maiores
+                    document.querySelector('footer').classList.remove('mobile');
+                    footerSections.forEach(section => {
+                        section.classList.remove('active');
+                    });
+                }
+            }
+            
+            // Executa na inicialização
+            initMobileMenu();
+            
+            // Reexecuta quando a janela for redimensionada
+            window.addEventListener('resize', function() {
+                initMobileMenu();
+            });
         });
     </script>
 </body>

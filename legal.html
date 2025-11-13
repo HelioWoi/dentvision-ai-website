@@ -360,156 +360,6 @@
     </main>
 
     <!-- Footer -->
-    <style>
-        /* Base Footer Styles */
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            padding: 30px 0;
-        }
-        
-        .footer-section {
-            width: 100%;
-            margin-bottom: 0;
-        }
-        
-        .footer-section h4 {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            color: var(--accent);
-            border-bottom: 1px solid var(--stroke);
-            padding-bottom: 10px;
-        }
-        
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        
-        .footer-links a {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 0.95rem;
-            opacity: 0.9;
-            transition: all 0.2s ease;
-        }
-        
-        .footer-links a:hover {
-            opacity: 1;
-            color: var(--accent);
-            padding-left: 5px;
-        }
-        
-        .footer-bottom {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--stroke);
-        }
-        
-        .footer-brand {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .footer-tagline {
-            margin-top: 10px;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* Mobile Styles */
-        @media (max-width: 768px) {
-            .footer-content {
-                flex-direction: column;
-                gap: 30px;
-                padding: 20px 0;
-            }
-            
-            .footer-section {
-                width: 100%;
-                margin-bottom: 15px;
-            }
-            
-            .footer-section h4 {
-                font-size: 1.1rem;
-                margin-bottom: 12px;
-                color: var(--accent);
-                border-bottom: 1px solid var(--stroke);
-                padding-bottom: 8px;
-            }
-            
-            .footer-links {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .footer-links a {
-                font-size: 0.95rem;
-                color: var(--text);
-                text-decoration: none;
-                transition: color 0.2s ease;
-            }
-            
-            .footer-links a:hover {
-                color: var(--accent);
-                padding-left: 5px;
-            }
-            
-            .footer-bottom {
-                margin-top: 20px;
-                padding-top: 20px;
-                border-top: 1px solid var(--stroke);
-                text-align: center;
-            }
-            
-            .footer-legal-links {
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 10px;
-                margin-top: 10px;
-            }
-            
-            .footer-legal-links a {
-                font-size: 0.8rem;
-                color: var(--muted);
-                text-decoration: none;
-            }
-            
-            .footer-legal-links a:hover {
-                color: var(--accent);
-            }
-            
-            .footer-legal-links span {
-                color: var(--muted);
-                font-size: 0.8rem;
-            }
-        }
-        
-        /* Desktop Styles */
-        @media (min-width: 769px) {
-            .footer-content {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: space-between;
-            }
-            
-            .footer-section {
-                width: 30%;
-                min-width: 200px;
-                margin-bottom: 20px;
-            }
-            
-            .footer-brand {
-                width: 100%;
-                text-align: center;
-            }
-        }
-    </style>
-    
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -518,6 +368,9 @@
                         <div class="footer-logo">Dent-Vision AI</div>
                     </a>
                     <p class="footer-tagline">AI-POWERED WORKSHOP MANAGEMENT SYSTEM</p>
+                    <div class="footer-social" style="margin-top: 15px;">
+                        <!-- Social media icons can be added here if needed -->
+                    </div>
                 </div>
                 
                 <div class="footer-section">
@@ -551,23 +404,308 @@
             </div>
             
             <div class="footer-bottom">
-                <p style="font-size: 0.8rem; line-height: 1.6; margin-bottom: 15px; opacity: 0.6; text-align: center;">
-                    Dent-Vision AI is currently in beta testing. Final repair costs must be confirmed after a physical inspection.
-                </p>
-                <div style="text-align: center;">
-                    <p style="font-size: 0.8rem; line-height: 1.6; margin: 10px 0; opacity: 0.6;">
-                        © 2025 Dent-Vision AI — A prototype under development by Auto Care Quotes ABN 33 234 268 637 Australia
-                    </p>
-                    <div style="display: flex; justify-content: center; gap: 15px; margin-top: 15px; flex-wrap: wrap;">
-                        <a href="mailto:contact@dent-vision.ai" style="color: var(--muted); text-decoration: none; font-size: 0.8rem;">Contact</a>
-                        <a href="legal.html#privacy" style="color: var(--muted); text-decoration: none; font-size: 0.8rem;">Privacy Policy</a>
-                        <a href="legal.html#terms" style="color: var(--muted); text-decoration: none; font-size: 0.8rem;">Terms of Service</a>
-                        <a href="legal.html#disclaimer" style="color: var(--muted); text-decoration: none; font-size: 0.8rem;">Disclaimer</a>
+                <div class="footer-disclaimer">
+                    <p>Dent-Vision AI is currently in beta testing. Final repair costs must be confirmed after a physical inspection.</p>
+                </div>
+                
+                <div class="footer-copyright">
+                    <p>© 2025 Dent-Vision AI — A prototype under development by Auto Care Quotes ABN 33 234 268 637 Australia</p>
+                    
+                    <div class="footer-legal-links">
+                        <a href="mailto:contact@dent-vision.ai">Contact</a>
+                        <span>•</span>
+                        <a href="legal.html#privacy">Privacy Policy</a>
+                        <span>•</span>
+                        <a href="legal.html#terms">Terms of Service</a>
+                        <span>•</span>
+                        <a href="legal.html#disclaimer">Disclaimer</a>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+    
+    <style>
+        /* Footer Styles */
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .footer-tagline {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .footer-section h4 {
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a::before {
+            content: '→';
+            color: var(--accent);
+            margin-right: 8px;
+            opacity: 0;
+            transform: translateX(-5px);
+            transition: all 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-links a:hover::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px 20px;
+            margin-top: 20px;
+            text-align: center;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-disclaimer {
+            margin-bottom: 20px;
+        }
+
+        .footer-disclaimer p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--muted);
+            opacity: 0.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-copyright {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-copyright p {
+            font-size: 0.9rem;
+            margin: 0;
+            color: var(--muted);
+            opacity: 0.8;
+        }
+
+        .footer-legal-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .footer-legal-links a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .footer-legal-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-legal-links span {
+            opacity: 0.3;
+            font-size: 0.7rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 40px 20px;
+            }
+
+            .footer-brand {
+                max-width: 100%;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .footer-logo {
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+            }
+
+            .footer-tagline {
+                text-align: center;
+                margin: 0 auto 20px;
+                max-width: 300px;
+            }
+
+            .footer-section {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                padding-bottom: 20px;
+            }
+
+            .footer-section:last-child {
+                border-bottom: none;
+            }
+
+            .footer-section h4 {
+                margin-bottom: 15px;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .footer-section h4::after {
+                content: '+';
+                font-size: 1.2rem;
+                font-weight: 300;
+                transition: transform 0.3s ease;
+                position: static;
+                width: auto;
+                height: auto;
+                background: none;
+            }
+
+            .footer-section.active h4::after {
+                transform: rotate(45deg);
+            }
+
+            .footer-links {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .footer-section.active .footer-links {
+                max-height: 500px;
+                margin-bottom: 15px;
+            }
+
+            .footer-bottom {
+                padding: 20px;
+                text-align: center;
+            }
+
+            .footer-disclaimer p {
+                font-size: 0.75rem;
+                line-height: 1.6;
+                text-align: center;
+            }
+
+            .footer-copyright p {
+                font-size: 0.8rem;
+                line-height: 1.5;
+            }
+
+            .footer-legal-links {
+                flex-direction: column;
+                gap: 5px;
+                margin-top: 15px;
+            }
+
+            .footer-legal-links span {
+                display: none;
+            }
+        }
+    </style>
+    
+    <script>
+        // Toggle mobile footer menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const footerSections = document.querySelectorAll('.footer-section');
+            
+            function isMobile() {
+                return window.innerWidth <= 768;
+            }
+            
+            function setupFooterAccordion() {
+                if (isMobile()) {
+                    footerSections.forEach(section => {
+                        const header = section.querySelector('h4');
+                        const links = section.querySelector('.footer-links');
+                        
+                        // Close all sections by default on mobile
+                        section.classList.remove('active');
+                        
+                        header.addEventListener('click', () => {
+                            section.classList.toggle('active');
+                        });
+                    });
+                } else {
+                    // Reset for desktop
+                    footerSections.forEach(section => {
+                        section.classList.add('active');
+                        const links = section.querySelector('.footer-links');
+                        if (links) {
+                            links.style.maxHeight = 'none';
+                        }
+                    });
+                }
+            }
+            
+            // Initial setup
+            setupFooterAccordion();
+            
+            // Update on window resize
+            window.addEventListener('resize', setupFooterAccordion);
+        });
+    </script>
 
     <script>
         // Hide loading overlay when page is fully loaded

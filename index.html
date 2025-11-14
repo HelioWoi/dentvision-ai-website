@@ -1708,7 +1708,7 @@
                 </div>
                 <div class="header-buttons">
                     <a href="https://partner.dent-vision.ai/" target="_blank" rel="noopener noreferrer" class="btn btn-link">Access Portal</a>
-                    <a href="https://demo.dent-vision.ai/" target="_blank" rel="noopener noreferrer" class="btn btn-primary pulsing-btn" id="liveEstimateBtn">
+                    <a href="#" class="btn btn-primary pulsing-btn" id="liveEstimateBtn" onclick="event.preventDefault(); openModal('liveDemoModal');">
                         Try It Live
                     </a>
                 </div>
@@ -1930,7 +1930,7 @@
                 <h1>Grow Leads with<br><span style="color: var(--accent);">Smart AI</span> <span style="color: white;">Quotes</span>.</h1>
                 <p>Dent estimates in under 60 seconds for workshops and customers. Customised by your pricing.</p>
                 <div class="hero-buttons">
-                    <a href="https://demo.dent-vision.ai/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Try It Live</a>
+                    <a href="#" class="btn btn-primary" onclick="event.preventDefault(); openModal('liveDemoModal');">Try It Live</a>
                     <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
                 </div>
                 <div class="hero-features">
@@ -2833,13 +2833,18 @@
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
                 const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
+                
+                // Ignora links vazios
+                if (targetId === '#') {
+                    e.preventDefault();
+                    return;
+                }
                 
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    const headerOffset = 80;
+                    e.preventDefault();
+                    const headerOffset = 100;
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -3676,9 +3681,12 @@
         document.getElementById('demoForm').addEventListener('submit', (e) => {
             e.preventDefault();
             // Here you would typically send the form data to your server
-            alert('Thank you for your demo request! We will contact you shortly.');
-            demoFormContainer.style.display = 'none';
+            alert('Thank you for your demo request! Redirecting to live demo...');
             document.getElementById('demoForm').reset();
+            // Redirect to demo after form submission
+            setTimeout(() => {
+                window.open('https://demo.dent-vision.ai/', '_blank');
+            }, 1000);
         });
         
         // Become a Partner button
@@ -3711,7 +3719,7 @@
                     <label for="livePhone">Phone Number</label>
                     <input type="tel" id="livePhone" name="phone">
                 </div>
-                <button type="submit" class="btn btn-primary">Start Live Demo</button>
+                <button type="submit" class="btn btn-primary">Start Your AI Analysis</button>
             </form>
         </div>
     </div>
@@ -3932,11 +3940,11 @@
 
                     // Simular envio do formulário
                     console.log('Enviando formulário de Live Demo:', formData);
-                    alert('Thank you for your interest! You will be redirected to the live demo.');
+                    alert('Thank you for your interest! Opening live demo...');
                     liveDemoForm.reset();
                     closeModal('liveDemoModal');
-                    // Redirecionar para o demo ao vivo
-                    window.location.href = 'https://demo.dent-vision.ai';
+                    // Abrir demo ao vivo em nova aba
+                    window.open('https://demo.dent-vision.ai/', '_blank');
                 });
             }
 

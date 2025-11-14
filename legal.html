@@ -415,7 +415,7 @@
                 </div>
                 <div class="header-buttons">
                     <a href="https://partner.dent-vision.ai/" target="_blank" rel="noopener noreferrer" class="btn btn-link">Access Portal</a>
-                    <a href="https://demo.dent-vision.ai/" target="_blank" rel="noopener noreferrer" class="btn btn-primary pulsing-btn" id="liveEstimateBtn">
+                    <a href="#" class="btn btn-primary pulsing-btn" id="liveEstimateBtn" onclick="event.preventDefault(); openModal('liveDemoModal');">
                         Try It Live
                     </a>
                 </div>
@@ -927,6 +927,178 @@
                 }
             });
         });
+    </script>
+
+    <!-- Live Demo Modal -->
+    <div id="liveDemoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Start Your AI Analysis</h3>
+            <p>Fill out this form to access the live demo</p>
+            <form id="liveDemoForm">
+                <div class="form-group">
+                    <label for="liveName">Full Name*</label>
+                    <input type="text" id="liveName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="liveEmail">Business Email*</label>
+                    <input type="email" id="liveEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="liveWorkshop">Workshop/Company Name</label>
+                    <input type="text" id="liveWorkshop" name="workshop">
+                </div>
+                <div class="form-group">
+                    <label for="livePhone">Phone Number</label>
+                    <input type="tel" id="livePhone" name="phone">
+                </div>
+                <button type="submit" class="btn btn-primary">Start Your AI Analysis</button>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(30, 30, 30, 0.95) 100%);
+            margin: 5% auto;
+            padding: 40px;
+            border: 1px solid rgba(163, 255, 0, 0.2);
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+
+        .modal-content p {
+            color: var(--muted);
+            margin-bottom: 30px;
+        }
+
+        .close-modal {
+            color: var(--muted);
+            float: right;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 20px;
+        }
+
+        .close-modal:hover {
+            color: var(--accent);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                margin: 10% auto;
+                padding: 30px 20px;
+                width: 95%;
+            }
+        }
+    </style>
+
+    <script>
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            if (modalId) {
+                document.getElementById(modalId).style.display = 'none';
+            } else {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.style.display = 'none';
+                });
+            }
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal();
+            }
+        }
+
+        // Close modal buttons
+        document.querySelectorAll('.close-modal').forEach(btn => {
+            btn.addEventListener('click', () => closeModal());
+        });
+
+        // Live Demo Form Handler
+        const liveDemoForm = document.getElementById('liveDemoForm');
+        if (liveDemoForm) {
+            liveDemoForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = {
+                    name: document.getElementById('liveName').value,
+                    email: document.getElementById('liveEmail').value,
+                    workshop: document.getElementById('liveWorkshop').value,
+                    phone: document.getElementById('livePhone').value,
+                    source: 'Live Demo - Legal Page',
+                };
+
+                console.log('Enviando formulário de Live Demo:', formData);
+                alert('Thank you for your interest! Opening live demo...');
+                liveDemoForm.reset();
+                closeModal('liveDemoModal');
+                window.open('https://demo.dent-vision.ai/', '_blank');
+            });
+        }
     </script>
 </body>
 </html>

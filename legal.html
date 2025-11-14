@@ -60,11 +60,14 @@
         }
 
         .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
+            max-width: 1280px;
+            margin: 0 auto;
             padding: 0 24px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
         }
 
         .logo {
@@ -97,6 +100,101 @@
         .menu-toggle svg {
             width: 24px;
             height: 24px;
+        }
+
+        /* Navigation Menu */
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
+            width: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            margin: 0 auto;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a.active {
+            color: var(--accent);
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* Header Buttons */
+        .header-buttons {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-left: 24px;
+        }
+        
+        .btn-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-link:hover {
+            text-shadow: 0 0 8px rgba(163, 255, 0, 0.45);
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg);
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(163, 255, 0, 0.3);
+        }
+        
+        .pulsing-btn {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(163, 255, 0, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(163, 255, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(163, 255, 0, 0);
+            }
         }
 
         /* Main Content */
@@ -238,10 +336,6 @@
                 background: rgba(15, 15, 15, 0.7) !important;
             }
 
-            #logoutBtn {
-                display: none !important;
-            }
-
             .header-container {
                 height: 72px;
                 padding: 0 20px;
@@ -265,6 +359,11 @@
 
             /* Sem menu hambúrguer no mobile */
             .menu-toggle {
+                display: none !important;
+            }
+
+            /* Esconder menu desktop no mobile */
+            #mainNav {
                 display: none !important;
             }
 
@@ -295,19 +394,32 @@
     </div>
     <!-- Header -->
     <header id="header">
-        <div class="container">
-            <div class="header-container">
-                <a href="index.html" class="logo">
-                    <img src="images/logo.png" alt="Dent Vision AI">
-                </a>
-                <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>
-                </button>
-            </div>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Dent Vision AI" style="height: 60.4px;">
+            </a>
+            <button class="menu-toggle" id="menuToggle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <nav id="mainNav">
+                <div class="nav-links">
+                    <a href="index.html#how-it-works">How It Works</a>
+                    <a href="index.html#widget">Widget</a>
+                    <a href="index.html#pricing">Pricing</a>
+                    <a href="index.html#roi-comparison">ROI</a>
+                    <a href="index.html#faq">FAQ</a>
+                </div>
+                <div class="header-buttons">
+                    <a href="https://partner.dent-vision.ai/" target="_blank" rel="noopener noreferrer" class="btn btn-link">Access Portal</a>
+                    <a href="index.html#" class="btn btn-primary pulsing-btn" id="liveEstimateBtn">
+                        Try It Live
+                    </a>
+                </div>
+            </nav>
         </div>
     </header>
 
@@ -476,16 +588,6 @@
                 
                 <div class="footer-copyright">
                     <p>© 2025 Dent-Vision AI — A prototype under development by Auto Care Quotes ABN 33 234 268 637 Australia</p>
-                    
-                    <div class="footer-legal-links">
-                        <a href="mailto:contact@dent-vision.ai">Contact</a>
-                        <span>•</span>
-                        <a href="legal.html#privacy">Privacy Policy</a>
-                        <span>•</span>
-                        <a href="legal.html#terms">Terms of Service</a>
-                        <span>•</span>
-                        <a href="legal.html#disclaimer">Disclaimer</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -725,17 +827,7 @@
             }
 
             .footer-legal-links {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-                margin-top: 10px;
-            }
-
-            .footer-legal-links span {
-                opacity: 0.3;
-                font-size: 0.7rem;
-                display: inline;
+                display: none;
             }
         }
     </style>

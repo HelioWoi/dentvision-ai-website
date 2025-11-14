@@ -95,13 +95,31 @@
         }
         
         .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
             padding: 0 24px;
             height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60.4px;
+            width: auto;
+            display: block;
         }
         
         .menu-toggle {
@@ -122,11 +140,20 @@
         .menu-toggle[aria-expanded="true"] svg {
             color: var(--accent);
         }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
+            width: 100%;
+        }
         
         .nav-links {
             display: flex;
-            gap: 32px;
             align-items: center;
+            gap: 32px;
+            margin: 0 auto;
         }
         
         .nav-links a {
@@ -160,19 +187,33 @@
         
         .header-buttons {
             display: flex;
-            gap: 16px;
             align-items: center;
+            gap: 24px;
+            margin-left: 24px;
+        }
+
+        .access-portal-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .access-portal-link:hover {
+            text-shadow: 0 0 8px rgba(163, 255, 0, 0.45);
+            opacity: 0.8;
         }
         
         .btn-link {
-            color: var(--text);
+            color: var(--accent);
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
         
         .btn-link:hover {
-            color: var(--accent);
+            text-shadow: 0 0 8px rgba(163, 255, 0, 0.45);
         }
         
         .btn-primary {
@@ -204,21 +245,6 @@
             100% {
                 box-shadow: 0 0 0 0 rgba(163, 255, 0, 0);
             }
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-            height: 80px;
-        }
-
-        .logo img {
-            height: 50px;
-            width: auto;
         }
 
         .btn {
@@ -543,10 +569,6 @@
                 background: rgba(15, 15, 15, 0.7) !important;
             }
 
-            #logoutBtn {
-                display: none !important;
-            }
-
             .header-container {
                 height: 72px;
                 padding: 0 20px;
@@ -574,8 +596,8 @@
                 display: none !important;
             }
 
-            /* Esconde o botão de logout "Sair" apenas no mobile */
-            #logoutBtn {
+            /* Esconder menu desktop e botões no mobile */
+            #mainNav {
                 display: none !important;
             }
 
@@ -650,7 +672,12 @@
                     <a href="index.html#roi-comparison">ROI</a>
                     <a href="index.html#faq">FAQ</a>
                 </div>
-                <!-- Header buttons removed as per request -->
+                <div class="header-buttons">
+                    <a href="https://partner.dent-vision.ai/" target="_blank" rel="noopener noreferrer" class="access-portal-link">Access Portal</a>
+                    <a href="index.html#" class="btn btn-primary pulsing-btn" id="liveEstimateBtn">
+                        Try It Live
+                    </a>
+                </div>
             </nav>
         </div>
     </header>
@@ -814,16 +841,6 @@
                 
                 <div class="footer-copyright">
                     <p>© 2025 Dent-Vision AI — A prototype under development by Auto Care Quotes ABN 33 234 268 637 Australia</p>
-                    
-                    <div class="footer-legal-links">
-                        <a href="mailto:contact@dent-vision.ai">Contact</a>
-                        <span>•</span>
-                        <a href="legal.html#privacy">Privacy Policy</a>
-                        <span>•</span>
-                        <a href="legal.html#terms">Terms of Service</a>
-                        <span>•</span>
-                        <a href="legal.html#disclaimer">Disclaimer</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1070,12 +1087,6 @@
             }
 
             .footer-legal-links {
-                flex-direction: column;
-                gap: 5px;
-                margin-top: 15px;
-            }
-
-            .footer-legal-links span {
                 display: none;
             }
         }

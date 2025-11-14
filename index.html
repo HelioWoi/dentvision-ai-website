@@ -210,7 +210,7 @@
         }
         
         .btn-link {
-            color: #FFFFFF;
+            color: var(--accent);
             font-family: 'Inter', sans-serif;
             font-weight: 600;
             font-size: 0.95rem;
@@ -220,7 +220,6 @@
         }
         
         .btn-link:hover {
-            color: var(--accent);
             text-shadow: 0 0 8px rgba(163, 255, 0, 0.45);
         }
         
@@ -1138,13 +1137,9 @@
 
         /* Responsive */
         @media (max-width: 900px) {
-            /* Header mobile: transparência constante e sem botão Sair */
+            /* Header mobile: transparência constante */
             header {
                 background: rgba(14, 14, 14, 0.7) !important;
-            }
-
-            #logoutBtn {
-                display: none !important;
             }
 
             .hero h1 {
@@ -1651,17 +1646,7 @@
             }
             
             .footer-legal-links {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-                margin-top: 10px;
-            }
-            
-            .footer-legal-links span {
-                opacity: 0.3;
-                font-size: 0.7rem;
-                display: inline;
+                display: none;
             }
             
             /* Ajustes para formulários */
@@ -2839,12 +2824,6 @@
                     <p style="font-size: 0.8rem; line-height: 1.6; margin: 10px 0; opacity: 0.6;">
                         © 2025 Dent-Vision AI — A prototype under development by Auto Care Quotes ABN 33 234 268 637 Australia
                     </p>
-                    <div style="display: flex; justify-content: center; gap: 15px; margin-top: 15px; flex-wrap: wrap;">
-                        <a href="mailto:contact@dent-vision.ai" style="color: var(--muted); text-decoration: none; font-size: 0.8rem;">Contact</a>
-                        <a href="legal.html#privacy" style="color: var(--muted); text-decoration: none; font-size: 0.8rem;">Privacy Policy</a>
-                        <a href="legal.html#terms" style="color: var(--muted); text-decoration: none; font-size: 0.8rem;">Terms of Service</a>
-                        <a href="legal.html#disclaimer" style="color: var(--muted); text-decoration: none; font-size: 0.8rem;">Disclaimer</a>
-                    </div>
                 </div>
             </div>
         </div>

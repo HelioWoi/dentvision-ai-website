@@ -74,6 +74,29 @@
             color: var(--accent);
             text-decoration: none;
             letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60.4px;
+            width: auto;
+            display: block;
+        }
+
+        /* Hamburger button (hidden on desktop, shown on mobile) */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .menu-toggle svg {
+            width: 24px;
+            height: 24px;
         }
 
         /* Main Content */
@@ -210,6 +233,41 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            /* Header mobile: mesmo comportamento visual da index */
+            header {
+                background: rgba(15, 15, 15, 0.7) !important;
+            }
+
+            #logoutBtn {
+                display: none !important;
+            }
+
+            .header-container {
+                height: 72px;
+                padding: 0 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+            }
+
+            .header-container .logo {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                margin: 0;
+            }
+
+            .header-container .logo img {
+                height: 48px !important;
+                width: auto;
+            }
+
+            /* Sem menu hambúrguer no mobile */
+            .menu-toggle {
+                display: none !important;
+            }
+
             .legal-container {
                 padding: 30px 20px;
             }
@@ -238,8 +296,17 @@
     <!-- Header -->
     <header id="header">
         <div class="container">
-            <div class="header-container" style="justify-content: center;">
-                <a href="index.html" class="logo">Dent-Vision AI</a>
+            <div class="header-container">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Dent Vision AI">
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
             </div>
         </div>
     </header>

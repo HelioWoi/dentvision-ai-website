@@ -1137,6 +1137,25 @@
         }
 
         /* Responsive */
+        @media (max-width: 900px) {
+            /* Header mobile: transparência constante e sem botão Sair */
+            header {
+                background: rgba(14, 14, 14, 0.7) !important;
+            }
+
+            #logoutBtn {
+                display: none !important;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 1024px) {
             .hero h1 {
                 font-size: 3rem;
@@ -1197,7 +1216,8 @@
             .menu-toggle {
                 display: block;
                 position: absolute;
-                left: 20px;
+                right: 20px;
+                left: auto;
                 z-index: 1001;
             }
             
@@ -1408,6 +1428,32 @@
         @media (max-width: 768px) {
             /* Ajustes para telas menores que 768px */
             
+            /* Header mobile alinhado com About/Legal: logo central; sem menu hambúrguer no mobile */
+            .header-container {
+                height: 72px;
+                padding: 0 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+            }
+
+            .header-container .logo {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                margin: 0;
+            }
+
+            .header-container .logo img {
+                height: 48px !important;
+                width: auto;
+            }
+
+            .menu-toggle {
+                display: none !important;
+            }
+
             /* Ajustes para o vídeo hero */
             .video-section {
                 padding: 60px 0 !important;
@@ -1926,6 +1972,60 @@
         </div>
     </section>
 
+    <style>
+        /* Oculta a seção de depoimentos no mobile, mantém no desktop */
+        @media (max-width: 768px) {
+            #testimonials {
+                display: none !important;
+            }
+        }
+    </style>
+
+    <style>
+        /* Mobile optimizations for ROI Comparison (inputs + cards em coluna) */
+        @media (max-width: 768px) {
+            /* Card externo do comparador */
+            #roi-comparison .container > div[style*="border-radius: 16px"] {
+                padding: 20px 16px !important;
+            }
+
+            /* FORM: 2 colunas -> 1 coluna */
+            #roi-comparison .container > div[style*="border-radius: 16px"] > div:nth-child(2) {
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+                margin-bottom: 24px !important;
+            }
+
+            /* CARDS: TRADITIONAL + DENT VISION AI empilhados */
+            #roi-comparison .container > div[style*="border-radius: 16px"] > div:nth-child(3) {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 16px !important;
+            }
+
+            /* Cada card ocupa toda a largura */
+            #roi-comparison .container > div[style*="border-radius: 16px"] > div:nth-child(3) > div {
+                width: 100% !important;
+            }
+
+            /* Bloco do resultado e botão com mais respiro */
+            #roi-comparison .container > div[style*="border-radius: 16px"] > div:nth-child(4) {
+                margin-top: 24px !important;
+                padding: 0 8px !important;
+            }
+
+            #roi-comparison .container > div[style*="border-radius: 16px"] a.btn {
+                width: 100% !important;
+                max-width: 320px;
+                margin: 0 auto !important; /* centraliza o botão dentro do container */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    </style>
+
     <!-- Vídeo Mobile (acima de How It Works) -->
     <div class="mobile-video-before-howitworks">
         <video autoplay muted loop playsinline>
@@ -2082,13 +2182,15 @@
         
         <style>
             @media (max-width: 768px) {
-                .side-videos .container > div:first-child {
+                /* Empilha os dois blocos de vídeo um abaixo do outro no mobile */
+                .side-videos .container > div:last-child {
+                    display: flex;
                     flex-direction: column;
                     gap: 30px !important;
                     padding: 0 15px;
                 }
                 
-                .side-videos .container > div:first-child > div {
+                .side-videos .container > div:last-child > div {
                     width: 100% !important;
                 }
             }

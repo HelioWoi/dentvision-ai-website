@@ -538,6 +538,47 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            /* Header mobile: mesma lógica visual da index */
+            header {
+                background: rgba(15, 15, 15, 0.7) !important;
+            }
+
+            #logoutBtn {
+                display: none !important;
+            }
+
+            .header-container {
+                height: 72px;
+                padding: 0 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative; /* para posicionar o menu */
+            }
+
+            /* Logo centralizada e com altura semelhante à index */
+            .header-container .logo {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                margin: 0;
+            }
+
+            .header-container .logo img {
+                height: 48px !important;
+                width: auto;
+            }
+
+            /* Sem menu hambúrguer no mobile */
+            .menu-toggle {
+                display: none !important;
+            }
+
+            /* Esconde o botão de logout "Sair" apenas no mobile */
+            #logoutBtn {
+                display: none !important;
+            }
+
             .hero-section h1 {
                 font-size: 2.5rem;
             }

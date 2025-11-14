@@ -1627,11 +1627,22 @@
                 padding: 20px 20px 0;
                 text-align: center;
             }
+
+            /* Footer mobile igual à referência (centralizado) */
+            .footer-disclaimer {
+                margin-bottom: 20px;
+                text-align: center;
+                padding: 0;
+            }
             
             .footer-disclaimer p {
-                font-size: 0.75rem;
+                font-size: 0.8rem;
                 line-height: 1.6;
-                text-align: left;
+                text-align: center;
+                margin: 0 auto 15px auto;
+                max-width: 800px;
+                color: var(--muted);
+                opacity: 0.8;
             }
             
             .footer-copyright p {
@@ -1640,13 +1651,17 @@
             }
             
             .footer-legal-links {
-                flex-direction: column;
-                gap: 5px;
-                margin-top: 15px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+                margin-top: 10px;
             }
             
             .footer-legal-links span {
-                display: none;
+                opacity: 0.3;
+                font-size: 0.7rem;
+                display: inline;
             }
             
             /* Ajustes para formulários */

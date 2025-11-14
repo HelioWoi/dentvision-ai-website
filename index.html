@@ -1740,49 +1740,46 @@
                 .hero-buttons {
                     display: flex !important;
                     flex-direction: row !important;
+                    flex-wrap: nowrap;
                     gap: 12px !important;
                     width: 100% !important;
-                    max-width: 100% !important;
-                    margin: 0 0 32px 0 !important;
-                    justify-content: center; /* Centraliza os botões */
-                    align-items: center; /* Alinha verticalmente */
+                    max-width: 360px;
+                    margin: 0 auto 32px auto !important; /* centraliza o grupo */
+                    justify-content: center;
+                    align-items: stretch;
                 }
-                
-                .hero-buttons .btn {
-                    flex: 0 1 auto; /* Permite que os botões tenham largura baseada no conteúdo */
-                    min-width: 140px; /* Largura mínima para manter consistência */
-                    padding: 12px 16px !important; /* Aumentei o padding horizontal para melhorar a aparência */
+
+                /* garante que sejam os links/botões dentro do grupo */
+                .hero-buttons a.btn,
+                .hero-buttons button.btn {
+                    flex: 1 1 0 !important;      /* mesma largura pros dois */
+                    min-width: 0;
+                    width: auto !important;      /* tira qualquer width:100% global */
+                    max-width: none !important;
+                    padding: 12px 16px !important;
                     text-align: center;
-                    white-space: nowrap;
-                    font-size: 0.95rem !important;
-                    font-weight: 500;
-                    border-radius: 6px;
                     display: flex !important;
                     align-items: center;
                     justify-content: center;
-                    height: 44px; /* Altura fixa para ambos os botões */
-                    line-height: 1.2;
                     box-sizing: border-box;
-                    margin: 0 auto; /* Centraliza os botões individualmente */
+                    margin: 0 !important;
+                    white-space: nowrap;
+                    font-size: 0.95rem !important;
+                    font-weight: 500;
+                    border-radius: 999px;        /* pill do design */
+                    line-height: 1.2;
                 }
-                
+
                 .hero-buttons .btn-primary {
                     background: var(--accent) !important;
                     color: var(--bg) !important;
                     border: 1px solid var(--accent) !important;
                 }
-                
+
                 .hero-buttons .btn-secondary {
                     background: transparent !important;
                     border: 1px solid var(--accent) !important;
                     color: var(--accent) !important;
-                }
-                
-                /* Garante que os botões tenham a mesma largura */
-                .hero-buttons .btn {
-                    flex: 0 1 auto; /* Mantém o tamanho baseado no conteúdo */
-                    min-width: 140px; /* Largura mínima consistente */
-                    max-width: 200px; /* Largura máxima para evitar que fiquem muito largos */
                 }
                 
                 .hero-features {
@@ -2719,7 +2716,7 @@
             
             <div class="footer-bottom">
                 <p style="font-size: 0.8rem; line-height: 1.6; margin-bottom: 15px; opacity: 0.6; text-align: center;">
-                    Dent-Vision AI is currently in beta testing. Final repair costs must be confirmed after a physical inspection.
+                    Dent-Vision AI is currently in beta testing, and minor variations may occur. The platform assists PDR workshops and specialists through automated AI analysis and instant estimates based on your pricing settings and submitted photos. It includes tools for quotes, proposals, workflow tracking, technician management, and performance insights. Because estimates are automated, small deviations may happen. Final repair costs must be confirmed after a physical inspection. By signing in, you acknowledge and agree to these terms.
                 </p>
                 <div style="text-align: center;">
                     <p style="font-size: 0.8rem; line-height: 1.6; margin: 10px 0; opacity: 0.6;">

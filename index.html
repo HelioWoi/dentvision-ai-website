@@ -1928,7 +1928,7 @@
         <div class="container hero-container">
             <div class="hero-content">
                 <h1>Grow Leads with<br><span style="color: var(--accent);">Smart AI</span> <span style="color: white;">Quotes</span>.</h1>
-                <p>Dent estimates in under 60 seconds for workshops and customers. Customised by your pricing.</p>
+                <p>Dent estimates in under 60 seconds for bodyshop and customers. Customised by your pricing.</p>
                 <div class="hero-buttons">
                     <a href="#" class="btn btn-primary" onclick="event.preventDefault(); openModal('liveDemoModal');">Try It Live</a>
                     <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
@@ -1952,7 +1952,7 @@
             </div>
             <div class="video-container" id="videoContainer">
                 <div class="video-wrapper">
-                    <video id="mainVideo" autoplay muted loop playsinline>
+                    <video id="mainVideo" autoplay muted loop playsinline preload="metadata">
                         <source src="videos/optimized/video 1.mp4" type="video/mp4">
                         Seu navegador não suporta o elemento de vídeo.
                     </video>
@@ -2028,7 +2028,7 @@
 
     <!-- Vídeo Mobile (acima de How It Works) -->
     <div class="mobile-video-before-howitworks">
-        <video autoplay muted loop playsinline>
+        <video autoplay muted loop playsinline preload="metadata">
             <source src="videos/optimized/video 1.mp4" type="video/mp4">
             Seu navegador não suporta o elemento de vídeo.
         </video>
@@ -2092,8 +2092,8 @@
     <section class="video-section" style="position: relative; padding: 100px 0; text-align: center; overflow: hidden;">
         <!-- Video Background -->
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; overflow: hidden;">
-            <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7; min-height: 100%; min-width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                <source src="videos/optimized/video 2.mp4" type="video/mp4">
+            <video class="lazy-video" autoplay muted loop playsinline preload="none" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7; min-height: 100%; min-width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                <source data-src="videos/optimized/video 2.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -2158,8 +2158,8 @@
             <div style="display: flex; gap: 30px; justify-content: center;">
                 <div style="flex: 1; min-width: 0;">
                     <div style="position: relative; padding-top: 56.25%; border-radius: 12px; overflow: hidden; border: 1px solid #444; transition: all 0.3s ease;">
-                        <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                            <source src="videos/optimized/video live scan.mp4" type="video/mp4">
+                        <video class="lazy-video" autoplay muted loop playsinline preload="none" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                            <source data-src="videos/optimized/video live scan.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -2169,8 +2169,8 @@
                 
                 <div style="flex: 1; min-width: 0;">
                     <div style="position: relative; padding-top: 56.25%; border-radius: 12px; overflow: hidden; border: 1px solid #444; transition: all 0.3s ease;">
-                        <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                            <source src="videos/optimized/video manual.mp4" type="video/mp4">
+                        <video class="lazy-video" autoplay muted loop playsinline preload="none" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                            <source data-src="videos/optimized/video manual.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -2363,8 +2363,8 @@
         </style>
         <div class="container">
             <div class="dashboard-image-container" style="position: relative; max-width: 800px; margin: 0 auto;">
-                <video autoplay muted loop playsinline style="width: 100%; border-radius: 16px; display: block;">
-                    <source src="videos/optimized/video 3.mp4" type="video/mp4">
+                <video class="lazy-video" autoplay muted loop playsinline preload="none" style="width: 100%; border-radius: 16px; display: block;">
+                    <source data-src="videos/optimized/video 3.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -2558,7 +2558,7 @@
                 <div class="benefit-card" style="background: rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 30px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1);">
                     <h3 style="color: var(--accent); margin-top: 0; font-size: 1.5rem; margin-bottom: 15px;">Faster Workflow</h3>
                     <p style="font-style: italic; margin-bottom: 20px; font-size: 1.1rem;">"Quote dents in under 60 seconds with Live Scan or Photo Upload."</p>
-                    <p style="color: rgba(255, 255, 255, 0.9); margin: 0;">The AI handles the heavy lifting so workshops can focus on repairs, not admin.</p>
+                    <p style="color: rgba(255, 255, 255, 0.9); margin: 0;">The AI handles the heavy lifting so bodyshop can focus on repairs, not admin.</p>
                 </div>
                 
                 <!-- Card 2 -->
@@ -2818,7 +2818,7 @@
             
             <div class="footer-bottom">
                 <p style="font-size: 0.8rem; line-height: 1.6; margin-bottom: 15px; opacity: 0.6; text-align: center;">
-                    Dent-Vision AI is currently in beta testing, and minor variations may occur. The platform assists PDR workshops and specialists through automated AI analysis and instant estimates based on your pricing settings and submitted photos. It includes tools for quotes, proposals, workflow tracking, technician management, and performance insights. Because estimates are automated, small deviations may happen. Final repair costs must be confirmed after a physical inspection. By signing in, you acknowledge and agree to these terms.
+                    Dent-Vision AI is currently in beta testing, and minor variations may occur. The platform assists PDR bodyshop and specialists through automated AI analysis and instant estimates based on your pricing settings and submitted photos. It includes tools for quotes, proposals, workflow tracking, technician management, and performance insights. Because estimates are automated, small deviations may happen. Final repair costs must be confirmed after a physical inspection. By signing in, you acknowledge and agree to these terms.
                 </p>
                 <div style="text-align: center;">
                     <p style="font-size: 0.8rem; line-height: 1.6; margin: 10px 0; opacity: 0.6;">
@@ -4048,6 +4048,55 @@
                     initMobileMenu();
                 }, 250);
             });
+        });
+
+        // Lazy Loading de Vídeos com Intersection Observer
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyVideos = document.querySelectorAll('video.lazy-video');
+            
+            if ('IntersectionObserver' in window) {
+                const videoObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            const video = entry.target;
+                            const source = video.querySelector('source[data-src]');
+                            
+                            if (source) {
+                                source.src = source.dataset.src;
+                                source.removeAttribute('data-src');
+                                video.load();
+                                
+                                // Play o vídeo se tiver autoplay
+                                if (video.hasAttribute('autoplay')) {
+                                    video.play().catch(function(error) {
+                                        console.log('Autoplay foi bloqueado:', error);
+                                    });
+                                }
+                            }
+                            
+                            video.classList.remove('lazy-video');
+                            observer.unobserve(video);
+                        }
+                    });
+                }, {
+                    rootMargin: '200px 0px', // Carrega 200px antes de entrar na tela
+                    threshold: 0.01
+                });
+                
+                lazyVideos.forEach(function(video) {
+                    videoObserver.observe(video);
+                });
+            } else {
+                // Fallback para navegadores sem suporte a IntersectionObserver
+                lazyVideos.forEach(function(video) {
+                    const source = video.querySelector('source[data-src]');
+                    if (source) {
+                        source.src = source.dataset.src;
+                        source.removeAttribute('data-src');
+                        video.load();
+                    }
+                });
+            }
         });
     </script>
 </body>

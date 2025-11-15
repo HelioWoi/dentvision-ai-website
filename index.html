@@ -25,6 +25,9 @@
     <meta property="twitter:description" content="Solução completa para gestão de oficinas PDR com análise de IA para orçamentos precisos.">
     <meta property="twitter:image" content="https://dent-vision.ai/images/og-image.jpg">
     
+    <!-- Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
     <!-- Preload de fontes críticas -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"></noscript>
@@ -2728,11 +2731,8 @@
             
             <div id="demoFormContainer" style="margin-top: 40px; background: rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
                 <h3 style="margin-top: 0; margin-bottom: 20px;">Request a Demo</h3>
-                <form id="demoForm" action="https://formsubmit.co/contact@dent-vision.ai" method="POST" style="display: grid; gap: 16px;">
-                    <input type="hidden" name="_subject" value="New Demo Request from Dent-Vision AI">
-                    <input type="hidden" name="_next" value="https://dent-vision.ai/thank-you.html">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="text" name="_honey" style="display:none">
+                <form id="demoForm" style="display: grid; gap: 16px;">
+                    <!-- Supabase integration - no action/method needed -->
                     <div style="display: grid; gap: 8px;">
                         <label for="fullName" style="font-weight: 500;">Full Name</label>
                         <input type="text" id="fullName" name="fullName" required 
@@ -3681,12 +3681,46 @@
         `;
         document.head.appendChild(videoModalStyle);
 
-        // Handle form submission - FormSubmit processa o envio
-        document.getElementById('demoForm').addEventListener('submit', (e) => {
-            // Permitir envio normal do formulário
+        // Handle form submission - Supabase
+        document.getElementById('demoForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
             const button = e.target.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
             button.textContent = 'Sending...';
             button.disabled = true;
+            
+            try {
+                const formData = new FormData(e.target);
+                
+                // Preparar dados para Supabase
+                const leadData = {
+                    full_name: formData.get('fullName'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone') || null,
+                    company: formData.get('businessName'),
+                    message: formData.get('message') || null,
+                    form_type: 'demo',
+                    status: 'new'
+                };
+                
+                // Enviar para Supabase
+                const result = await window.SupabaseLeads.createLead(leadData);
+                
+                if (result.success) {
+                    alert('✅ Thank you for your demo request!\n\nWe\'ll contact you within 24 hours.\n\nCheck your email for our response.');
+                    e.target.reset();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    throw new Error(result.error);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('⚠️ There was an error. Please try again or email us at contact@dent-vision.ai');
+            } finally {
+                button.textContent = originalText;
+                button.disabled = false;
+            }
         });
         
         // Become a Partner button
@@ -3730,11 +3764,8 @@
             <span class="close-modal">&times;</span>
             <h3>Start Your 14-Day Free Trial</h3>
             <p>Fill out this form to start your free trial</p>
-            <form id="trialForm" action="https://formsubmit.co/contact@dent-vision.ai" method="POST">
-                <input type="hidden" name="_subject" value="New 14-Day Trial Request from Dent-Vision AI">
-                <input type="hidden" name="_next" value="https://dent-vision.ai/thank-you.html">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="text" name="_honey" style="display:none">
+            <form id="trialForm">
+                <!-- Supabase integration - no action/method needed -->
                 <div class="form-group">
                     <label for="trialName">Full Name*</label>
                     <input type="text" id="trialName" name="name" required>
@@ -3933,39 +3964,93 @@
                 liveDemoForm.addEventListener('submit', async function(e) {
                     e.preventDefault();
                     
-                    // Obter dados do formulário
-                    const formData = {
-                        name: document.getElementById('liveName').value,
-                        email: document.getElementById('liveEmail').value,
-                        workshop: document.getElementById('liveWorkshop').value,
-                        phone: document.getElementById('livePhone').value,
-                        source: 'Live Demo - ' + window.location.href,
-                    };
+                    try {
+                        // Preparar dados para Supabase
+                        const leadData = {
+                            full_name: document.getElementById('liveName').value,
+                            email: document.getElementById('liveEmail').value,
+                            company: document.getElementById('liveWorkshop').value,
+                            phone: document.getElementById('livePhone').value || null,
+                            message: null,
+                            form_type: 'live_demo',
+                            status: 'new'
+                        };
 
-                    // Simular envio do formulário
-                    console.log('Enviando formulário de Live Demo:', formData);
-                    alert('Thank you for your interest! Opening live demo...');
-                    liveDemoForm.reset();
-                    closeModal('liveDemoModal');
-                    // Abrir demo ao vivo em nova aba
-                    window.open('https://demo.dent-vision.ai/', '_blank');
+                        // Enviar para Supabase (não aguardar - processar em background)
+                        window.SupabaseLeads.createLead(leadData).then(result => {
+                            if (result.success) {
+                                console.log('✅ Lead saved successfully');
+                            } else {
+                                console.error('❌ Error saving lead:', result.error);
+                            }
+                        });
+
+                        // Abrir demo imediatamente (não aguardar Supabase)
+                        alert('Thank you for your interest! Opening live demo...');
+                        liveDemoForm.reset();
+                        closeModal('liveDemoModal');
+                        window.open('https://demo.dent-vision.ai/', '_blank');
+                    } catch (error) {
+                        console.error('Error:', error);
+                        // Mesmo com erro, abrir o demo
+                        liveDemoForm.reset();
+                        closeModal('liveDemoModal');
+                        window.open('https://demo.dent-vision.ai/', '_blank');
+                    }
                 });
             }
 
             // Formulário do Trial de 14 dias
             const trialForm = document.getElementById('trialForm');
             if (trialForm) {
-                trialForm.addEventListener('submit', function(e) {
-                    // Permitir envio normal - FormSubmit vai processar
-                    // Apenas feedback visual antes do envio
+                trialForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
                     const submitBtn = e.target.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
                     submitBtn.textContent = 'Sending...';
                     submitBtn.disabled = true;
+                    
+                    try {
+                        const formData = new FormData(e.target);
+                        
+                        // Preparar dados para Supabase
+                        const leadData = {
+                            full_name: formData.get('name'),
+                            email: formData.get('email'),
+                            phone: formData.get('phone') || null,
+                            company: formData.get('workshop'),
+                            message: null,
+                            form_type: 'trial',
+                            plan: formData.get('plan') || 'pro', // Plano default
+                            status: 'new'
+                        };
+                        
+                        // Enviar para Supabase
+                        const result = await window.SupabaseLeads.createLead(leadData);
+                        
+                        if (result.success) {
+                            alert('✅ Thank you! Your request has been received.\n\nWe\'ll contact you within 24 hours with access instructions.\n\nCheck your email: contact@dent-vision.ai');
+                            trialForm.reset();
+                            closeModal('trialModal');
+                        } else {
+                            throw new Error(result.error);
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('⚠️ There was an error sending your request. Please try again or contact us directly at contact@dent-vision.ai');
+                    } finally {
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }
                 });
             }
         });
 
     </script>
+    
+    <!-- Supabase Configuration -->
+    <script src="js/supabase-config.js"></script>
     
     <!-- Script de Autenticação -->
     <script src="js/auth.js"></script>

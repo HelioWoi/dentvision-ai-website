@@ -2626,7 +2626,7 @@
                         <li>Custom Integrations</li>
                         <li>Dedicated Account Manager</li>
                     </ul>
-                    <a href="#contact" class="btn btn-secondary" style="width: 100%;">Contact Sales</a>
+                    <a href="mailto:contact@dent-vision.ai?subject=Enterprise Plan Inquiry" class="btn btn-secondary" style="width: 100%;">Contact Sales</a>
                 </div>
             </div>
             
@@ -2730,7 +2730,7 @@
                 <h3 style="margin-top: 0; margin-bottom: 20px;">Request a Demo</h3>
                 <form id="demoForm" action="https://formsubmit.co/contact@dent-vision.ai" method="POST" style="display: grid; gap: 16px;">
                     <input type="hidden" name="_subject" value="New Demo Request from Dent-Vision AI">
-                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="https://dent-vision.ai/thank-you.html">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="text" name="_honey" style="display:none">
                     <div style="display: grid; gap: 8px;">
@@ -3681,45 +3681,17 @@
         `;
         document.head.appendChild(videoModalStyle);
 
-        // Handle form submission - FormSubmit agora lida com o envio
+        // Handle form submission - FormSubmit processa o envio
         document.getElementById('demoForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            
+            // Permitir envio normal do formulário
             const button = e.target.querySelector('button[type="submit"]');
-            const originalText = button.textContent;
             button.textContent = 'Sending...';
             button.disabled = true;
-            
-            // Enviar via fetch
-            fetch(e.target.action, {
-                method: 'POST',
-                body: new FormData(e.target),
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    alert('✅ Thank you for your demo request!\n\nWe\'ll contact you within 24 hours.\n\nCheck your email for our response.');
-                    e.target.reset();
-                    button.textContent = originalText;
-                    button.disabled = false;
-                    
-                    // Scroll suave para o topo após envio
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                } else {
-                    throw new Error('Network response was not ok');
-                }
-            }).catch(error => {
-                console.error('Error:', error);
-                alert('⚠️ There was an error. Please try again or email us at contact@dent-vision.ai');
-                button.textContent = originalText;
-                button.disabled = false;
-            });
         });
         
         // Become a Partner button
         becomePartnerBtn.addEventListener('click', () => {
-            window.location.href = '#contact';
+            window.location.href = '#demoFormContainer';
             closeModal();
         });
     </script>
@@ -3760,7 +3732,7 @@
             <p>Fill out this form to start your free trial</p>
             <form id="trialForm" action="https://formsubmit.co/contact@dent-vision.ai" method="POST">
                 <input type="hidden" name="_subject" value="New 14-Day Trial Request from Dent-Vision AI">
-                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://dent-vision.ai/thank-you.html">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="text" name="_honey" style="display:none">
                 <div class="form-group">
@@ -3984,38 +3956,11 @@
             const trialForm = document.getElementById('trialForm');
             if (trialForm) {
                 trialForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Feedback visual
+                    // Permitir envio normal - FormSubmit vai processar
+                    // Apenas feedback visual antes do envio
                     const submitBtn = e.target.querySelector('button[type="submit"]');
-                    const originalText = submitBtn.textContent;
                     submitBtn.textContent = 'Sending...';
                     submitBtn.disabled = true;
-                    
-                    // Enviar via fetch para evitar redirecionamento
-                    fetch(e.target.action, {
-                        method: 'POST',
-                        body: new FormData(e.target),
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    }).then(response => {
-                        if (response.ok) {
-                            // Sucesso - mostrar mensagem e fechar modal
-                            alert('✅ Thank you! Your request has been received.\n\nWe\'ll contact you within 24 hours with access instructions.\n\nCheck your email: contact@dent-vision.ai');
-                            trialForm.reset();
-                            closeModal('trialModal');
-                            submitBtn.textContent = originalText;
-                            submitBtn.disabled = false;
-                        } else {
-                            throw new Error('Network response was not ok');
-                        }
-                    }).catch(error => {
-                        console.error('Error:', error);
-                        alert('⚠️ There was an error sending your request. Please try again or contact us directly at contact@dent-vision.ai');
-                        submitBtn.textContent = originalText;
-                        submitBtn.disabled = false;
-                    });
                 });
             }
         });

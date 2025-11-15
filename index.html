@@ -2391,7 +2391,7 @@
                                 <strong>Metrics</strong> - Track approval rates and average response time.
                             </li>
                         </ul>
-                        <a href="#" class="btn btn-primary" style="display: inline-block; margin-top: 10px;" onclick="event.preventDefault(); openModal('trialModal');">Start Free Trial</a>
+                        <a href="#pricing" class="btn btn-primary" style="display: inline-block; margin-top: 10px;">Start Free Trial</a>
                     </div>
                     <div style="background: rgba(0, 0, 0, 0.3); border-radius: 12px; padding: 20px; text-align: center;">
                         <div style="background: var(--bg); border-radius: 8px; padding: 20px; margin-bottom: 20px; text-align: left;">
@@ -2723,12 +2723,16 @@
             <h2>Stop Wasting Time on Manual Estimates</h2>
             <p>Let AI handle the heavy lifting while you focus on delivering perfect repairs. Get started with a 14-day free trial.</p>
             <div class="cta-buttons">
-                <a href="#" class="btn btn-secondary" id="ctaTryFree" onclick="event.preventDefault(); openModal('trialModal');">Try it Free</a>
+                <a href="#pricing" class="btn btn-secondary" id="ctaTryFree">Try it Free</a>
             </div>
             
             <div id="demoFormContainer" style="margin-top: 40px; background: rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
                 <h3 style="margin-top: 0; margin-bottom: 20px;">Request a Demo</h3>
-                <form id="demoForm" style="display: grid; gap: 16px;">
+                <form id="demoForm" action="https://formsubmit.co/contact@dent-vision.ai" method="POST" style="display: grid; gap: 16px;">
+                    <input type="hidden" name="_subject" value="New Demo Request from Dent-Vision AI">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="text" name="_honey" style="display:none">
                     <div style="display: grid; gap: 8px;">
                         <label for="fullName" style="font-weight: 500;">Full Name</label>
                         <input type="text" id="fullName" name="fullName" required 
@@ -3677,16 +3681,40 @@
         `;
         document.head.appendChild(videoModalStyle);
 
-        // Handle form submission
+        // Handle form submission - FormSubmit agora lida com o envio
         document.getElementById('demoForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            // Here you would typically send the form data to your server
-            alert('Thank you for your demo request! Redirecting to live demo...');
-            document.getElementById('demoForm').reset();
-            // Redirect to demo after form submission
-            setTimeout(() => {
-                window.open('https://demo.dent-vision.ai/', '_blank');
-            }, 1000);
+            
+            const button = e.target.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            button.textContent = 'Sending...';
+            button.disabled = true;
+            
+            // Enviar via fetch
+            fetch(e.target.action, {
+                method: 'POST',
+                body: new FormData(e.target),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    alert('✅ Thank you for your demo request!\n\nWe\'ll contact you within 24 hours.\n\nCheck your email for our response.');
+                    e.target.reset();
+                    button.textContent = originalText;
+                    button.disabled = false;
+                    
+                    // Scroll suave para o topo após envio
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+                alert('⚠️ There was an error. Please try again or email us at contact@dent-vision.ai');
+                button.textContent = originalText;
+                button.disabled = false;
+            });
         });
         
         // Become a Partner button
@@ -3730,7 +3758,11 @@
             <span class="close-modal">&times;</span>
             <h3>Start Your 14-Day Free Trial</h3>
             <p>Fill out this form to start your free trial</p>
-            <form id="trialForm">
+            <form id="trialForm" action="https://formsubmit.co/contact@dent-vision.ai" method="POST">
+                <input type="hidden" name="_subject" value="New 14-Day Trial Request from Dent-Vision AI">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="text" name="_honey" style="display:none">
                 <div class="form-group">
                     <label for="trialName">Full Name*</label>
                     <input type="text" id="trialName" name="name" required>
@@ -3951,29 +3983,39 @@
             // Formulário do Trial de 14 dias
             const trialForm = document.getElementById('trialForm');
             if (trialForm) {
-                trialForm.addEventListener('submit', async function(e) {
+                trialForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    try {
-                        // Obter dados do formulário
-                        const formData = {
-                            name: document.getElementById('trialName').value,
-                            email: document.getElementById('trialEmail').value,
-                            workshop: document.getElementById('trialWorkshop').value,
-                            phone: document.getElementById('trialPhone').value,
-                            source: '14-Day Trial - ' + window.location.href,
-                            timestamp: new Date().toISOString()
-                        };
-
-                        // Simular envio do formulário
-                        console.log('Enviando formulário de 14-Day Trial:', formData);
-                        alert('Thank you for signing up for the 14-day trial! We will contact you shortly.');
-                        trialForm.reset();
-                        closeModal('trialModal');
-                    } catch (error) {
-                        console.error('Error submitting form:', error);
-                        alert('An error occurred. Please try again.');
-                    }
+                    // Feedback visual
+                    const submitBtn = e.target.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    submitBtn.textContent = 'Sending...';
+                    submitBtn.disabled = true;
+                    
+                    // Enviar via fetch para evitar redirecionamento
+                    fetch(e.target.action, {
+                        method: 'POST',
+                        body: new FormData(e.target),
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    }).then(response => {
+                        if (response.ok) {
+                            // Sucesso - mostrar mensagem e fechar modal
+                            alert('✅ Thank you! Your request has been received.\n\nWe\'ll contact you within 24 hours with access instructions.\n\nCheck your email: contact@dent-vision.ai');
+                            trialForm.reset();
+                            closeModal('trialModal');
+                            submitBtn.textContent = originalText;
+                            submitBtn.disabled = false;
+                        } else {
+                            throw new Error('Network response was not ok');
+                        }
+                    }).catch(error => {
+                        console.error('Error:', error);
+                        alert('⚠️ There was an error sending your request. Please try again or contact us directly at contact@dent-vision.ai');
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    });
                 });
             }
         });

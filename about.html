@@ -1071,8 +1071,17 @@
             }
 
             .footer-bottom {
-                padding: 20px 20px 0;
+                padding: 20px 20px 30px;
                 text-align: center;
+            }
+            
+            /* Ajustar também o parágrafo de disclaimer inline */
+            .footer-bottom > p {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                white-space: normal;
+                padding: 0 10px;
+                max-width: 100%;
             }
             
             .footer-disclaimer p {
@@ -1084,6 +1093,15 @@
             .footer-copyright p {
                 font-size: 0.8rem;
                 line-height: 1.5;
+            }
+            
+            /* Garantir quebra de linha adequada no copyright mobile */
+            .footer-bottom div[style*="text-align: center"] p {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                white-space: normal;
+                padding: 0 10px;
+                max-width: 100%;
             }
 
             .footer-legal-links {

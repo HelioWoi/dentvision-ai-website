@@ -3800,8 +3800,21 @@
                     <label for="trialPhone">Phone Number</label>
                     <input type="tel" id="trialPhone" name="phone">
                 </div>
+                <div id="trialFormError" style="color: #ff4444; font-size: 14px; margin-bottom: 15px; display: none;"></div>
                 <button type="submit" class="btn btn-primary">Start Free Trial</button>
             </form>
+        </div>
+    </div>
+
+    <!-- Check Email Modal -->
+    <div id="checkEmailModal" class="modal">
+        <div class="modal-content" style="text-align: center;">
+            <span class="close-modal">&times;</span>
+            <div style="font-size: 48px; margin-bottom: 20px;">🎉</div>
+            <h3>Welcome to your 14-day free trial!</h3>
+            <p style="margin: 20px 0; font-size: 16px;">Check your email</p>
+            <p style="color: #888; font-size: 14px;">We've sent you a magic link to access your trial dashboard. Click the link in your email to get started.</p>
+            <button class="btn btn-primary" style="margin-top: 20px;" onclick="closeModal('checkEmailModal')">Got it!</button>
         </div>
     </div>
 
@@ -4020,6 +4033,7 @@
 
             // Formulário do Trial de 14 dias
             const trialForm = document.getElementById('trialForm');
+            const trialFormError = document.getElementById('trialFormError');
             if (trialForm) {
                 trialForm.addEventListener('submit', async function(e) {
                     e.preventDefault();
@@ -4029,13 +4043,20 @@
                     submitBtn.textContent = 'Sending...';
                     submitBtn.disabled = true;
                     
+                    // Hide previous errors
+                    if (trialFormError) {
+                        trialFormError.style.display = 'none';
+                        trialFormError.textContent = '';
+                    }
+                    
                     try {
                         const formData = new FormData(e.target);
+                        const email = formData.get('email');
                         
                         // Preparar dados para Supabase
                         const leadData = {
                             full_name: formData.get('name'),
-                            email: formData.get('email'),
+                            email: email,
                             phone: formData.get('phone') || null,
                             company: formData.get('workshop'),
                             message: null,
@@ -4044,19 +4065,37 @@
                             status: 'new'
                         };
                         
-                        // Enviar para Supabase
+                        // Enviar para Supabase (save lead data)
                         const result = await window.SupabaseLeads.createLead(leadData);
                         
-                        if (result.success) {
-                            alert('✅ Thank you! Your request has been received.\n\nWe\'ll contact you within 24 hours with access instructions.\n\nCheck your email: contact@dent-vision.ai');
-                            trialForm.reset();
-                            closeModal('trialModal');
-                        } else {
+                        if (!result.success) {
                             throw new Error(result.error);
                         }
+                        
+                        // Send OTP magic link
+                        const { error: authError } = await supabase.auth.signInWithOtp({
+                            email: email,
+                            options: {
+                                emailRedirectTo: 'https://partner.dent-vision.ai/'
+                            }
+                        });
+                        
+                        if (authError) {
+                            throw new Error(authError.message);
+                        }
+                        
+                        // Success - show check email modal
+                        trialForm.reset();
+                        closeModal('trialModal');
+                        openModal('checkEmailModal');
+                        
                     } catch (error) {
                         console.error('Error:', error);
-                        alert('⚠️ There was an error sending your request. Please try again or contact us directly at contact@dent-vision.ai');
+                        // Show error message below form
+                        if (trialFormError) {
+                            trialFormError.textContent = '⚠️ ' + (error.message || 'There was an error. Please try again.');
+                            trialFormError.style.display = 'block';
+                        }
                     } finally {
                         submitBtn.textContent = originalText;
                         submitBtn.disabled = false;

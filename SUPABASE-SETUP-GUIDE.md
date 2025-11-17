@@ -16,20 +16,35 @@
 
 ## 📋 Próximos Passos - EXECUTE AGORA
 
-### **PASSO 1: Executar SQL no Supabase** ⚡
+### **PASSO 1: Configurar Redirect URLs (CRÍTICO!)** 🔐
+
+**IMPORTANTE:** Sem esta configuração, os magic links não funcionarão!
 
 1. Acesse: https://supabase.com/dashboard/project/zjdjjhtofouafygkctne
-2. Clique em **SQL Editor** no menu lateral (ícone </>)
-3. Clique em **"+ New query"**
-4. Abra o arquivo `supabase-setup.sql`
-5. **Copie TODO o conteúdo** do arquivo
-6. **Cole** no SQL Editor do Supabase
-7. Clique em **"Run"** (ou pressione Cmd+Enter)
-8. ✅ Aguarde a mensagem: **"Success. No rows returned"**
+2. Clique em **Authentication** no menu lateral (ícone 🔐)
+3. Clique em **URL Configuration** no submenu
+4. Encontre a seção **"Redirect URLs"**
+5. Adicione a URL: `https://partner.dent-vision.ai/`
+6. Clique em **"Add URL"** ou **"Save"**
+7. ✅ Verifique se a URL aparece na lista de URLs permitidas
+
+**NOTA:** Sem este passo, os magic links redirecionarão para localhost e não funcionarão em produção!
 
 ---
 
-### **PASSO 2: Verificar Tabela Criada** ✓
+### **PASSO 2: Executar SQL no Supabase** ⚡
+
+1. Ainda no Dashboard, clique em **SQL Editor** no menu lateral (ícone </>)
+2. Clique em **"+ New query"**
+3. Abra o arquivo `supabase-setup.sql`
+4. **Copie TODO o conteúdo** do arquivo
+5. **Cole** no SQL Editor do Supabase
+6. Clique em **"Run"** (ou pressione Cmd+Enter)
+7. ✅ Aguarde a mensagem: **"Success. No rows returned"**
+
+---
+
+### **PASSO 3: Verificar Tabela Criada** ✓
 
 1. No Supabase Dashboard, clique em **"Table Editor"**
 2. Você deve ver a tabela **"leads"** na lista
@@ -50,7 +65,7 @@
 
 ---
 
-### **PASSO 3: Fazer Upload dos Arquivos** 📤
+### **PASSO 4: Fazer Upload dos Arquivos** 📤
 
 Faça upload de TODOS os arquivos para o servidor:
 
@@ -73,7 +88,7 @@ Faça upload de TODOS os arquivos para o servidor:
 
 ---
 
-### **PASSO 4: Testar os Formulários** 🧪
+### **PASSO 5: Testar os Formulários** 🧪
 
 #### A. Teste Local (antes do deploy):
 1. Abra `index.html` no navegador
@@ -180,6 +195,20 @@ SELECT * FROM leads_dashboard;
 
 ## 🔧 Troubleshooting
 
+### ❌ Erro "otp_expired" ou "access_denied" ao clicar no magic link
+**Problema:** Magic link redireciona para `http://127.0.0.1` ao invés de `https://partner.dent-vision.ai/`
+
+**Solução:**
+1. Acesse: https://supabase.com/dashboard/project/zjdjjhtofouafygkctne
+2. Vá em **Authentication** → **URL Configuration**
+3. Na seção **"Redirect URLs"**, adicione: `https://partner.dent-vision.ai/`
+4. Clique em **Save**
+5. Teste novamente preenchendo o formulário de trial
+
+**IMPORTANTE:** Sem esta configuração, os magic links NÃO funcionarão!
+
+---
+
 ### ❌ "Supabase configuration loaded" não aparece no console
 **Solução:** Verifique se o arquivo `js/supabase-config.js` foi enviado corretamente
 
@@ -271,12 +300,13 @@ ORDER BY created_at ASC;
 
 ## 📞 Próximos Passos Recomendados
 
-1. ✅ Execute o SQL (AGORA)
-2. ✅ Faça upload dos arquivos
-3. ✅ Teste os formulários
-4. ✅ Configure notificações por email (opcional)
-5. ✅ Crie rotina de follow-up de leads
-6. ✅ Analise métricas semanalmente
+1. ✅ **CRÍTICO:** Configure Redirect URLs no Supabase Authentication
+2. ✅ Execute o SQL (AGORA)
+3. ✅ Faça upload dos arquivos
+4. ✅ Teste os formulários
+5. ✅ Configure notificações por email (opcional)
+6. ✅ Crie rotina de follow-up de leads
+7. ✅ Analise métricas semanalmente
 
 ---
 
